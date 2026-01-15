@@ -1,0 +1,391 @@
+Article 1: General Provisions
+1.1 Definitions
+The specific terms and definitions used in the “Conditions of Carriage**”** (hereinafter referred to as this “COC”) are as follows:
+
+"Baggage" refers to the personal property carried by the Passenger during the journey. Unless otherwise specified, it includes the Passenger’s Checked Baggage and Carry-On Baggage.
+
+"Baggage Identification Tag" refers to the document issued by the Company specifically for the verification of the Passenger's Checked Baggage.
+
+"Checked Baggage" refers to the Baggage carried by the Company and issued with Baggage Identification Tags.
+
+"Carry-On Baggage" refers to the luggage and any kind of personal belongings carried by the Passenger to the cabin other than Checked Baggage.
+
+"Booking Record" refers to the detailed data of the flight itinerary booked by the Passenger and supported by the Passenger Itinerary prepared and issued by the Company.
+
+"Shared Flight Number" refers to the flight number of Tigerair Taiwan shared with a Flight Segment operated by a designated airline. After a Passenger books a Flight with Tigerair Taiwan, the actual transportation will be carried out by another airline.
+
+"Contract Condition" refers to the explanatory content included in this COC and the Tariff Regulations available on the Company's Official Website, in the offices, at boarding counters and in various notices.
+
+"Damage" refers to the death, physical injury, delay, loss, partial loss or other damages.
+
+"Day" refers to the number of days calculated according to the calendar, regardless of whether it is a Working Day or not. In the situation of a notice to the Passenger, the day on which the notice is issued shall not be included in the total number of Days.
+
+"Working Day" refers to a day other than Saturday, Sunday and a national holiday in Taiwan.
+
+"Airline Designated Code" refers to two or three English letters and/or numbers designated by the International Air Transport Association (IATA) or the International Civil Aviation Organization (ICAO) for airlines worldwide to identify a specific airline.
+
+"Fee And Handling Charge" refers to various fees and handling charges listed on the Company's Official Website or Tariff Regulations.
+
+"Passenger Itinerary" refers to an electronic or other form of document issued by the Company to confirm the Passenger’s reservation, which contains the reservation code.
+
+"Itinerary" refers to the flight information displayed according to the booking record.
+
+"Passenger" refers to any person other than a flight crew member and flight attendant who has been carried or will be carried with the agreement of an airline by its aircraft.
+
+"Flight Segment" and "Flight" refers to a plane ride from the departure airport to the destination airport.
+
+"Flight Change" refers to a situation such as Flight cancellation, Flight termination, Flight route change and other changes of Flight.
+
+"Seat" refers to the seat on the Company's Flight or the Company’s aircraft.
+
+"Tariff Regulation" refers to information on Fees And Handling Charges and applicable conditions published in electronic or physical written form.
+
+"Rule", "Article" and "Term" refer to the contents specified in the clauses of this COC.
+
+"Company" and "Tigerair Taiwan" refer to "TIGERAIR TAIWAN CO., LTD." with Taiwanese Government Uniform Invoice number of 54381049.
+
+"Convention" refers to any of the following documents:
+
+The Convention for the Unification of Certain Rules Relating to International Carriage by Air, signed at Warsaw, 12 October 1929 (hereinafter referred to as the "Warsaw Convention");
+
+The Warsaw Convention as amended at The Hague on September 28, 1955;
+
+Guadalajara Supplementary Convention, signed at Guadalajara, 1961;
+
+The Warsaw Convention as amended by Additional Protocol No.1 of Montreal 1975;
+
+The Warsaw Convention as amended at The Hague 1955 and by Additional Protocol No.2 of Montreal 1975;
+
+The Warsaw Convention as amended at The Hague and by Additional Protocol No.4 of Montreal 1975;
+
+The Convention for the Unification of Certain Rules for International Carriage by Air, signed at Montreal, 28 May 1999 (hereinafter referred to as the "Montreal Convention").
+
+"Company’s Official Website" refers to all information contained on the official website of the Company: www.tigerairtw.com. The Rules and Terms of this COC may also be found in the announcements on the Company's Official Website.
+
+"Privacy Protection Policy" refers to the privacy protection policy (click here) published on the Company's Official Website.
+
+"Company’s Customer Service Center" refers to the contact window listed in "Contact Us" (click here) on the Company's Official Website.
+
+"Baggage Regulation" refers to the regulations listed in “baggage” (click here) on the Company's Official Website.
+
+"Price" refers to the air transportation cost from the departure airport to the destination airport, and, unless otherwise specified by the Company, does not include any cost of transportation at or from the airport or between the urban area and the airport (such as shuttle bus fees, taxi fees, etc.), Tax And Fee, Add-On Fee and Surcharge.
+
+"Tax And Fee" refers to various fees, taxes (such as airport taxes), expenses and handling charges levied by the government, other agencies, the airport or its operating authority.
+
+"Add-On" refers to Checked Baggage, pre-ordered on-board meals, Seat selection, free one-off rescheduling plan, any consumption on board (such as on-board meals, snacks, beverages, Seat changes, duty-free goods, etc.), priority unloading of Baggage, and other services or goods.
+
+"Add-On Fee" refers to the fees for purchasing Add-Ons.
+
+"Surcharge" refers to the additional charges by the Company through announcement or other notification methods.
+
+"Airfare" refers to the total amount of the Price, Tax And Fee, Add-On Fees, and Surcharges.
+
+"Newborn" refers to natural persons born for less than 8 Days. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Infants" refers to natural persons who are born for more than 8 Days but under 2 years old. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Children" refers to natural persons who are over 2 years old but under 12 years old. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Juveniles" refers to natural persons who are over 12 years old but under 15 years old. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Adolescents" refers to natural persons who are over 15 years old but under 18 years old. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Adults" refers to natural persons who are over 18 years old. Unless otherwise specified, all calculations are based on the age on the day of travel.
+
+"Check-In Deadline" refers to 45 minutes before the departure of the Flight, or the time limit specified by each airport or Flight Segment, or a certain time before the departure of the Flight as otherwise announced by the Company (whichever is the earliest).
+
+"Travel Document" refers to the proof documents (including but not limited to documents required for exiting or entering the country border, identity documents, health certificates, etc.) that the Passenger is required to prepare or present in accordance with the laws, regulations, orders, or requirements formulated by the government or relevant units at the place of departure and destination (including mid-flight stop points and transfer points), or in accordance with the relevant regulations of the Company.
+
+For the avoidance of doubt, the meaning(s) of the above term(s) or definition(s) shall not be affected by whether it/they is/are used in the singular or plural form.
+ 
+1.2 Titles
+The titles of each Article in this COC are for the convenience of query only and are not intended for the interpretation of the text.
+
+Article 2: Applicability
+2.1 Air Transportation
+This COC applies to the air transportation of Passengers and Baggage performed by the Company or the Company’s auxiliaries, as well as any transportation and traffic-related matters arising therefrom. If the Company transports the Passenger or arranges transportation matters through channels other than air transportation, such as buses, trains, ships, car rentals, or accommodation arrangements, it means the Company is acting as an agent of the transportation or accommodation provider, and different conditions of carriage may be added or applied to such non-air transportation arrangements. At that time, if the compensation limit in this COC applicable to such non-air transportation arrangements is lower than the provisions of this COC, the lower compensation limit shall apply.
+ 
+If the Company arranges the Passenger’s Flight Segments, reservations, preparation of Passenger Itineraries or Baggage Identification Tags using the Airline Designated Code of another airline, it means that the Company is only acting as the agent of such airline, and the condition of carriage of such airline shall apply. In the event of any dispute, the Passenger shall negotiate and handle it with such airline without any involvement with the Company.
+ 
+2.2 This COC Takes Precedence over Other Provisions
+If this COC is inconsistent with other regulations formulated by the Company, unless otherwise specified, this COC shall prevail. If there is any provision of this COC is deemed invalid, illegal or unenforceable, it shall be interpreted as valid to the fullest extent possible to ensure that it remains valid, legal, and enforceable. The invalidity, illegality, or unenforceability of any provision shall not affect the validity of the remaining provisions and conditions.
+ 
+2.3 Language
+The language of this COC is Chinese. If this COC is translated into another language but is inconsistent with the Chinese version, the Chinese version shall prevail.
+ 
+2.4 Concurrent Legal Provisions
+If any provision in this COC violates the mandatory prohibitive laws in the jurisdiction in a particular case, such provision shall not apply to such particular case. The invalidity of any provision does not affect the validity of other provisions. The content of this COC does not intend to exclude or restrict the applicability of any mandatory prohibitive laws.
+
+Article 3: Validity
+3.1 Evidence of Contract
+The Booking Record constitutes prima facie evidence of the transportation contract between the Passenger and the Company. The Passenger and Baggage shall be transported in full compliance with the Contract Conditions and the regulations disclosed to the Passenger by the Company or its agents.
+ 
+3.2 Validity
+The Booking Record is valid only for the Passenger with the specified name and identity on the Passenger Itinerary and for the designated Flight. The regulations and terms of Flight Changes are based on the provisions of this COC. If the Passenger does not take the designated Flight on the departure day, the Booking Record shall be invalidated. In such cases, the Company has no obligation to provide a refund, reschedule or make any arrangements. If Passengers wishes to change the Flight before departure, they shall follow the relevant instructions and deadline on the Company's Official Website, and pay the additional Price and handling charges required to amend the Booking Record; otherwise, the Company has the right to refuse the change.
+
+Article 4: Price, Tax And Fee, Add-On Fee, and Surcharge
+4.1 The Price at the Time of Announcement Shall Prevail
+All published Prices, schedules, and Flight Segments are accurate as of the time of publication. The Company reserves the right to revise the content of the aforementioned information at any time without prior notice to the Passenger.
+ 
+4.2 Calculation of Prices and Add-On Fees
+The Price shall be calculated based on the rate applicable at the time of booking. Once the booking is completed, additional fees shall be charged for any request to change the Flight information (such as changing Flight Segments, changing the boarding time or date, changing the Passenger, and purchasing Add-Ons) in accordance with the Company's Tariff Regulations. The aforementioned changes shall be completed before the designated time by the Company. Otherwise, the Company has the right to refuse the change.
+The Company may separately formulate and charge reasonable Add-On Fees for providing Add-Ons, but does not guarantee that all Add-Ons will be available for every Flight Segment.
+The Company shall not be responsible for the inability of the Passenger to take any relevant Flight (whether it is the Company's Flight or any other airline's Flight) in a timely manner due to reasons not attributable to the Company, and shall not refund any fees in the circumstances unless otherwise agreed in this COC.
+ 
+4.3 Collection of Surcharge
+The Company may separately formulate and charge reasonable Surcharges, and collect them from the Passenger through announcements or other notification methods.
+ 
+4.4 Prices for Passengers of Different Ages
+ 
+4.4.1 Newborns
+Newborns (under 8 days old) are not allowed to board the plane, whether traveling alone or accompanied by others.
+ 
+4.4.2 Infants and Children
+
+Infants (over 8 days old but under 2 years old) are not allowed to board the plane alone, and shall be accompanied by an Adult (over the age of 18) in one of the following two ways:
+The Infant is held by an Adult on the lap throughout the entire Flight: In this case, the Infant does not occupy a Seat, but shall be charged according to the rate in "ticketing related information" (click here) on the Company's Official Website that is applicable to the Infant; or
+Purchasing a separate ticket for the Infant: In this case, the Infant shall occupy one Seat (although it shall still be carried on the lap if necessary, according to the instructions of the crew members), and the Price amount shall be the same as that for a general Adult Passenger, but the airport tax may be waived according to relevant regulations.
+Each Adult may only carry one Infant, and the Company has the right to limit the number of Infants allowed on each Flight. If the number exceeds this limit, the Company has the right to refuse the ticket booking or boarding.
+
+Children (over 2 years old but under 12 years old) are not allowed to board the plane alone. An Adult (over 18 years old) shall purchase a separate ticket for each Child and accompany the Child on the plane. Children shall follow the same booking and payment procedures as general Adult Passengers (over 18 years old), and the Price amount shall be the same as that of general Adult Passengers.
+An Adult accompanying an Infant or a Child is entitled to transport one baby stroller or baby seat free of charge. If such Adult Passenger requires additional transportation beyond the aforementioned allowance, such Adult Passenger shall purchase additional Baggage allowance on his/her own.
+Only baby seats that meet the requirements in "Special Request - Children and infants" (click here) on the Company's Official Website are allowed in the aircraft cabin. Passengers who wish to use baby seats in the cabin shall apply with the Company’s Customer Service Center at least 5 Days before the departure date. All other requirements shall be handled in accordance with the instructions provided in "Special Request - Children and infants" (click here) on the Company's Official Website.
+ 
+4.4.3 Juveniles, Adolescents and Adults
+Juveniles (over 12 years but under 15 years old) and Adolescents (over 15 years but under 18 years old) traveling on the Company's aircraft shall follow the same booking and payment procedures as general Adult Passengers (over 18 years old), and their Prices amount shall be the same as those of general Adult Passengers. Passengers wishing to bring a child safety seat on board shall comply with the certification requirements and details specified on the Company's Official Website; otherwise, the Company has the right to refuse the Passenger from boarding with such seat, and the Company will not provide any refund.
+ 
+4.5 Taxes, Fees and Other Charges
+Unless otherwise specified by the Company, the Company will collect Taxes And Fees on behalf of the Passenger, and the Passenger shall pay them in full to the Company. Since Taxes And Fees may change at any time according to the regulations set for the Flight Segment by the collecting authority, even if the Passenger's payment of Taxes And Fees has been confirmed at the time of booking, the Company has the right to charge additional Taxes And Fee to the Passenger based on the actual expenses incurred. Unless otherwise specified, the Passenger shall pay all Taxes And Fees and complete the payment before checking in; otherwise, the Company has the right to refuse to transport the Passenger.
+ 
+4.6 Currency
+Unless otherwise agreed, all Fees And Handling Charges shall be denominated in the currency specified by the Company.
+
+Article 5: Reservation
+5.1 Reservation Requirements
+Unless otherwise stated or specified by the Company, the Passenger shall pay the full Airfare upon making a reservation; otherwise, for any reason, the Company has the right to cancel the Passenger's reservation or refuse the Passenger's boarding at any time, whether before or after the Passenger checks in. The Passenger’s reservation shall take effect only after the full payment of the Airfare and the delivery of the Passenger Itinerary prepared by the Company. Once the reservation is confirmed and the payment is completed, except as otherwise provided in this COC, the reservation may not be cancelled and the paid amount may not be refunded. The Passenger shall make payments for the reservation with a credit card or other methods as instructed on the Company's Official Website.
+ 
+5.2 Change of Flight or Passenger Name
+After the reservation is completed and the payment is made, the Passenger may change the Flight information or Passenger name only when the status of such Flight permits in accordance with this COC and the Company’s Official Website, and such changes shall be made in accordance with the methods and deadlines specified on the Company's Official Website. The changes may only be completed after the Passenger pays the Price difference, applicable fees, and handling charges listed on the Company's Official Website. If the applicable Price for the changed reservation is lower, no refund or deduction of relevant applicable fee or handling charges may be requested. Unless otherwise agreed in this COC, no reservation data, Flight date, or departure/arrival time may be changed.
+ 
+5.3 Personal Information
+The Passenger acknowledges and agrees to provide his/her personal information to the Company for the purpose of confirming Flight reservations and Booking Records, and agrees to provide the personal information to the Company for the purposes of entry and exit of country border, accommodation, land, sea and air transportation arrangements, accounting, payment and audit, verification of credit cards or other payment cards, security, administrative and legal operations, system testing and maintenance and development, and statistical analysis to assist the Company in making future transactions more efficient with the Passenger. For the purposes stated above, the Passenger authorizes the Company, by entering into this COC with the Company, to retain and use his/her personal information, and transmit it to the Company's offices, authorized agents, government agencies, other airlines, or providers of the aforementioned services. The details of the Passenger's consent shall be subject to the Privacy Protection Policy.
+The Passenger agrees that the Company may perform air transportations while complying with the Privacy Protection Policy and that the Privacy Protection Policy shall be considered part of this COC. In case of any conflict between the Privacy Protection Policy and this COC, the Privacy Protection Policy shall prevail.
+ 
+5.4 Seats
+The Company does not guarantee to provide the Passenger with any specific Seat on any Flight. Due to the necessity of practical operation, safety and security, the Company reserves the right to designate, assign, and reassign Passenger Seats at any time, even after boarding. The Passenger agrees to accept any Seat arranged by the Company's personnel, including crew members, at any time, even after boarding, for the Passenger. Smoking, including using electronic cigarettes, is prohibited on all Flights of the Company, and the use of any device to prevent or obstruct the reclining of the Seat in front is prohibited.
+
+Article 6: Check-in and Boarding
+6.1 Check-in Deadline and Regulations
+In order to successfully check in for boarding, the Passenger shall complete the check-in process before the Check-In Deadline and comply with the airport and network check-in instructions (detailed regulations in "Guiding notes for check-in process" (click here) on the Company's Official Website shall prevail). The Check-In Deadline depends on the regulations of various airports and special Flights, as well as whether the Passenger carries Checked Baggage and other conditions. In any case, if the Passenger fails to arrive at the airport's check-in counter and complete the check-in procedures before the Check-In Deadline, the Company has the right to refuse the Passenger's boarding. It is the Passenger's obligation to comply with the Check-In Deadline and various regulations. After the Check-In Deadline, the Passenger may not perform check-in procedures, board or check in at the boarding gate. The Company does not have the obligation to delay the departure time of the Flight due to any Passenger’s late arrival. If the Passenger is unable to complete the check-in procedure before the Check-In Deadline for any reason, the Company shall not be responsible for refunding any payment or bearing any compensation liability to the Passenger.
+ 
+6.2 Identification Requirements When Boarding
+Regardless of whether the Passengers check in online or at the airport, they shall present relevant documents related to their itineraries and identifications upon boarding, including but not limited to the Passenger Itineraries and Travel Documents that identify the Passengers’ identities, such as the passport and visa. For details, "Guiding notes for check-in process" (click here) on the Company's Official Website shall apply. In case of special circumstances, such as inconsistency between the Passenger's ID and the ticket name or other data, additional fees (such as ticket change fees) may need to be paid for check-in at the airport.
+ 
+6.3 Boarding
+After completing the check-in procedures, the Passenger shall arrive at the boarding gate before the boarding time stated on the boarding pass. The boarding process will end 10 minutes before the departure time (the boarding deadline is subject to updates, announcements or broadcast from the airport or the Company's personnel). Late Passengers are not allowed to board the plane, and their Baggage will be unloaded. The Company does not have the obligation to refund any payment or bear any compensation or responsibility. If the Passenger wishes to take the next Flight, he/she shall rebook and pay the full Airfare according to the applicable Price at the time, and the amount paid for the previous Airfare shall not be applied as a credit towards the new Airfare purchase.
+ 
+6.4 Compliance with Regulations and Safety Inspections
+Passengers are obliged to comply with all applicable laws, regulations, orders, requirements of the country of departure and of destination, this COC, and all announcements and instructions made by the Company to Passengers. Passengers shall on their own prepare and deliver all identity, safety, or health examination documents required by the government, airport authorities or the Company. Passengers shall inquire on their own about all applicable laws, regulations, orders, requirements, announcements and instructions (including but not limited to local entry and exit documents) at the place of departure and destination. The Company is not obligated to obtain any necessary documents on behalf of Passengers or inform or provide the Passengers orally, in writing or otherwise, or comply with such laws, regulations, orders, requirements, announcements or instructions on behalf of Passengers. The consequences,and legal liabilities arising from Passengers' failure to obtain or provide such documents or violation of such laws, regulations, orders, requirements, announcements or instructions shall be solely borne by the Passengers; the Company is not obligated to assume any responsibility or legal liability or to compensate the Passengers for any Damages therefrom.
+ 
+6.5 Travel Documents
+Passengers are obliged to prepare and present their Travel Documents. The Company has the right to refuse Passengers who do not comply with relevant laws, regulations, orders or requirements, or whose Travel Documents do not match or are incomplete, to check in and board the airplane. Regarding the details of Travel Document regulations, Passengers may refer to the official website of the Company or the information websites of relevant countries of the Flight. However, the Company does not guarantee that the information displayed on any website (including the Company's Official Website) is correct or up to date, nor is it responsible for the content. Passengers shall check, prepare, and provide any Travel Documents they need.
+ 
+6.6 Refusal of Entry, Fines and Detention Fees
+If a Passenger is refused entry at the mid-flight stop point or Flight destination, and the Company is required by the local government to deport the Passenger back to the place of departure or another destination, the Passenger shall pay all expenses and fines incurred as a result (including but not limited to the applicable Airfare at the time, the Damage suffered by the Company as a result and the fines), and the Company is not obligated to refund any fees already paid.
+If a Passenger fails to comply with the laws, regulations, orders or requirements of the country of departure or the countries in the course of the Flight, or fails to provide all necessary Travel Documents or other necessary documents, and the Company is required to pay fines or other expenses for this situation as a result, such Passenger shall repay the Company for the expenses incurred, and the Company may offset the expenses incurred by such passengers with their unused Flight Segments or any payment they already made to the Company. For the services corresponding to the offset expenses, Passengers are not allowed to use them until the full amount of all fees are paid. If the corresponding service is time-sensitive (such as the transportation service on a specific Flight date) and the Passengers fail to pay the full amount of all fees before the deadline for the services or the time specified by the Company, the services shall automatically become invalid, and the Passengers shall not be allowed to use it any longer; the Company does not have the obligation to refund any fee to the Passengers as a result.
+
+Article 7: Connecting Flight and Code-Shares
+7.1 Flight Connection
+The Company may sell two or more Flights within the same Booking Record. The Passenger shall reserve a transfer time of at least 2 hours (120 minutes) (or the time limit specified by each airport or Flight, whichever is longer) to facilitate the completion of transfer procedures upon arrival at the transfer airport. The stopping time of the Passenger within the airport control area shall be subject to the regulations of each airport.
+Unless otherwise notified by the Company, the Passenger traveling directly to the destination or on a connecting Flight is allowed to board the plane only after completing the regular check-in and Baggage check-in procedures at the Company's general check-in counter or at the check-in counter designated by the Company. The Company does not accept Passenger check-in or boarding directly at the transfer counter or boarding gate, nor does the Company provide direct Baggage transfer services.
+ 
+7.2 Shared Flight Number
+On certain routes, the Company may collaborate with other airlines to provide Flight services using the Company's Airline Designated Code (IT) on other airlines' Flights for operations with a Shared Flight Number, which means even if a Passenger has booked a Seat on Tigerair Taiwan and the Airline Designated Code is displayed as "IT", it is still possible to board a Flight on another airline. For a Flight operated by another airline with a Shared Flight Number, the Company or the other airline or its authorized agent will inform the Passenger of the Flight's actual airline identification data when booking. Passengers traveling on another airline shall comply with the Rules and conditions established by that airline, including but not limited to matters related to:
+
+The conditions of carriage and privacy protection policies of such airline.
+
+The check-in procedures of such airline.
+
+Such airline's refusal to transport and transportation restrictions.
+
+Such airline's restriction on Baggage weight, free Baggage weight, and overweight Baggage fees.
+
+ 
+7.3 Missing the Connecting Flight
+Except for cases due to the intention or gross negligence of the Company, the Company is not liable for compensation for Damages caused by Passengers missing connecting Flights, nor is it obligated to refund any fees to Passengers as a result.
+
+Article 8: Refusal and Limitation of Carriage
+8.1 Right of Refusal to Transport
+ 
+8.1.1 Refusal to Transport
+In case of the following purposes, or in the event of any of the following circumstances, or if the Company reasonably believes that there is a possibility of any of the following situations occurring, the Company may notify the Passenger at any time to refuse transportation (including their Baggage):
+
+Due to safety or security concerns, or to ensure the health, comfort and well-being of other Passengers or crew members.
+For compliance with any applicable laws, regulations, or orders established by any state, country, autonomous body, or special administrative region for the purpose of exiting, entering or passing through, or due to the prohibition of any government or other agency on the Passenger’s checking in or boarding.
+Due to the Passenger's conduct, age or mental or physical condition, or the condition of the Baggage that requires special assistance or implies any danger or risk.
+The Passenger has a record of improper conduct on Flights in the past, and it is possible that such conduct may happen again.
+The Passenger may fail to comply or may not be able to comply with local regulations or the Company’s instructions.
+The Passenger refuses security checks on him/her or his/her Baggage by the Company and airport security personnel or other relevant personnel.
+There is outstanding Airfare or any applicable fees payable or taxes, or failure to comply with the credit card agreements signed between the Company and the Passenger (or the payer on the Passenger’s behalf).
+The Passenger fails to present all the required Travel Documents or identification documents as specified by the Company, or the Passenger is unable to properly prove his/her identity to the Company's crew.
+The Airfare payment or any other payment made by the Passenger is involved in fraudulent or illegal activities, or the Passenger purchases the Company's air ticket or services from a party which is not authorized by the Company to do so.
+The credit card or other payment instrument used by the Passenger for the Airfare payment is reported lost, stolen, infringed, or involved in any criminal act, or the payment has been refused by the issuing bank or payment instrument supplier.
+The Passenger Itinerary is altered by non-personnel of the Company or an unauthorized agent of the Company, or is damaged or cannot be read.
+The check-in or boarding person cannot be verified as the Passenger on the Passenger Itinerary.
+The Passenger reports at the airport check-in counter after its operation or after the Check-In Deadline.
+The Company has any reason to believe that the Passenger is not suitable for taking a flight.
+The Passenger is designated as sanctioned or restricted from transportation by the local or any other government agency of the country/place of entry or exit (including but not limited to the Ministry of Justice).
+If the Company discovers or reasonably suspects that there is a risk of an abnormal transaction in the Passenger's order (including but not limited to credit card theft, and purchase through an unauthorized person or channel), the Company may send an email to the email address in the abnormal order provided by the Passenger to inform the Passenger of the anomaly of the transaction. The Company also has the right to request the Passenger and/or the holder of the order payment instrument, such as the credit card holder, to present the original payment instrument for verification. If the Passenger and/or the holder of the order payment instrument fails to present the original payment instrument, the Company has the right to refuse the Passenger from boarding unless the Passenger purchases another ticket on site and pays the full Airfare.
+ 
+8.1.2 Notice of Rejection to Transport
+Except for the reasons stated in Article 8.1.1, the Company has the right to notify the Passenger at any time that it will not provide transportation services for the Passenger or his/her Baggage. Upon unilateral notice from the Company, the Company has the right to refuse transportation of the Passenger and his/her Baggage. If the Passenger attempts to board after the refusal notice has taken effect, the Company has the right to refuse his/her boarding.
+ 
+8.2 Regulations for Flying Alone
+According to the relevant instructions and regulations on the Company's Official Website, and considering the fact that countries only have laws and regulations regarding the transportation of Juvenile Passengers (over 12 years old but under 15 years old) and Adolescent Passengers (over 15 years old but under 18 years old) boarding alone, Newborns (under 8 days old) are not allowed to board the plane, whether alone or accompanied by others. An Infant (over 8 days old but under 2 years old) and a Child (over 2 years old but under 12 years old) is not allowed to board unless accompanied by an Adult Passenger (over 18 years old) who are responsible for the safety of such Infant and Child throughout the journey.
+For a Juvenile Passenger (over 12 years old but under 15 years old) traveling alone, either of his/her parents or legal guardian shall sign the "Tigerair Taiwan Letter of indemnity_unaccompanied minors" (click here) (the content and format provided in the "Download" (click here) shall prevail) and provide it to the check-in counter staff of the Company at the time of check in, and at the same time arrange and provide to the check-in counter staff of the Company the name and contact information of the person who will pick up such Juvenile Passenger at the destination airport. The juvenile Passenger may board the plane alone only after the check-in counter staff of the Company confirms all relevant documents and procedures are in order. The person who signs the "Tigerair Taiwan Letter of indemnity_unaccompanied minors" (click here) for the Juvenile Passenger to travel alone shall accompany such Juvenile at the airport until the Flight takes off (subject to airport announcement or notification from the Company's staff).
+Adolescents and Adults may travel alone without the need for companionship.
+ 
+8.3 Passengers in Need of Special Assistance
+The Company will not provide care services for Passengers who are unable or unsuitable to travel alone, and may only provide limited assistance. Regarding Special Assistance, "Special Requests" (click here) on the Company's Official Website shall apply. Passengers requiring special assistance shall notify the Company's Customer Service Center at least 5 days before the flight departure; otherwise, the Company shall not be responsible if the Passenger is unable to obtain the necessary assistance or is unable to check in or board as a result. In addition, the Company has the right to decide whether to provide the aforementioned special assistance. Such special assistance may require additional fees, and the detailed fees shall be subject to the Company's announcement or notice. The Passenger understands and acknowledges that not all Flight Segments provide such special assistance due to local airport, regulatory, or environmental restrictions.
+ 
+8.4 Pregnant Passengers
+After booking the ticket, a pregnant Passenger shall proactively inform the Company’s Customer Service Center of her expected delivery date and the number of weeks of pregnancy. If a pregnant Passenger is between 30 and 34 weeks pregnant at the time of Flight departure, she shall provide a medical certificate of airworthiness issued by a doctor before boarding to confirm suitability for the Flight; otherwise, the Company has the right to refuse transportation and is not obligated to provide a refund or compensate any fees. If a pregnant Passenger is 34 weeks pregnant or more at the time of Flight departure, the Company will not provide transportation services and shall not be obligated to provide a refund or compensate any fees. In these cases, "Special Requires" (click here) on the Company's Official Website shall apply.
+
+Article 9: Baggage
+9.1 Carry-On Baggage and Checked Baggage
+The Passenger is allowed to carry a limited amount of Carry-On Baggage on board for free, but shall comply with the rules and conditions for the quantity, size and weight of Carry-On Baggage set in the Company's Baggage Regulations. the Company will not provide Carry-On Baggage allowance to an Infant (over 8 days old but under 2 years old) who does not occupy a Seat; however, the Adult accompanying such Infant is entitled to one free check-in of one stroller. The Company does not provide free Checked Baggage. The regulations related to Baggage shall be subject to the Company's Baggage Regulations, including but not limited to the size, weight restrictions and charging standards. When booking, the Passenger shall purchase sufficient weight allowance for Checked Baggage. If a Passenger has any Checked Baggage that exceeds the pre-ordered weight, or if a single piece of Checked Baggage exceeds 30 kilograms, or if no Checked Baggage weight limit is pre-ordered before checking in, the acceptance of Checked Baggage depends on the available space on the day of the Flight, and the Passenger shall pay the relevant fees to the Company at the airport according to the relevant policies set by the Company.
+ 
+9.2 Items Not Allowed to Be Carried in Baggage
+If a Passenger's Baggage is found or reasonably suspected to contain any of the following items or meets any of the following conditions, the Company reserves the right to refuse transportation of such Passenger and his/her Baggage and shall not be liable for any compensation or bear any responsibility. If any Damage is caused to the Company or any third party as a result, the Passenger shall be fully responsible for and compensate resulting Damage:
+
+Items that are not properly packed into Baggage or other suitable containers.
+Items that may pose a risk to the aircraft, Passengers, staff or property, including but not limited to the dangerous goods regulations of the International Civil Aviation Organization (ICAO) and situations referred to by the International Air Transport Association (IATA), or items that the Company reasonably determines to be dangerous, unsafe, or unsuitable for transportation.
+Items that are prohibited from being carried by any laws, regulations or orders of the state, country, autonomous region, or special administrative region through which they will exit, enter or pass.
+Items that the Company deems unsuitable for transportation in terms of weight, shape, size or characteristics.
+Items that the Company considers fragile or perishable.
+Animals that are alive or deceased.
+Human or animal remains.
+Firearms and ammunition.
+Explosives, flammable or non-flammable gases (such as aerosol paint, butane and lighter filling gas), frozen gases (such as water respirator cylinders and liquid nitrogen), flammable liquids (such as paint, diluents and solvents), flammable solids (such as matches and lighters), organic peroxides (such as resins), poisons, infectious substances (such as viruses and bacteria), radioactive substances (such as radium), corrosive substances (such as acids, bases, mercury, and thermometers), magnetic substances, and oxidizing substances (such as bleach).
+Weapons, such as antique firearms, swords, knives and similar items.
+Other prohibited items that are not recorded or updated shall be subject to the regulations of the departure point, mid-flight stop point, destination airport and government.
+If any of the items listed in Article 9.2 are carried, regardless of whether they are prohibited from being carried as Carry-On Baggage or Checked in Baggage, their transportation shall comply with other applicable Baggage transportation Rules and provisions, as well as applicable limited liability and fee provisions, in this COC.
+ 
+9.3 Items That May Be Carried as Baggage
+All transported items shall be handled in accordance with the regulations of the departure point, mid-flight stop point, destination airport and government, as well as the rules, instructions, and fee regulations disclosed on the Company's Official Website.
+ 
+9.4 Valuable Items, Important Personal Items, Fragile Items and Perishable Items
+Valuable items, important personal items, fragile items, and perishable items (including but not limited to money, jewelry, rare metals or ores, silver products, glass products, artworks, writings, heirlooms, collectibles, antiques, items of commemorative or special significance, irreplaceable items, drugs, precision instruments, optical products, keys, fur, alcohol, commercial samples, electronic equipment, computers, cameras, video playback devices, mobile phones, transferable notes, securities or other important documents, passports and other identification documents, ownership certificates, cultural relics, manuscripts and similar items, and other valuable or commercial items) shall not be consigned for transportation. If such items are included in Checked Baggage, it shall be deemed that the Passenger understands and agrees that all risk of transportation of such items (including but not limited to partial or complete destruction, perishment, loss, Damage, delay, or any breakdown) shall be borne by the Passenger and that the Company shall not be responsible for any related Damage caused by the transportation of such items.
+ 
+9.5 Inspection Rights
+For safety and security reasons, the Passenger shall comply with the requirements of the Company and cooperate in the security checks and X-ray or other scanning measures conducted by the Company, government or airport personnel on the Passenger and his/her Baggage. When necessary, the Passenger shall accompany their Baggage on site, and the Company reserves the right to inspect the Passenger’s Baggage when the Passenger is not present. If the Passenger fails to comply with such safety checks or scanning operations, the Company reserves the right to refuse transportation of such Passenger and his/her Baggage, and the Company is not obligated to refund any fee or compensate for any Damage. If the inspection or scanning operation causes harm to the Passenger or Damages his/her Baggage, the Company shall not be responsible or liable for such injury or Damage, unless the injury or damage is due to the intention or gross negligence of the Company.
+ 
+9.6 Baggage Check-in
+Baggage may be checked in according to the time and instructions specified on the Company's Official Website before the scheduled departure time of the Flight. Once the Baggage is delivered to the Company for check-in, the Company will issue a Baggage Identification Tag for each Checked Baggage. Checked Baggage shall be labeled with the Passenger's name or other personal identification mark. The Company may deliver the Passenger’s Baggage to another Flight for transportation due to safety, security or operational reasons. Except as provided by any applicable law for delivery within a specific time, if a Passenger's Checked Baggage is transported by a subsequent Flight, the Company will deliver the Baggage to the Passenger within a reasonable time after the arrival of the Flight, and this shall not be deemed as a violation of this COC by the Company or that the Company shall bear any liability or compensation obligation.
+ 
+9.7 Baggage Claim and Release
+Passengers shall claim their Baggage as soon as it arrives at the destination or transfer point. If the Passenger fails to claim the Baggage before the reasonable deadline specified by the Company, and the Baggage needs to be stored at the airport or elsewhere, the Company has the right to charge a storage fee to the Passenger. If the Passenger fails to claim the Checked Baggage within 14 Days from the date it becomes available for claim, the Company may dispose of it at its discretion and shall not be liable for any compensation or other liabilities. Only the holder of the Baggage Identification Tag is entitled to claim the Baggage. If the Company holds the Baggage claimed by the Passenger but the Passenger is unable to present the Baggage Identification Tag for confirmation, the Company will allow the Passenger to claim the Baggage only after the Passenger provides a reasonable guarantee to waive any loss, injury or expense incurred by the Company after the Company delivers the Baggage. If the holder of the Baggage Identification Tag claims the Baggage without objection and leaves the control area, it shall be deemed that the Baggage has been delivered according to this COC in good condition.
+ 
+9.8 Other Baggage Related Regulations
+The Passenger understands and agrees that any regulations concerning Baggage, including but not limited to those related to suitcases or infant equipment and devices, are valid supplementary and shall be considered part of this COC. In the event of any conflict between the Company's Baggage Regulations and this COC, this COC shall prevail.
+
+Article 10: Flight Schedules and Flight Changes
+10.1 Flight Departure/Arrival Time
+The Company will make effort to avoid delays in transporting the Passenger and his/her Baggage, and to transport the Passenger and his/her Baggage in a reasonable manner according to the Flight schedule on the day of travel. The departure time displayed on the schedule, Flight schedule or other similar documents may change at any time for any reason. Except for those due to the intention or gross negligence of the Company, the Company is not liable for any compensation for any Damage caused to Passengers (such as delays in the delivery of Passengers or Baggage) due to such changes.
+ 
+10.2 Flight Changes And Cancellation And Changes In Departure And Arrival Time
+ 
+After a reservation is completed, Tigerair Taiwan may adjust, cancel, terminate the departure and arrival times, change the routes, or postpone a Flight at any time. In such cases, pursuant to clause 2.4, the remedies provided to the Passenger for Flight Changes shall be limited to those specified as follows. Tigerair Taiwan shall have no further liability for compensation or reimbursement related to Flight Changes.
+ 
+If a Flight Change (including Flight cancellation) occurs due to circumstances beyond the Company’s control, and the Flight is delayed by more than 4 hours or arrives earlier by more than 10 minutes, the Company will make efforts to rebook the Passenger on the next available Flight of Tigerair Taiwan to the same destination without additional charge. If the Passenger does not respond within the Company’s specified deadline to indicate acceptance of the Company’s offer, the Company may, depending on the circumstances, hold the amount of the Passenger’s Airfare in a credit account, and the Passenger may, within 180 days, rebook and complete a Flight of Tigerair Taiwan. Tigerair Taiwan shall have no liability toward any Damage, costs, or expenses incurred by the Passenger due to Flight Changes or cancellations of Flights.
+If a Flight Change (including Flight cancellation) occurs due to circumstances under the Company’s control, and the Flight is delayed by more than 4 hours or arrives earlier by more than 10 minutes, depending on the circumstances, Tigerair Taiwan may:
+
+Rebook the Passenger on the next available Flight to the same destination with no additional charge, provided that the Passenger accepts this offer within the response period specified by the Company; or
+Hold the Passenger’s Airfare amount in a credit account, allowing the Passenger, within 180 days, to rebook and complete  a Flight of Tigerair Taiwan.
+ 
+Tigerair Taiwan will make efforts to notify the Passenger if a significant Flight Change (including Flight cancellation) occurs prior to the Flight date. However, the Passenger understands and agrees that Flight departure and arrival times may be affected by various unpredictable factors. If a Flight Change occurs but the Flight delays by less than 4 hours or arrives earlier by less than 10 minutes, such changes shall be considered normal arrangements. In such cases, the Passenger shall not be entitled to a refund, rebooking, Flight change, or any other remedies, and the Company shall not be obligated to provide any compensation or reimbursement. The Passenger understands and agrees that the Company is not liable for any compensation or reimbursement in the following circumstances:  
+
+Circumstances not resulting from the Company’s willful misconduct or gross negligence;
+Circumstances resulting from causes beyond the Company’s control (including but not limited to weather conditions, natural disasters, infectious diseases, aircraft mechanical/equipment/fuel issues, force majeure, strikes, riots, civil disturbances, embargoes, wars, hostilities, violent incidents, influential third-party demands, international instability, or unresolved international issues), or situations where the Company has been threatened or has reported such causes, or any delays, demands, or circumstances arising directly or indirectly from such causes;
+Circumstances resulting from causes that the Company could not reasonably foresee;
+Circumstances resulting from government regulations, orders, administrative guidance, or directives from influential third parties;
+Circumstances resulting from shortages of manpower, fuel, or other equipment, or labor disputes.
+ 
+E-mail shall be the primary communication channel for all notifications from Tigerair Taiwan. Upon booking a ticket, the Passenger shall provide an e-mail address which is correct, valid, and frequently checked by the Passenger. The Company shall not be held liable for any losses or expenses incurred by the Passenger due to failure to receive or read notifications due to e-mail settings or operational errors.
+ 
+10.3 Rejection to Board
+ 
+10.3.1 General Refusal of Carriage
+If the Company refuses to transport a specific Passenger or their Baggage in accordance with the relevant provisions of this COC, or the Company believes that the Passenger or their Baggage breaches the relevant provisions of this COC (including but not limited to Article 8), or due to any reasons not attributable to the Company, the Company has the right to cancel the Passenger’s ticket and related services. In such cases, neither the Passenger nor any related persons have the right to request any refund, including but not limited to Price, Tax And Fee, Add-On Fees, Surcharges, and all Airfare, or any compensation or reimbursement from the Company. Regardless of whether the claim is based on tort, unjust enrichment, contract, or other legal grounds, the Company shall not be held liable. Furthermore, the Passenger shall compensate the Company for all damages incurred.
+ 
+10.3.2 Special Refusal of Carriage
+The Passenger who holds a valid air ticket with confirmed reservation for a specific Flight, has Checked in before the prescribed boarding deadline, and has complied with this COC, may be denied boarding due to Flight overbooking, or the Company's compliance with applicable laws, regulations, orders or airline regulations to deny specific Passenger groups from boarding. However, before the Company refuses to transport any Passenger, the Company or a third party authorized by the Company (such as a travel agency) may seek Passengers who voluntarily do not take the Flight and abandon their reservations, and provide compensation for such Passengers according to the situation. Any Passenger who voluntarily does not board shall not seek further compensation from the Company. If there are insufficient volunteers, the Company shall deny the boarding of specific Passengers in accordance with applicable laws, regulations, orders or airline regulations.
+
+Article 11: Refunds
+11.1 General Provisions
+Unless stipulated in this COC, no fees paid by the Passenger (including the Airfares, Prices, Taxes And Fees, Add-On Fees and Surcharges) shall be refunded.
+However, in the following circumstances, the Company may evaluate valid proof documents provided by the Passenger before the departure of the Flight (including but not limited to any medical certificate or death certificate indicating that the Passenger is unfit for travel) and determine whether to provide assistance plans:
+
+The Company may make a full refund if a Passenger passes away before the departure of the Flight; however, the family members of the Passenger shall submit the original proof documents within 7 Days after the departure of the Flight; and
+Before the departure of the Flight, the Passenger loses mobility or has any other emergency medical condition that prevents him/her from boarding the plane; however, the Passenger or his/her family members shall submit relevant supporting documents within 2 Working Days after the departure of the Flight (or within 3 Days after the departure of the Flight if the emergency occurs within 2 Working Days before the departure of the Flight).
+Passengers who do not purchase air tickets from the Company's Official Website shall contact the original ticketing party, personnel, or channel for consultation and follow the regulations of such original ticketing party, personnel, or channel.
+11.2 Airport Service Charges and Airport Taxes
+If the Passenger fails to take the Company’s Flight for any reason after the booking is completed, the Passenger may apply to the Company for a refund of the airport service fee and airport tax starting the day after the Flight's departure and within 2 years of the date of ticket booking only.
+ 
+11.3 Refund Methods and Recipients
+The Passenger agrees that in processing refund, the Company has the right to choose to issue the refund either through the Passenger's original payment method; retain the Passenger's Airfare amount, excluding any one-time fees, in the form of a credit account, allowing the Passenger to rebook and complete another travel; or to the person making the booking provided such person presents relevant proof in accordance with the Company's policies. The Company may request documentation to verify the individual's identity, payment, and booking details, and may refuse a refund until satisfactory proof is provided.
+ 
+11.4 Currency
+All refunds shall be processed in accordance with applicable laws, Rules and regulations, or the laws and regulations of the country where the reservation is made. The refund shall be made in the original currency of payment or in a currency designated by the Company.
+
+Article 12: Onboard Behavio
+12.1 Self-discipline of Passengers
+The Company will take all reasonable measures to maintain the comfort and safety of its Flights, crew and Passengers. If a Passenger's conduct already or may endanger the aircraft, any person, or any property, or obstruct or hinder the crew in carrying out their duties, or fail to comply with any instructions of the crew, or cause discomfort, inconvenience, damage or injury to other passengers or the crew, the Company may restrict the Passenger's behavior or expel the Passenger from the aircraft or the Flight at any time, and the Passenger shall not be entitled to any further air transportation services of the Company. The Passenger shall also be liable for any legal consequences and responsibility for his/her acts or offenses on board.
+ 
+12.2 Passenger Behavior Liability
+In the event that a Passenger’s intentional or negligent actions or behavior cause any damage to the Company, the Company’s agents, employees, other Passengers, or any third parties, including but not limited to the diverting the flight to an airport or destination different from the original one, the Passenger shall bear full liability for all resulting costs and damages incurred by the Company and other affected parties, including but not limited to all costs and damages arising from the flight diversion. In such cases, the Company shall not be held responsible.
+ 
+12.3 Use of Equipment
+For safety reasons, the Company has the right to prohibit or restrict anyone from using electronic devices onboard, including but not limited to mobile phones, laptops, portable recorders, portable radios, CD players, video game consoles, transmission devices, radio-controlled toys, and walkie talkies. However, hearing aids and heart rate adjusters are allowed to be used on the aircraft.
+
+Article 13: Limitations of Liability
+13.1 Notes on the Convention
+The Convention shall apply only if the Company's specific Flights are subject to the requirements of the Convention. In most cases, the Convention specifies the limits of liability for compensation for Passenger injury, loss of Baggage, and Damage caused by air transportation.
+The Company shall not be responsible for any illness, disability, injury, or death caused by factors attributable to the Passenger's personal condition, nor shall the Company be responsible for any deterioration of the Passenger's illness, disability, or injury caused by factors attributable to the Passenger's personal condition.
+ 
+13.2 Limit of Baggage Compensation Liability
+Compensation liabilities for Baggage Damage are limited unless the Passenger has made a declaration of excess value in advance in accordance with the Company’s regulations and paid the applicable additional fee.
+ 
+13.3 If the Convention Does Not Apply
+If the transportation of Passengers and their Baggage is not subject to the requirements of the Convention, unless otherwise agreed in this COC, the followings shall apply:
+
+According to the applicable laws and regulations, the Company shall apply the provisions on compensation for Damages that Passengers are liable for, including those related to their negligence.
+Unless the Baggage is damaged within the Company's jurisdiction due to reasons attributable to the Company, the Company shall not be liable for any resulting Damage or compensation.
+Unless it is proven that the Damage is due to the intention or gross negligence of the Company or its agent, the Company's compensation limit for Checked Baggage is USD20 per kilogram. The compensation limit for Damages to non-Checked Baggage is USD400 per Passenger, provided that applicable laws allow different compensation liability limits for Checked Baggage and non-Checked Baggage. If the weight of any Baggage is not recorded on the Checked Baggage Identification Tag, it shall be deemed that the total weight of that specific Baggage does not exceed 15 kilograms.
+The Company shall not be liable for any Damage due to the Company's compliance or the Passenger's non-compliance with applicable laws or government regulations.
+The Company is only required to compensate Passengers for the proven Damages and repair costs under applicable laws and regulations.
+The Company is not liable for compensation for any Damage caused by Passengers’ Baggage. The Passenger shall be responsible for compensation for Damage caused by his/her Baggage to himself/herself, other people, and the Company.
+The Company shall not be liable for any Damage suffered or caused by items that have not been approved, are not suitable, or have been indicated as not suitable for putting in the Baggage by the staff of the Company or of any related venue, including but not limited to those specified in Articles 9.2 and 9.4.
+The Company shall not be responsible for any illness, disability, injury, or death caused by factors attributable to the Passenger's personal condition, nor shall the Company be responsible for any deterioration of the Passenger's illness, disability or injury caused by factors attributable to the Passenger's personal condition.
+If the Company hires a third party to provide special assistance or services to and make payments for Passengers with limited mobility, the Company only acts in the capacity of an agent in the situation. Passengers shall be aware in advance of the potential risks and hazards associated with the third party’s services, including death, personal injury, property Damage or other losses, when it provides special assistance or services to Passengers with limited mobility. For any claims arising from such services, the Passenger shall directly contact the third party for handling with no involvement of the Company.
+The Company, its agents, and its employees are not liable for compensation for any death, personal injury or property Damage due to causes not attributable to the Company.
+The rights and obligations related to the Company in the carriage contract (including this COC and exclusion conditions or compensation liability limits) shall apply to the Company as well as the Company's authorized agents, employees, and representatives. If the Company is liable for any compensation, the total amount of compensation paid by the Company and its authorized agents, employees, and representatives shall not exceed the limit of compensation liability that the Company is liable for.
+ 
+This COC does not preclude the Company from claiming or applying any exclusion clauses or limits on liability as specified in the Convention or any other applicable international/domestic conventions, laws or regulations. It does not waive the Company’s right to defense itself against claims from any third party for any Damage due to the death, injury, or other bodily harm to the Passenger under the Convention or any other applicable international/domestic conventions, laws or regulations. The Company is not liable for any indirect or joint Damages. The Company's obligations are limited to the compensation amounts this COC specified in .
+
+Article 14: Time Limits for Baggage Complaints and Rights to Claim
+14.1 Baggage Claim
+If the holder of the Baggage Identification Tag claims or accepts the Baggage without raising any objection and exits the airport secured area, it shall be deemed that the Baggage has been delivered in good condition according to this COC. The Passenger who has any issue with the Checked Baggage shall report to the Company's ground staff at the arrival Baggage claim area within the airport secured area, and issue a Baggage exception declaration form. The Company does not accept any Baggage compensation claim that is not filed before the Passenger leaves the Baggage claim area or the airport secured area. Any Passenger who wishes to claim compensation for damaged Baggage shall do so within 7 Days from the Flight departure date (or 21 Days from the arrival at the destination if the Baggage is delayed) along with other supporting data, including but not limited to a copy of the Passenger's passport, boarding pass, Checked Baggage receipt, and photo or image of the damaged part of the Baggage, and sent to the Company's designated agent or notified representative via email for investigation. All claims shall be made in writing or by email and shall be sent to the Company before the above-mentioned deadline. Any compensation claim shall not be accepted if submitted past the above-mentioned deadline.
+ 
+14.2 Time Limit For Filing Claims
+If a claim is not filed within 2 years from the date of arrival of the Flight at the destination, or within 2 years from the expected arrival date of the Flight or the date of cessation of transportation, the claim of compensation for Damage in accordance with this COC shall be extinguished. The method of calculating the deadline shall be determined by the governing court and the applicable laws.
+
+Article 15: Applicable Law and Jurisdiction
+15.1 Applicable Law and Jurisdiction
+Unless otherwise agreed in this COC or specified in any applicable international/domestic conventions, laws, regulations or orders, or transportation rules, all terms set forth in this COC shall be governed by the laws of Taiwan. Any dispute arising from this COC shall be settled by the jurisdiction of Taiwan Taipei District Court at Taipei City, Taiwan.
+ 
+15.2 Third Party Rights
+No person who is not a party to this COC shall have any rights to enforce any term of this COC.
+ 
+15.3 Revision and Waiver
+The Company's agents, employees or representatives are not authorized to alter, modify, revise, or waive any provisions of this COC.

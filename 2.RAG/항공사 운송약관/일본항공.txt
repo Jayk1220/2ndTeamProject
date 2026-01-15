@@ -1,0 +1,424 @@
+1. DEFINITIONS
+"Agreed Stopping Places" means those places, other than the place of departure and the Destination, set forth in a Ticket and/or any Conjunction Ticket issued in connection therewith as scheduled stopping places on the Passenger's route, or shown in Carrier's timetable.
+
+"Applicable Laws" means such laws, cabinet orders and ministerial ordinances and other governmental regulations, rules, orders, demands or requirements of any state or country as will apply to Carriage of a Passenger and/or Baggage to be performed by JAL.
+
+"Authorized Agent" means a passenger sales agent appointed by a Carrier to represent the Carrier in the sale of Carriage of Passengers over the services of the Carrier and, if authorized by the Carrier, over the services of any other Carrier.
+
+"Baggage" means such articles, effects and other personal property of a Passenger as are necessary or appropriate for wear, use, comfort or convenience in connection with his/her travel. Unless otherwise specified, it includes both Checked and Unchecked Baggage of the Passenger.
+
+"Baggage Check" means such portion of a Ticket as provides for Carriage by a Carrier of Checked Baggage and as is issued by the Carrier as receipt of such Checked Baggage.
+
+"Baggage Identification Tag" means a document issued by a Carrier solely for the purpose of identification of Checked Baggage and consisting of two portions: the baggage tag portion which is attached by the Carrier to a particular article of Checked Baggage and the Baggage claim stub which is given to the Passenger.
+
+"Carriage" means carriage of a Passenger and/or Baggage by air, gratuitous or for reward.
+
+"Carrier" means an air carrier and shall include an air carrier issuing a Ticket and any air carrier that carries a Passenger and/or his/her Baggage under the Ticket or provides or undertakes to provide any other services incidental to such Carriage.
+
+"Checked Baggage" means Baggage of which a Carrier takes custody and for which the Carrier issues a Baggage Check and Baggage Identification Tag.
+
+"Child" means a person who has reached his/her second birthday but not his/her twelfth birthday as of the date of commencement of Carriage.
+
+"Conjunction Ticket" means a Ticket issued to a Passenger in conjunction with another Ticket which together constitute a single contract of Carriage.
+
+"Convention" means whichever of the following instruments is applicable to the contract of Carriage:
+"Convention for the Unification of Certain Rules Relating to International Carriage by Air", signed at Warsaw on 12th October, 1929 (hereinafter referred to as the "Warsaw Convention");
+"Warsaw Convention as amended at Hague in 1955" signed at Hague on 28th September, 1955;
+"Warsaw Convention" as amended by Additional Protocol No.1 of Montreal 1975;
+"Warsaw Convention as amended at Hague in 1955" as amended by Additional Protocol No.2 of Montreal 1975, and
+"Convention for the Unification of Certain Rules for International Carriage by Air", done at Montreal on 28th May, 1999 (hereinafter referred to as the "Montreal Convention").
+
+"Days" means calendar days including all seven days of the week; provided that, for the purpose of calculating the number of days of a notice period, the day upon which such notice is dispatched shall not be counted and further provided that, for the purpose of determining the period of validity of a Ticket, the day upon which the Ticket is issued, or the flight is commenced, shall not be counted.
+
+"Destination" means the ultimate stopping place under a contract of Carriage. In the case of a trip which returns to the place of departure, the Destination is the same as the place of departure.
+
+"Electronic Coupon" means an electronic Flight Coupon or other value document held in JAL's database.
+
+"Electronic Flight Coupon" means such form of Flight Coupon as is recorded in JAL's database.
+
+"Electronic Miscellaneous Document" means an electronic document issued by a Carrier or its Authorised Agent, requesting issue of an appropriate Ticket or provision of travel services to the person named in such electronic document.
+
+"Electronic Ticket" means the Itinerary/Receipt and Electronic Flight Coupon issued by a Carrier or its Authorized Agent.
+
+"Endorsement" means a written authority from a Carrier to transfer a Ticket or Miscellaneous Charges Order or an individual coupon thereof to another Carrier. Such authority shall normally be stamped in a specified box of the relevant coupon but may also be effected by use of a document, telegraph or other method of communication.
+
+"Flight Coupon" means such portion of a Passenger Ticket (in the case of Electronic Ticket, the Electronic Flight Coupon) as indicates particular places between which the coupon is good for Carriage.
+
+"French Gold Francs" means French francs consisting of 65 1/2 milligrams of gold at the standard of fineness of nine hundred thousandths. French Gold Francs may be converted into any national currency in round figures.
+
+"Infant" means a person who has not reached his/her second birthday as of the date of commencement of Carriage.
+
+"International Carriage" means (except where the Convention is applicable) Carriage in which, according to a contract of Carriage, the place of departure and, the Destination or Agreed Stopping Place, are situated in two or more countries. As used in this definition, the term "country", which is equivalent to "state", shall include any territory subject to its sovereignty, suzerainty, mandate, authority or trusteeship.
+
+"Itinerary/Receipt" means a document or documents forming part of the Electronic Ticket which contains the information such as the itinerary, ticket information, a portion of the conditions of a contract of Carriage and notices relating thereto.
+
+"JAL" means Japan Airlines Co., Ltd..
+
+"JAL's Regulations" means JAL's rules and regulations, other than these Conditions of Carriage, for International Carriage of Passengers and/or Baggage including, but not limited to, JAL's tables of fares, rates and charges.
+
+"Miscellaneous Charges Order" means a document or an electronic document issued by a Carrier or its Authorized Agent, requesting issue of an appropriate Ticket or provision of travel services to the person named in such document or electronic document.
+
+"Passenger" means any person, except crew members, carried or to be carried in an aircraft with the consent of a Carrier.
+
+"Passenger Coupon" or "Passenger Receipt" means such coupon or receipt constituting a portion of a Ticket as is issued by a Carrier or its Authorized Agent and is marked with "Passenger Coupon" or "Passenger Receipt", which document shall constitute a Passenger's written evidence of a contract of Carriage.
+
+"Passenger Ticket" means such portion of a Ticket as is issued by a Carrier or its Authorized Agent and as provides for Carriage of a Passenger.
+
+"Rerouting" means any change in a routing, Carrier, class of service, flight or period of validity from that originally provided in the duly-issued Ticket which a Passenger presents for Carriage.
+
+"SDR" mean Special Drawing Rights as defined by the International Monetary Fund. Conversion of the SDR sum into a national currency shall, in the case of judicial proceedings, be made at the exchange rate between the currency and SDR prevailing on the date of the final court hearing of such proceedings and, in any other case, at the exchange rate between the currency and SDR prevailing on the date on which the amount of the damages is finally fixed or on which the value of Baggage is declared.
+
+"Stopover" means such deliberate interruption of a travel by a Passenger, at a point between the place of departure and the Destination, as is agreed to in advance by the Carrier.
+
+"Ticket" means either the document entitled "Passenger Ticket and Baggage Check" or the Electronic Ticket, in each case issued by a Carrier or its Authorized Agent for Carriage of a Passenger and/or Baggage, setting forth a portion of the conditions of a contract of Carriage and notices relating thereto and containing Flight Coupon and Passenger Coupon or Passenger Receipt or Electronic Flight Coupon and Itinerary/Receipt.
+
+"To Validate" means to stamp on a Passenger Ticket an indication that it has been duly issued by a Carrier or its Authorized Agent or, in the case of an Electronic Ticket, to register all of the Electronic Flight Coupons in JAL's database.
+
+"Unchecked Baggage" means any Baggage other than Checked Baggage.
+
+2. APPLICATION OF CONDITIONS
+(A) General
+Nothing in these Conditions of Carriage or JAL's Regulations shall, unless permitted by the Convention and otherwise expressly provided herein, constitute a modification by JAL of any provision of, or waiver by JAL of any right granted to it by, the Convention.
+(B) Applicability
+To the extent not in conflict with the Convention and except in case JAL's conditions of Carriage applicable exclusively to its own domestic services apply, these Conditions of Carriage shall apply to any Carriage of Passengers and/or Baggage and any service incidental thereto, each to be performed or provided by JAL at fares, rates and charges published in connection with these Conditions of Carriage.
+(C) Gratuitous Carriage
+With respect to gratuitous Carriage, JAL reserves the right to exclude the application of any provisions of these Conditions of Carriage.
+(D) Carriage by Charter
+Carriage of Passengers and/or Baggage to be performed pursuant to a charter agreement with JAL shall be subject to JAL's conditions of Carriage applicable to charter flights.
+(E) Change of Conditions of Carriage or JAL's Regulations
+Except as will be prohibited by Applicable Laws, JAL may change, modify or amend any provision of these Conditions of Carriage and relevant regulations, and shall notify reasonably in advance the contents of such changes of Conditions of Carriage by posting them to the website or by other appropriate means; provided that no contract of Carriage shall be subject to such change, modification or amendment made after the Carriage to be performed pursuant to such contract commences.
+(F) Applicable Conditions
+Any Carriage of Passengers and/or Baggage shall be subject to these Conditions of Carriage and JAL's Regulations in effect as of the date of commencement of the Carriage covered by the first Flight Coupon of the Ticket.
+3. CODE SHARE
+(1)On some routes JAL offers our services together with other Carriers, placing JAL's designator code on flights operated by other Carriers under code share agreements.
+(2) For a code share flight operated by another Carrier, JAL will advise Passenger of the identity of the operating Carrier prior to the time of reservation.
+(3)Passengers traveling on a flight operated by another Carrier may be subject to terms and conditions of the operating Carrier that differ from those of JAL, including those regarding.
+(a)involuntary rerouting provided in paragraph (B) of Article 7
+(b)check-in provided in Article 9
+(c)refusal and limitation of carriage provided in paragraph (A) and (C) of Article 10
+(d)restriction of acceptance as baggage , free baggage allowance and excess baggage charge and acceptance of animals provided in Article 11
+(e)cancellations provided in sub-paragraph (2) of paragraph (B) of Article 12
+(f)For code share flights involving an airport of the United States of America, the tarmac delay contingency plan of the operating carrier governs with respect to any tarmac delay (meaning any delay of an aircraft on the ground at any airport of the United States of America during which passengers are not allowed to deplane).
+4. TICKETS
+(A) General
+(1)JAL will not issue or exchange/reissue a Ticket unless the Passenger pays the applicable fare or charges, or complies with credit arrangements approved by JAL.
+(2)JAL will collect ticket service fees at the time of Ticket issue or each time of Rerouting upon a Passenger's request pursuant to JAL's Regulations. The service fees are non-refundable.
+(3)A passenger must present a valid Ticket duly issued in accordance with JAL's Regulations and containing the Flight Coupon for the flight which he/she is actually to board and all other unused Flight Coupons and a Passenger Coupon or Passenger Receipt when he/she takes Carriage ( or, in the case of an Electronic Ticket, the Itinerary/Receipt and the passenger's identification). A Passenger shall not be entitled to be carried if the Ticket presented by the Passenger falls within the scope of sub-paragraph (6) of paragraph (A) of Article 10.
+(4) In the case of loss or mutilation of a Ticket or any portion thereof, or non-presentation of a Ticket containing a Passenger Coupon or Passenger Receipt and all unused Flight Coupons, JAL may, upon the Passenger's request and upon receipt of the charges set forth in the next succeeding sub-paragraph, issue a new Ticket to replace such Ticket or such portion subject to the following conditions:
+(i)JAL receives from the Passenger a proof satisfactory to JAL to prove that a valid Ticket for the relevant flight was duly issued and if, given the circumstances, JAL deems it appropriate; and
+(ii)the Passenger agrees, in such form as may be prescribed by JAL, to indemnify JAL from any loss and damage incurred by JAL in connection with issue of such replacement Ticket.
+(5)JAL will collect \10,000 (or the equivalent amount in a foreign currency) as a charge for issue of replacement Tickets in accordance with the preceding sub-paragraph (4) per a Ticket issued to a Passenger which constitutes a single contract of Carriage.
+(6)A Ticket shall not be transferable. JAL shall not be liable to any person entitled to be carried or to receive a refund, for honouring or refunding a Ticket presented by any person other than the person so entitled. If a Ticket is in fact used by any person other than the person who is entitled to be carried, with or without such person's knowledge and consent, JAL shall not be liable for death of or injury to such unauthorised person or for loss, destruction or delay in arrival of, or damage to, such unauthorised person's Baggage or other personal property arising from or in connection with such unauthorised use.
+(B) Validity for Carriage
+(1)When Validated, a Ticket shall be good for Carriage from the airport at the place of departure to the airport at the Destination via the route described in the Ticket, at the applicable class of service and for the period of time specified or referred to in the next succeeding sub-paragraph. Each Flight Coupon shall be good for Carriage on the date and flight for which a seat is reserved for the Passenger. If a Flight Coupon is issued on an "open date" basis, a seat will be reserved for the Passenger upon his/her application therefor, subject to the conditions of the applicable fare and the availability of the seat on the flight. The place and date of issue shall be shown on the valid Ticket.
+(2) Unless otherwise provided in the applicable fare rules, the period of validity of a Ticket shall be one year , if Carriage is commenced, from the date of commencement of Carriage or, if no portion of the Ticket is used, from the date of issue thereof. If a Ticket involves a flight coupon to which any fare having a period of validity that is less than one year applies, such period shall apply only to such flight coupon.
+(3)The period of validity of a Miscellaneous Charges Order and Electronic Miscellaneous Document shall be one year from the date of issue thereof. A Miscellaneous Charges Order and Electronic Miscellaneous Document will not be honoured for a Ticket unless it is presented for a Ticket within one year from the date of issue thereof.
+(4)A Ticket shall expire at midnight on the date of expiration of the period of validity of the Ticket. Unless otherwise provided in JAL's Regulations, a travel pursuant to a Flight Coupon of a Ticket may continue beyond the date of expiration of the Ticket if such travel commences prior to midnight thereof.
+(5)An expired Ticket or Miscellaneous Charges Order or Electronic Miscellaneous Document will be accepted for refund in accordance with Article 13.
+(C) Extension of Validity
+(1)If a Passenger is prevented from travelling within the period of validity of a Ticket because JAL:
+(a)cancels the flight on which the Passenger holds a reservation;
+(b)fails to operate a flight reasonably according to the schedule;
+(c)omits a scheduled stop, being the Passenger's place of departure, Destination or Stopover point;
+(d)causes the Passenger to miss a connection;
+(e)substitutes a different class of service; or
+(f)is unable to provide previously confirmed space;
+JAL will, unless otherwise provided in JAL's Regulations, extend the period of validity of the Ticket, without additional collection of fare, to JAL's first flight on which a seat is available in the class of service for which the applicable fare is paid by the Passenger.
+(2)If a Passenger holding a Ticket of which the period of validity is one year is prevented from travelling within the period of validity because JAL is unable to provide a seat on the flight in the class of service for which the applicable fare is paid by the Passenger, JAL will extend the period of validity of the Ticket to JAL's first flight on which a seat is available in the class of service for which the applicable fare is paid when the Passenger requests reservation; provided that such extension shall not exceed 7 Days.
+(3)
+(a)If a Passenger, after commencing his/her travel, is prevented from travelling within the period of validity of a Ticket by reason of his/her illness (but not pregnancy), JAL may, unless precluded by JAL's Regulations applicable to the fare paid by the Passenger, extend such period as follows:
+(i)With respect to a Ticket of which the period of validity is one year, JAL may extend such period to the date on which the Passenger becomes fit to recommence his/her travel according to a valid medical certificate; provided that in case JAL is unable to provide the Passenger on such date with a seat in the class of service for which the applicable fare is paid by the Passenger, to JAL's first flight after such date from the point where the Passenger recommences his/her travel on which flight a seat is available in such class of service. If an unused Flight Coupon of the Ticket involves one or more Stopover points, JAL may, subject to JAL's Regulations, extend the period of validity of the Ticket for not more than 3 months from such date.
+(ii)With respect to a Ticket of which the period of validity is less than one year, JAL may, unless otherwise provided in JAL's Regulations, extend such period to the date on which the Passenger becomes fit to recommences his/her travel according to a valid medical certificate; provided that in case JAL is unable to provide the Passenger on such date with a seat in the class of service for which the applicable fare is paid by the Passenger, to JAL's first flight after such date from the point where the Passenger recommences his/her travel on which flight a seat is available in such class of service (irrespective of any restrictive conditions applicable to the type of the fare paid), but in no case more than 7 Days from such date. In the case of (i) or (ii) above, JAL may extend to the same extent the period of validity of Tickets of other members of the immediate family travelling with the Passenger.
+(b)Nothing in the preceding (a) shall permit extension of the period of validity of a Ticket of a Passenger who fully recovers from an illness before such period expires.
+(4)In the event of death of a Passenger en route, JAL may amend or modify the Ticket of a person accompanying the Passenger by, among other things, waiving the minimum stay requirement or extending the period of validity. In the event of death in the immediate family of a Passenger after he/she commences his/her travel, JAL may, also with respect to the Tickets of the Passenger or his/her immediate family accompanying the Passenger, waive the minimum stay requirement or extend the period of validity. Any such amendment or modification shall be subject to JAL's receipt of a proper death certificate and any such extension shall not exceed 45 Days from the date of death.
+(D) Flight Coupon Sequence of Use
+(1)JAL will honour Flight Coupons only in sequence from the place of departure indicated in the Ticket.
+(2)A Ticket shall not be valid and JAL will not honour the Ticket if a Flight Coupon for the first international sector is not used and the Passenger commences his/her travel at any Agreed Stopping Place.
+5. STOPOVERS
+Stopovers may be permitted at any Agreed Stopping Place subject to Applicable Laws and JAL's Regulations.
+
+6. FARES AND ROUTINGS
+(A) General
+Fares shall apply only to Carriage from the airport at the place of departure to the airport at the Destination and shall not include ground transportation service within airport areas, between airports or between an airport and downtown areas, except in the case that JAL's Regulations specifically provide that such ground transportation service will be provided by JAL without additional charge therefor.
+(B) Applicable Fares
+(1)Applicable fares shall be the fares which shall be published by JAL or its Authorised Agent or, if not so published, constructed in accordance with JAL's Regulations, which shall, unless otherwise provided in Applicable Laws, be in effect as of the date of issue and applicable on the date of commencement of the Carriage covered by the first Flight Coupon of a Ticket. If the amount collected is not equivalent to the applicable fare, the difference shall be paid by the Passenger or, as the case may be, refunded by JAL.
+(2)Unless otherwise provided in these Conditions of Carriage or JAL's Regulations, fares entitle a Passenger to occupy one seat of the applicable class. Unless otherwise provided in JAL's Regulations or specifically approved by JAL, a Passenger shall be entitled to occupy one seat on board.
+(C) Routings
+Unless otherwise provided in JAL's Regulations, fares shall apply only to a routing published in connection therewith. If there are more than one routings at the same fare, a Passenger may specify the routing prior to issuance of a Ticket. If he/she does not specify the routing, JAL may determine the routing.
+(D) Taxes and Charges
+Any tax or charge imposed by a government or other public authority or by an operator of an airport in respect to a Passenger or his/her use of any services or facilities shall be in addition to the published fares and charges and be payable by the Passenger.
+(E) Currency
+Fares and charges may be paid in a currency to be specified by JAL subject to Applicable Laws other than the currency in which the fare or charge is published. If a payment is made in a currency other than the currency in which the fare or charge is published, such payment shall be made at the rate of exchange established in accordance with JAL's Regulations.
+7. REROUTING, FAILURE TO CARRY AND MISSED CONNECTIONS
+(A) Rerouting Requested by Passenger
+(1)Under JAL's Regulations, conditions applicable to certain fares may limit or prohibit Rerouting.
+(2)Upon a Passenger's request, JAL may effect a Rerouting with respect to an unused Ticket, Flight Coupon(s) or Miscellaneous Charges Order if:
+(a)JAL issues the Ticket or Miscellaneous Charges Order;
+(b) JAL is the original issuing Carrier indicated in the so-called "Original Issue" box of the Ticket or Miscellaneous Charges Order;
+(c)
+(i) JAL is the Carrier designated in the so-called "Carrier" box of the unused Flight Coupon of the first onward sector that the Rerouting is to commence or Miscellaneous Charges Order,
+(ii)JAL is the Carrier to whom such Flight Coupon or Miscellaneous Charges Order is Endorsed, or
+(iii)no Carrier is designated in the so-called "Carrier" box of such Flight Coupon or Miscellaneous Charges Order; provided that, if the Carrier issuing the Ticket or Miscellaneous Charges Order is designated as a Carrier for any subsequent onward sector(s) and has an office of its own or of its general sales agent authorized to Endorse tickets on its behalf at the point on the routing either where the Rerouting is to commence or where a change in the Ticket or Miscellaneous Charges Order is to be effected, such issuing Carrier's Endorsement shall be obtained at either of such points in any of the cases of the preceding (i), (ii) and (iii).
+(3)After Carriage commences, the following shall apply:
+(a)additional Carriage at the through fare shall not be permitted unless a request therefor is made prior to the Passenger's arrival at the Destination indicated on the Ticket or Miscellaneous Charges Order submitted to JAL for such additional Carriage;
+(b)In the event that a new route of travel as after a Rerouting does not satisfy the conditions applicable to a round trip discount, a round trip discount shall not apply to those sectors already flown even if the relevant Ticket is issued on a basis of a round trip discount.
+(4)The fares and charges applicable after a Rerouting shall be those which, as of the date of issue, were intended to apply on the date of commencement of Carriage; provided that a Passenger, whose Ticket is all unused, requests Rerouting on a Flight coupon, the fares and charges applicable after a Rerouting may be those applicable on the date on which the change is made and reflected on the Ticket pursuant to JAL's Regulations and applicable fare rules.
+(5)JAL will collect from a Passenger any difference between the fares and charges applicable as after a Rerouting and those originally paid by the Passenger or arrange for a refund, if any, to the Passenger in accordance with Article 13.
+(6)The date of expiration of any Ticket newly issued as a result of a change in a routing, Carrier(s), class of service or flight shall be the same as that of the original Ticket or Miscellaneous Charges Order; provided that, if a Passenger, whose Ticket is all unused, requests Rerouting on unused Ticket, the date of expiration of a new Ticket shall be calculated from the date of issuing the Rerouting Ticket.
+(7)Time limits on cancellation, and charges for late cancellation, of a reserved seat shall also apply to a Rerouting to be effected upon a Passenger's request.
+(B) Involuntary Rerouting
+(1)Unless otherwise provided in sub-paragraph (2) of paragraph (B) of Article 12, in the event that JAL cancels a flight, fails to operate a flight reasonably according to the schedule, fails to stop at a Passenger's Destination or Stopover point, is unable to provide a Passenger with his/her reserved seat or causes a Passenger to miss a connecting flight on which he/she holds a reservation, JAL will, at the Passenger's option, follow either (a) or (b) below:
+(a)JAL will have the option of providing any of the following remedies:
+(i)carry the Passenger on any other flight of JAL on which a seat is available;
+(ii)either Endorse to any other Carrier the unused portion of the Ticket to request such Carrier to carry the Passenger or request other transportation service to carry the Passenger; or
+(iii)effect a Rerouting and carry the Passenger, by any other flight of JAL or any other Carrier or by any other transportation services, to his/her Destination or Stopover point indicated in the Ticket or any applicable portion thereof.
+(b)JAL will provide an involuntary refund in accordance with paragraph (C) of Article 13.
+(2)In the event that a Passenger misses an onward connecting flight of JAL on which the Passenger holds a reservation because a Carrier carrying the Passenger fails to operate its flight according to the schedule or changes the schedule of such flight, JAL shall not be liable for such missed connections.
+(3)A Passenger with respect to whom a Rerouting is effected upon JAL's request shall be entitled to retain the free Baggage allowance applicable to the class of service the fare for which the Passenger originally paid. This provision shall also apply in the event that the Passenger is entitled to a fare refund because he/she is transferred from a class of service the fare for which the Passenger paid to a lower class of service.
+8. RESERVATIONS
+(A) Reservation Requirements
+(1)A reservation shall be confirmed when recorded in JAL's reservation system as accepted.
+(2)JAL prohibits acts of reservations not intended for actual boarding.
+(3)Under JAL's Regulations, conditions applicable to certain fares may limit or prohibit change or cancellation of reservations.
+(4)A Passenger who holds an unused open-date Ticket or portion thereof, Miscellaneous Charges Order or Electronic Miscellaneous Document, or who wishes to change his/her reservation to another shall not be entitled to any preferential right with respect to making a reservation.
+(B) Ticketing Time Limits
+If a Ticket is not issued for a Passenger prior to the ticketing time limit specified by JAL, JAL may cancel his/her reservation.
+(C) Seat Assignment
+JAL may permit a Passenger to reserve a specified seat of a flight in advance; provided that JAL may, without a prior notice, change such seat due to a ship change or other reason.
+(D) Service Charge When Seat not Used
+A service charge shall, upon JAL's request and in accordance with JAL's Regulations, be paid by a Passenger who fails to use a seat of which a reservation is made.
+(E) Cancellation of Reservations made by JAL
+(1)JAL may, at its own discretion, cancel all or a part of the Passenger's reservations if two or more seats are reserved for the same Passenger and if:
+(a)same section of routes on the same day are reserved;
+(b)same section of routes on dates in close proximity to each other are reserved;
+(c)different section of routes on the same date are reserved; or
+(d)it is reasonably considered that the Passenger can not use all of the seats reserved.
+(2)If a Passenger fails to use a seat reserved on a flight without giving a prior notice thereof to JAL, JAL may cancel, or request any other Carrier to cancel, his/her onward reservations thereafter. If a Passenger fails to use a seat reserved on a flight of other Carriers without giving a prior notice thereof to such Carrier, JAL may, upon the Carrier's request, cancel his/her onward reservations thereafter.
+(F) Reconfirmation of Reservations of other Carriers
+In the event that reconfirmation of reservations is required in accordance with regulations of any Carrier other than JAL, JAL may cancel the onward JAL flight reservations thereafter for a Passenger when he/she fails to reconfirm a reservation of the Carrier within the time specified by the Carrier.
+(G) Communications Charges
+A Passenger shall, unless JAL agrees otherwise, bear any communication expense for telephone, fax or other communication facility (such as internet) used in connection with making or cancelling a reservation.
+(H) Personal Data
+A Passenger agrees that his/her personal data will be furnished to JAL by the Passenger or his/her agent, will be retained by JAL or, if JAL deems necessary, will be transmitted by JAL to any of its own offices, other Carriers, the providers of travel services, government authorities or other entity or agency in countries to be flown from, into or over, or in countries of transit and transfer, for the purpose of making a reservation for Carriage, obtaining ancillary services, facilitating immigration and entry requirements or making available such data to government authorities or for any other purpose which JAL deems necessary in order to facilitate any convenience of the travel for the Passenger.
+9. CHECK-IN
+A Passenger shall arrive at JAL's check-in counter and the boarding gate, respectively by the time indicated by JAL or, if no time is indicated, sufficiently in advance of the flight departure so that there will be enough time for the Passenger to have check-in and departure procedures completed by the departure time of the flight. If a Passenger fails to arrive at JAL's check-in counter or the boarding gate by the time indicated by JAL or is unable to depart because of improper or incomplete exit, entry or other necessary documentation required for his/her departure, JAL may cancel his/her reservation of a seat and will not delay the flight for the Passenger. JAL shall not be liable to the Passenger for any damage due to the Passenger's failure to comply with the provisions of this Article.
+
+10. REFUSAL AND LIMITATION OF CARRIAGE
+(A) Right to Refuse Carriage, Etc.
+JAL may refuse Carriage of, or remove, any Passenger, and in such case his/her Baggage will be handled in the same way, if JAL determines at its reasonable discretion that:
+(1)such action is necessary for a reason of flight safety;
+(2)such action is necessary in order for JAL to comply with Applicable Laws of any state or country to be flown from, into or over or other states or countries concerned;
+(3)
+(a)the Passenger falls under sub-paragraph (1) (b) of paragraph (B) of Article 16,
+(b)the Passenger may unlawfully seek to enter a country through which he/she is in transit by means of destroying his/her documentation required for exit, entry or other purposes or other ways, or
+(c)the Passenger refuses to accept JAL's request by reason of protecting an unlawful entry to a country that he/she surrenders his/her documentation required for exit, entry or other purposes to be held by a crew member in exchange of JAL's receipt thereof;
+(4)the Passenger falls under sub-paragraph (4) or (5) of paragraph (B) of Article 11;
+(5)the passenger or his/her conduct, age or mental or physical condition;
+(a)requires special assistance of JAL,
+(b)having serious illness/injury, infectious disease or suspected infectious disease,
+(c)may cause discomfort or makes himself/ herself objectionable to other Passengers,
+(d)may cause harm to himself/herself or to other persons or an aircraft or any property;
+(e)obstructs any crew member in performing his/her duties or fails to comply with any instruction of any crew member,
+(f)uses portable telephones, portable radios, electronic games or other electronic devices in aircraft cabin without JAL's permission,
+(g)smokes in aircraft cabin (an act of smoking includes use of cigar cigarette, electronic cigarette, electronic vaporizer style cigarettes, or any use of smoking device in aircraft cabin.);
+(6)the Ticket presented by the Passenger is:
+(a)acquired unlawfully or purchased from an entity other than the issuing Carrier or its Authorized Agent,
+(b)reported to have been lost or stolen,
+(c)a counterfeit Ticket, or
+(d)mutilated, or altered wilfully by a person other than a Carrier or its Authorized Agent, with respect to any Flight Coupon thereof, in any of which cases JAL reserves the right to retain the Ticket;
+(7)the person presenting a Ticket cannot prove that he/she is the person named in the "Passenger Name" box of the Ticket, in which case JAL reserves the right to retain such Ticket; or
+(8)the Passenger fails to pay any applicable fares, charges or taxes or may fail to perform a credit arrangement agreed upon between JAL and the Passenger (or the person paying for the Ticket).
+In the case of sub-paragraph (5) (d) or (e) of this paragraph, JAL may take such other measures as JAL deems necessary to prevent the Passenger from continuing such conduct, failure, obstruction or act which measures shall include, but not limited to, restraint of the Passenger.
+(B) Conditional Acceptance for Carriage
+If a Passenger whose status, age or mental or physical condition may cause any hazard or risk to himself/herself is carried, JAL shall not be liable for death of, or any injury, illness, wounding or disability suffered by, the Passenger or any aggravation or consequences thereof due to such status, age or mental or physical condition.
+(C) Limitation on Carriage
+(1)Acceptance of Carriage of unaccompanied Children or Infants, incapacitated persons, pregnant women or persons with illness shall be subject to JAL's Regulations and may require a prior arrangement with JAL.
+(2)If the total weight of the Passengers boarding, and/or Baggage loaded in, an aircraft may exceed the maximum allowance weight with respect to the aircraft, JAL may, in accordance with JAL's Regulations, decide which Passengers and/or Baggage will be carried.
+11. BAGGAGE
+(A) Restriction of Acceptance as Baggage
+(1)JAL will refuse to accept as Baggage:
+(a)items which do not constitute Baggage as defined in Article 1;
+(b)items which may endanger an aircraft or any person or property, such as items which are specified in the Dangerous Goods Regulations of the International Civil Aviation Organization (ICAO) and the International Air Transport Association (IATA) and in JAL's Regulations;
+(c)items Carriage of which is prohibited by Applicable Laws of any state or country to be flown from, into or over;
+(d)items which JAL deems unsuitable for Carriage by reason of their weight, size, shape or character such as being fragile or perishable;
+(e)live animals, except those provided for in Paragraph (K) of this Article; or
+(f)Firearms, swords and other similar items, except as otherwise provided in JAL's Regulations.
+(2)JAL may refuse Carriage of, and take any necessary step with respect to, items of which Carriage as Baggage is prohibited by the preceding sub-paragraph (1) and may refuse onward Carriage of any such item upon discovery thereof.
+(3)JAL will refuse to accept fragile or perishable items, money, jewelry, precious metals, negotiable papers, securities or other valuables, business documents, passports or other identification documents necessary for travel or samples as Checked Baggage.
+(4)JAL may refuse to carry Baggage as Checked Baggage in case it is not properly packed in a suitcase or other suitable container to ensure safe Carriage with ordinary care in handling.
+(5)If any item referred to in sub-paragraph (1) of this paragraph is carried, whether or not Carriage of such item as Baggage is prohibited, such Carriage shall be subject to the charges, limitations of liability and any other provision of these Conditions of Carriage applicable to Carriage of Baggage.
+(B) Security Inspection
+(1)A Passenger shall submit to any security check required by government or airport officials or by JAL, unless it is specifically deemed unnecessary by government or airport officials or by JAL.
+(2)JAL will inspect the contents of Passenger's Baggage by opening his/her Baggage and/or by using some device in the presence of the Passenger concerned or a third person, for the purpose of security (including but not limited to the prevention of unlawful acts of seizure, exercise of control or destruction of aircraft) and/or for any other reason. Notwithstanding the foregoing, JAL may inspect the Passenger's Baggage in his/her or a third person's absence to see whether he/she is in possession of, or his/her Baggage contains, any prohibited item referred to in sub-paragraph (1) of paragraph (A) of this Article.
+(3)JAL will search Passenger's articles by touching the Passenger through his/her clothes and personal fittings including wigs or by using such instruments as a metal detector, for the purpose of security (including but not limited to the prevention of unlawful acts of seizure, exercise of control or destruction of aircraft) and/or for any other reason.
+(4)When a Passenger does not agree with JAL's inspection as specified in sub-paragraph (2) of this paragraph, JAL will refuse to carry such a Passenger's Baggage.
+(5)When a Passenger does not agree with JAL's search as specified in sub-paragraph (3) of this paragraph, JAL will refuse to carry such a Passenger.
+(6)When such prohibited items as specified in sub-paragraph (1) of paragraph (A) of this Article have been found as a result of such inspection or search as specified in sup-paragraph (2) or (3) of this paragraph, JAL may refuse to carry such Baggage, or may dispose of such Baggage.
+(C) Checked Baggage
+(1)Nothing contained in these Conditions of Carriage shall entitle a Passenger to have his/her Baggage checked on a flight for which a Carrier does not accept checking of Baggage.
+(2)Unless otherwise provided in JAL's Regulations or Applicable Laws, JAL will, upon presentation by a Passenger of a valid Ticket covering Carriage on the lines of JAL or on the lines of JAL and one or more other Carriers, accept as Checked Baggage the Baggage which is tendered by the Passenger at the office designated, and by the time prescribed, by JAL in respect of Carriage on the lines designated on the Ticket; provided that JAL will not accept as Checked Baggage the Baggage tendered for Carriage:
+(a)beyond the Destination designated, or on any routing not designated, on the Ticket;
+(b)beyond a Stopover point, or beyond a point at which the Passenger transfers to a connecting flight departing from a different airport from that at which the Passenger is scheduled to arrive under the Ticket, unless otherwise provided for in JAL's Regulations;
+(c)beyond a point of transfer of the Baggage to any other Carrier with which JAL has no interline Baggage agreement or which has different conditions of Carriage of Baggage from JAL's;
+(d)for a sector in respect to which the Passenger holds no reservation;
+(e)beyond a point at which the Passenger desires to resume possession of such Baggage or any portion thereof; or
+(f)for a sector in respect to which the Passenger does not pay all applicable charges.
+(3)Upon delivery to JAL of Baggage to be checked, JAL will describe in the Ticket the number of pieces and/or weight of the Checked Baggage (which act shall constitute the issuance of a Baggage Check) and will issue a Baggage Identification Tag for each piece of the Checked Baggage.
+(4)If a piece of Checked Baggage of a Passenger has no name, initial or other personal identification, the Passenger shall affix such identification to the Baggage prior to JAL's acceptance of checking.
+(5)JAL will, to the reasonable extent possible, carry Checked Baggage of a Passenger coincidently with the Passenger on the aircraft which the Passenger boards; provided that, if JAL deems it difficult or impracticable, JAL may carry the Checked Baggage on any other flight in which such Baggage can be loaded within the maximum weight allowance or by any other transportation service.
+(6)JAL will, unless JAL otherwise agrees in advance, refuse to accept Carriage of any piece of Baggage the total of the greatest outside length, the greatest outside height and the greatest outside width (hereinafter referred to as the "sum of the three dimensions") of which exceeds 203 centimeters (80 inches) or the dimensions of which cannot be stowed in a cargo compartment of the boarding flight, and/or the weight of which exceeds 32 kilograms (70 pounds). In case JAL accepts such Carriage, charges shall be assessed in accordance with JAL's Regulations.
+(D) Unchecked Baggage
+(1)Except articles specifically permitted by JAL to be carried into the cabin, Baggage which a Passenger may carry into the cabin shall be, besides one pack of a Passenger's personal belongings, as permitted by JAL's Regulations, which the Passenger carries and retains, one piece of article provided in JAL's Regulations which can be stowed in an enclosed storage compartment in the cabin or under the seat in front of the Passenger, the sum of the three dimensions of which shall not exceed 115 centimeters (45 inches); provided that the total weight of such articles shall not exceed 10 kilograms(22 pounds). A Passenger shall not carry into the cabin any Baggage which JAL deems cannot be stowed in safety in the cabin.
+(2)JAL will permit a Passenger to carry into the cabin articles not suitable for Carriage in a cargo compartment (such as fragile musical instruments) only if a prior due notice of such article is given to, and a prior permission to such Carriage is granted by, JAL. Carriage of such Baggage shall be subject to a charge provided in JAL's Regulations.
+(E) Free Baggage Allowance
+(1)Unless otherwise provided in JAL's Regulations, the free Baggage allowance for each Passenger shall be as follows:
+(a)a Passenger paying a first or business class fare shall receive a free Checked Baggage allowance of three pieces of Baggage the weight of each piece of which shall not exceed 32 kilograms (70 pounds); provided that the sum of the three dimensions of each piece shall not exceed 203 centimeters (80 inches);
+(b)a Passenger paying a premium economy or economy class fare shall receive a free Checked Baggage allowance of two pieces of Baggage the weight of each piece of which shall not exceed 23 kilograms (50 pounds); provided that the sum of the three dimensions of each piece shall not exceed 203 centimeters (80 inches);
+(c)in addition to the preceding (a) and (b), a Passenger shall receive a free Baggage allowance of Unchecked Baggage as described in sub-paragraph(1) of paragraph(D) of this Article ; and
+(d)notwithstanding the preceding (a),(b) and (c), an Infant paying an Infant fare shall receive one free Baggage allowance with the same size and weight of that of accompanying adult passenger.
+(e)Fully collapsible stroller/pushchair, Infant's carrying basket, Infant's car seat for infants or children passenger's own use will not be counted towards the free baggage allowance and will be free of charge.
+(2)The free Baggage allowance for each portion of a trip will be that applicable to the class of services for which the fare is paid.
+(3)In the event that two or more Passengers travelling on the same flight check their Baggage at the same time to be carried by JAL to the same place, JAL may, upon those Passenger's request, provide them collectively with a free Baggage allowance equal to the aggregated individual free Baggage allowance in respect of number of pieces.
+(F) Special Free Baggage Allowance
+In addition to the free Baggage allowance provided in the preceding paragraph (E) above, JAL will carry as Baggage, without additional charge, a Passenger's personal belongings. permitted by JAL's Regulations only when the Passenger carries and retains them.
+(G) Excess Baggage
+(1)Baggage in excess of the free Baggage allowance set forth in sub-paragraph (1) of paragraph (E) of this Article shall be subject to the applicable excess Baggage charge provided in JAL's Regulations.
+(2)Unless JAL otherwise agrees in advance with a Passenger, JAL may carry the Passenger's Baggage which is in excess of the applicable free Baggage allowance on any other flight or by any other transportation service.
+(H) Declaration of Baggage the Value of which Exceeds the Limit of Liability and Excess Value Charges
+(1)A Passenger may declare a value of Baggage in excess of the liability limitation of JAL pursuant to sub-paragraphs (4) and (5) of paragraph (B) of Article 18. In the event that such declaration is made, Carriage of the Baggage to be performed by JAL shall be subject to a charge at the rate of U.S.$2.0 for each U.S.$100 or any fraction thereof as excess value charges with respect to such excess value; provided that the a value of Baggage to be declared by one Passenger shall not exceed U.S.$5,000. If the payment is made in Canada, the excess value charges shall be at the rate of Canada $2.0 for each Canada $100 or any fraction thereof and the value of Baggage to be declared by one Passenger shall not exceed Canada $5,000.
+(2)Unless otherwise provided in JAL's Regulations, a Passenger may pay excess value charges at the place of departure for a travel to the Destination; provided that, if a portion of the Carriage is performed by any other Carrier which apply different excess value charges from JAL, JAL may refuse to accept an excess value declaration with respect to such portion.
+(I) Excess Baggage Charge or Excess Value Charge on Rerouting or Cancellation
+Any payment or refund of excess Baggage charge or excess value charge to be made in the case of Rerouting or cancellation of Carriage shall be subject to the provisions hereunder concerning payment of additional fare or refund of fare; provided that JAL shall not make refund of excess value charge in the event that a portion of the Carriage is completed.
+(J) Collection and Delivery of Baggage
+(1)A Passenger shall claim and receive his/her Baggage as soon as reasonably possible after it becomes receivable at the Destination or Stopover point.
+(2)The bearer of the Baggage Check and the Baggage Identification Tag(s) issued to a Passenger when his/her Baggage is checked shall be exclusively entitled to accept delivery of the Baggage; provided that a Passenger who fails to present a Baggage Identification Tag(s) may accept delivery of the Baggage if he/she presents to JAL the Baggage Check and if the Baggage is identified by other means. JAL shall not be obligated to ascertain that the bearer of a Baggage Check and a Baggage Identification Tag(s) is truly entitled to accept delivery of the Baggage. JAL shall not be liable for any damage arising out of or in connection with its failure to so ascertain.
+(3)If a person claiming Baggage is unable to receive Baggage pursuant to the preceding sub-paragraph (2), JAL will deliver the Baggage to such person only if he/she establishes to JAL's satisfaction that he/she is duly entitled to receive the Baggage and if such person shall, upon JAL's request, provide JAL with adequate security to indemnify JAL from any loss and damage incurred by JAL in connection with such delivery.
+(4)JAL may, unless precluded by Applicable Laws and if time and other circumstances permit, deliver Checked Baggage to the bearer of a Baggage Check and a Baggage Identification Tag(s) at the place of departure or unscheduled stopping place if he/she requests such delivery. In delivering Baggage at the place of departure or unscheduled stopping place, JAL will not refund any charges paid for such Baggage.
+(5)Acceptance of delivery of Baggage by the bearer of a Baggage Check and a Baggage Identification Tag(s) without his/her written complaint at the time of the delivery shall constitute prima facie evidence that the Baggage has been delivered in good condition and in accordance with the contract of Carriage.
+(K) Animals
+(1)Subject to JAL's Regulations and with JAL's prior consent, JAL will accept Carriage of animals such as dogs, cats, household birds and other pets if a Passenger puts those animals into a proper container and obtains valid health and vaccination certificates, entry permits and any other documents each required by any state or country to be flown into or over.
+(2)In the event that JAL accepts Carriage of an animal as Baggage of a Passenger, the animal shall, together with its container and food to be carried, not be included in the free Baggage allowance of the Passenger but shall constitute excess Baggage for which the Passenger shall pay a charge provided in JAL's Regulations.
+(3)Notwithstanding the preceding sub-paragraph (2), an assistance or service dog accompanying a Passenger with a disability to assist such Passenger together with a container and food will, subject to JAL's Regulations, be carried free of charge in addition to the normal free Baggage allowance.
+(4)JAL will accept Carriage of an animal subject to the condition that a Passenger shall observe JAL's Regulations and shall be fully responsible for such animal. JAL shall not be liable for injury to, sickness or death of, such animal if and to the extent that such event resulted from the inherent nature of such animal.
+12. SCHEDULES, DELAYS AND CANCELLATIONS OF FLIGHTS
+(A) Schedules
+JAL undertakes to use its best efforts to carry a Passenger and his/her Baggage with reasonable dispatch and to adhere to published schedules in effect on the date of travel; provided that times shown in a timetable or elsewhere shall be just scheduled but not guaranteed and shall form no part of the contract of Carriage. JAL may change any schedule of a flight without any prior notice and shall not be responsible for any trouble in respect of connection of a Passenger and/or his/her Baggage with any other flight because of such change.
+(B) Cancellations
+(1)JAL may, without prior notice, substitute any other Carrier or change an aircraft with respect to Carriage assumed by JAL.
+(2)JAL may, without prior notice, cancel, terminate, divert, postpone or delay any flight or the right to, or any reservation with respect to, any further Carriage thereafter or determine if any take-off or landing should be made, without any liability except to refund, in accordance with these Conditions of Carriage and JAL's Regulations, the fares and charges for any unused portion of the Ticket:
+(a)because of any fact beyond JAL's control (including, but not limited to, Force Majeure such as meteorological conditions, acts of God, strikes, riots, civil commotions, embargoes, wars, hostilities, disturbances or unstable international relations) whether actual, threatened or reported or because of any delay, demand, condition, circumstances or requirement directly or indirectly relating to such fact;
+(b)because of any fact not to be foreseen, anticipated or predicted;
+(c)because of any Applicable Laws; or
+(d)because of shortage of labour, fuel or facilities or labour problems of JAL or others.
+(3)If a Passenger refuses, notwithstanding JAL's request, to pay all or a portion of the fares demanded by JAL or the charges demanded or assessed by JAL with respect to his/her Baggage, JAL will cancel the Carriage, or the right to any further Carriage thereafter, of the Passenger and/or his/her Baggage, without being subject to any liability therefor except to refund, in accordance with these Conditions of Carriage and JAL's Regulations, any unused portion of the Ticket for which the Passenger fully paid the applicable fares and charges.
+13. REFUNDS
+(A) General
+(1)In the event that a Passenger fails to use his/her Ticket or a portion thereof for a reason provided in paragraph (C) or (D) of this Article or that a Passenger loses his/her Ticket or a portion thereof (paragraph (E) of this Article), JAL will make a refund for such unused or lost Ticket or portion in accordance with this Article and JAL's Regulations. The provisions of this Article applicable to a Ticket shall apply to a Miscellaneous Charges Order and Electronic Miscellaneous Document.
+(2)Under JAL's Regulations, JAL will limit or refuse a refund for a Ticket subject to conditions applicable to certain fares.
+(B) Person to whom Refund will be made
+(1)Unless otherwise provided in this Paragraph, JAL will make a refund to the person named in a Ticket or, to the person who purchased the Ticket upon presentation to JAL of satisfactory evidence to prove that he/she is entitled by these Conditions of Carriage to such refund.
+(2)
+(a)If a person other than the Passenger named in a Ticket pays for the Ticket and designates a person to whom refund shall be made, JAL will indicate on the Ticket that there is a restriction on a person to whom refund shall be made and make a refund only to the designated person.
+(b)A refund for a Ticket issued:
+(i)pursuant to a Prepaid Ticket Advice will be made to the person paying JAL for such Advice;
+(ii)under the Universal Air Travel Plan(UATP) will be made to the subscriber for whose UATP Card the Ticket is issued;
+(iii)pursuant to a United States Government Transportation Request (GTR) will be made to the government agency issuing such GTR; and
+(iv)for a commercial credit card will be made to the commercial credit company issuing such card.
+(3)Except in the case of lost Tickets, JAL will make a refund only if a Passenger Coupon or Passenger Receipt and all unused Flight Coupons are surrendered to JAL.
+(4)Any refund made to a person presenting to JAL a Passenger Coupon or Passenger Receipt and all unused Flight Coupons and claiming a refund pursuant to sub-paragraph (1) or (2) of this paragraph shall be deemed a valid refund and shall discharge JAL from liability to make any further refund to the true person.
+(C) Involuntary Refunds
+The term "Involuntary Refund" means any refund made when a Passenger is prevented from using the Carriage provided for in his/her Ticket resulting from JAL cancels a flight, fails to operate a flight reasonably according to the schedule, fails to stop at a Passenger's Destination or Stopover point, fails to provide previously confirmed space, causes a Passenger to miss his/her connecting flight on which he/she holds a reservation or refuses to carry or removes a Passenger pursuant to any of sub-paragraphs (1) through (5) of paragraph (A) of Article 10, and the amount of the refund shall be:
+(1)if no portion of the trip has been made, an amount equal to the fare paid; and
+(2)if a portion of the trip has been made, the difference between the fare paid and the fare for the Carriage completed.
+(3)if a Passenger paying for a class of service is required by JAL to use a lower class of service, the amount of refund shall be, calculate the sector in which the class change occurs, the difference between the normal fare amount of original class of service and for the normal fare of lower class of service, less the rate of discount from the difference, if any, that was applied at the time of the fare payment.
+(D) Voluntary Refunds
+(1)The term "Voluntary Refund" means any refund of a Ticket other than Involuntary Refund, and the amount of the refund shall be:
+(a)if no portion of the trip has been made, an amount equal to the fare paid, less any cancellation fees provided in JAL's Regulations; and
+(b)if a portion of the trip has been made, an amount equal to the difference between the fare paid and the fare applicable to the sector for which the Ticket has been used, less any cancellation fees provided in JAL's Regulations.
+(2)Unless otherwise provided in JAL's Regulations, in case of refund of lost tickets as prescribed in paragraph (E) of this Article, JAL will collect \10,000 (or the equivalent amount in a foreign currency) as a refund charge per a lost Ticket issued to a Passenger which constitutes a single contract of Carriage.
+(3)If a refund for any portion of a Ticket shall result in such Ticket having been used for a sector where Carriage is prohibited, the refund, if any, shall be determined in accordance with subparagraph (1) (b) of this paragraph as if such Ticket had been used beyond a point until which Carriage is prohibited.
+(E) Refund for Lost Ticket
+In the event that a Passenger loses a Ticket or a portion thereof, JAL will, upon receipt of evidence of such loss satisfactory to JAL and payment of the charge set forth in sub-paragraph (2) of paragraph (D) of this Article, make a refund if all of the conditions set forth in the following sub-paragraphs (1) through (3) are satisfied:
+(1)the proof of such loss and a request for the refund are submitted to JAL not later than 30 Days from the expiration date of the lost Ticket;
+(2)the lost Ticket or any portion thereof has not been used or refunded and a new Ticket has not been issued in replacement of such Ticket or portion in accordance with sub-paragraph (4) of paragraph (A) of Article 4; and
+(3)the person to whom the refund is made agrees to indemnify JAL for any loss and damage incurred by JAL in connection with the refund or such lost Ticket being used for Carriage, refund or otherwise.
+The amount of the refund shall be determined in accordance with sub-paragraph (1) of paragraph (D) of this Article; provided that, in case the Passenger purchased a Ticket for the lost Ticket or lost portion, JAL may refund the amount of the fare paid for such re-purchased Ticket only in case the Passenger traveled with such re-purchased Ticket in accordance with the fare regulations applicable to such lost Ticket.
+(F) Right to Refuse Refund
+(1)JAL will refuse a refund for a Ticket in the event that a request therefor is made later than 30 Days from the expiration date of the Ticket.
+(2)JAL may refuse a refund for a Ticket which a Passenger presents to JAL or to government officials of a country as evidence of his/her intention to depart therefrom, unless the Passenger establishes to JAL's satisfaction that he/she has permission to remain in the country or that he/she will depart therefrom by other Carrier or other transportation service.
+(3)JAL will not make a refund for a Ticket of a Passenger in the event that Carriage of the Passenger is refused or he/she is removed in accordance with sub-paragraphs (6) through (8) of paragraph (A) of Article 10.
+(G) Currency
+Any refund will be made subject to Applicable Laws of the country in which a Ticket is originally paid for and of the country in which the refund is made. Any refund will normally be made in the currency in which the Ticket is paid for but may be made in other currency in accordance with JAL's Regulations.
+(H) Refund by JAL
+Unless otherwise provided in JAL's Regulations, JAL will make a voluntary refund for a Ticket only in case JAL or its Authorized Agent originally issued the Ticket.
+14. GROUND TRANSPORTATION SERVICE
+Unless otherwise provided in JAL's Regulations, JAL will not arrange for, operate or provide ground transportation service within airport areas, between airports or between an airport and downtown areas. Except ground transportation service is directly operated by JAL, any such service will be provided by an independent operator who is not and shall not be deemed an agent or servant of JAL. Even in case a representative, officer, employee or agent of JAL assists a Passenger in making arrangements for such ground transportation service, JAL shall not be liable for the acts or omissions of such independent operator. In the event that JAL operates for a Passenger such ground transportation service, JAL's Regulations including, but not limited to, those stated or referred to in those regulations concerning Tickets, Baggage Checks, value of Baggage or otherwise shall be deemed applicable to such ground transportation service. No portion of fares shall be refundable even in case such ground transportation service is not used.
+
+15. HOTEL ACCOMMODATION, ARRANGEMENTS MADE BY JAL AND INFLIGHT MEALS
+(A) Hotel Accommodation
+(1)Hotel charges shall not be included in air fares.
+(2)In the case of scheduled overnight connection on through services, JAL may, at its discretion, bear hotel charges.
+(3)Upon a Passenger's request, JAL may arrange for a hotel reservation on his/her behalf but will not assure the reservation. Any and all expenses incurred by JAL or its agent in arranging or attempting to arrange for such reservation shall be borne by the Passenger.
+(B) Arrangements Made by JAL
+In making arrangements for hotel or other services incidental to Carriage for a Passenger, whether or not JAL bears the cost of such hotel or other services and/or of arrangements therefor, JAL shall not be liable for any loss, damage or costs or expenses incurred by the Passenger as a result of or in connection with such hotel or other services and/or arrangement therefor.
+(C) Inflight Meals
+Inflight meals will, if served, be free of charge, except as otherwise provided in JAL's Regulations.
+16. ADMINISTRATIVE FORMALITIES
+(A) Compliance with Applicable Laws
+A Passenger shall comply with and observe all Applicable Laws of countries concerned such as countries to be flown from, into or over, JAL's Regulations and instructions to be given by JAL. JAL shall be liable neither for any aid, assistance, guidance or otherwise given by a representative, officer, employee or agent of JAL to the Passenger, whether given orally, in writing or otherwise, in connection with his/her obtaining exit, entry and other necessary documents or complying with or observing such Applicable Laws nor for the Passenger's failure to obtain such documents or to comply with or observe such Applicable Laws as a result of such aid, assistance, guidance or otherwise.
+(B) Passports and Visas
+(1)
+(a)A Passenger shall present to JAL all exit, entry or other necessary documents required by Applicable Laws of country concerned such as countries to be flown from, into or over, and shall permit JAL, if JAL at its reasonable discretion deems it necessary, to make and retain copies thereof; provided that, even if a Passenger presents exit, entry or other necessary documents to JAL and JAL carry the Passenger, JAL shall not be deemed to guarantee that such documents comply with Applicable Laws.
+(b)JAL reserves the right to refuse Carriage of any Passenger who does not comply in any respect with any of such Applicable Laws or whose exit, entry or other necessary documents are not complete in any respect.
+(2)JAL shall not be responsible for any loss or damage incurred by a Passenger, and the Passenger shall indemnify JAL for any loss or damage incurred by JAL, in connection with the Passenger's failure to comply with this Article.
+(3)A Passenger shall pay the applicable fares, charges and expenses whenever JAL is required by any Applicable Laws to return the Passenger to his/her place of departure or elsewhere because the Passenger is not permitted to enter a country of transit or Destination. JAL may apply to the payment of such fares, charges and expenses any fares and/or charges paid by the Passenger to JAL for unused portion of the Ticket or any funds of the Passenger in the possession of JAL. JAL will not refund the fare collected for Carriage to the point of such refusal of entry or deportation.
+(C) Customs Inspection
+Whenever required, a Passenger's Baggage shall, whether checked or unchecked, be subject to any inspection to be conducted by customs or other government officials. JAL shall not be responsible in any respect to a Passenger for his/her failure to comply with this paragraph. A Passenger shall indemnify JAL for any loss or damage incurred by JAL in connection with the Passenger's failure to comply with this paragraph.
+(D) Government Regulations
+JAL shall not be responsible to a Passenger in any respect for its refusal of Carriage of the Passenger if JAL at its reasonable discretion determines, or any Applicable Laws require, such refusal.
+17. SUCCESSIVE CARRIERS
+(1)Carriage to be performed under a Ticket or under a Ticket and any Conjunction Ticket by two or more successive Carriers shall be regarded as a single operation.
+(2)Even if JAL is a Carrier issuing a Ticket or is designated as a Carrier for the first sector in a Ticket or in any Conjunction Ticket involving Carriage by successive Carriers, JAL shall not be responsible for any portion operated by other Carriers, unless otherwise provided in these Conditions of Carriage.
+(3)Each Carrier's liability to compensate for damage arising in connection with a Passenger's travel shall be governed by such Carrier's Conditions of Carriage.
+18.LIABILITY OF CARRIERS
+(A) Applicable Laws
+(1)Carriage performed by JAL shall be subject to the rules and limitations relating to liability established by the Convention as applicable to the Carriage unless such Carriage is International Carriage to which the Convention does not apply.
+(2)To the extent not in conflict with the provisions of the preceding sub-paragraph (1), any Carriage and other services to be performed or provided by JAL shall be subject to:
+(a)Applicable Laws; and
+(b)these Conditions of Carriage and JAL's Regulations, which may be inspected at any of JAL's business offices and its offices in any airport from which it operates regular services.
+(3)The full name of a Carrier and its abbreviation shall be as set forth in the Carrier's regulations and such name may be expressed in an abbreviated form on a Ticket. For the purpose of application of the Convention, a Carrier's address shall be the airport of departure indicated in the line of the Ticket on which the abbreviation of the Carrier's name first appears and the Agreed Stopping Places (which may be altered by the Carrier in case of necessity) shall be those places as defined in Article 1.
+(B) Limitation of Liability
+Except as otherwise provided by the Convention or Applicable Laws, JAL's liability for death of, or wounding or other bodily injury to, a Passenger, delay in arrival of a Passenger and/or his/her Baggage, or any loss of or damage to any Baggage of a Passenger (hereinafter collectively referred to as "Damage") arising out of or in connection with Carriage or other services incidental thereto performed or provided by JAL shall be as described hereinafter. If there has been contributory negligence on the part of the Passenger, JAL's liability shall be subject to the applicable law relating to contributory negligence.
+(1)JAL shall not be liable for any Damage in respect of Unchecked Baggage not attributable to negligence of JAL. Assistance rendered to a Passenger by a representative, officer, employee or agent of JAL in loading, unloading or transshipping Unchecked Baggage shall be considered as gratuitous service to the Passenger.
+(2)JAL shall not be liable for any Damage directly or indirectly arising out of its compliance with any Applicable Laws, failure of a Passenger to comply with the same or any cause beyond JAL's control.
+(3)Where the Convention other than the Montreal Convention applies;
+(a)JAL agrees in accordance with Article 22 (1) of the Convention that, as to all International Carriage performed by JAL and as defined in the Convention:
+(i)JAL shall not apply the applicable limit of liability based on Article 22 (1) of the Convention in defense of any claim arising out of death of or, wounding or other bodily injury to, a Passenger within the meaning of Article 17 of the Convention. Except as provided in (ii) below, JAL will not waive any defense to such claim which is available under Article 20 (1) of the Convention or any other Applicable Laws.
+(ii)JAL will not, with respect to any claim arising out of death of, or wounding or other bodily injury to, a Passenger within the meaning of Article 17 of the Convention, avail itself of any defense under Article 20 (1) of the Convention up to the sum of 151,880 SDR exclusive of the costs of the claim including attorney's fees which the court finds reasonable.
+(b)Nothing herein shall be deemed to affect the right of JAL with regard to any claim brought by, on behalf of, or in respect of any person who has wilfully caused Damage which resulted in death of, or wounding or other bodily injury to, a Passenger.
+(4)
+(a)In the case of Carriage subject to the Montreal Convention, JAL's liability for Baggage shall be limited to 1,519 SDR for each Passenger.
+(b)Except as provided in the provisions of (a) above, JAL's liability shall be limited to 17 SDR (250 French Gold Francs) per kilogram in the case of Checked Baggage and 332 SDR (5,000 French Gold Francs) for each Passenger in the case of Unchecked Baggage
+(c)The limitation referred in (a) and (b) above does not apply if the Passenger shall have declared a higher value in advance and paid additional charges pursuant to paragraph (H) of Article 11. In that event, JAL's liability shall be limited to such higher declared value. In no case shall JAL's liability exceed the actual amount of Damage suffered by the Passenger. All claims shall be subject to proof by the Passenger of the amount of Damage.
+(5)In the case of Carriage of Checked Baggage from or to a point or points in the United States of America, Canada or any other country provided in JAL's Regulations, JAL's liability shall also be subject to the preceding sub-paragraph (4). In the case of such Carriage, the weight of each item of Checked Baggage shall be deemed not to exceed 32 kilograms (70 pounds) and, in case the sub-paragraph (4) (b) applies, JAL's liability shall, accordingly, be limited to 544 SDR (8,000 French Gold Francs), except in case JAL accepts Carriage of Checked Baggage with respect to which JAL enters into an agreement in advance concerning an item weighing above 32 kilograms (70 pounds) in accordance with sub-paragraph (6) of paragraph (C) of Article 11.
+(6)In case the sub-paragraph (4) (b) applies, in the event of delivery to a Passenger of a part but not all of his/her Checked Baggage or in the event of Damage with respect to a part but not all of such Baggage, JAL's liability with respect to the undelivered or the Damage portion shall be reduced proportionately on the basis of the weight of the Baggage, notwithstanding the value of any part of the Baggage or the contents thereof.
+(7)JAL shall not be liable for any Damage with respect to a Passenger's Baggage caused by the contents thereof. A Passenger whose property causes Damage to another Passenger's Baggage or the property of JAL shall indemnify JAL for all loss and expenses incurred by JAL as a result thereof.
+(8)JAL shall not be liable for any Damage to items which are included in a Passenger's Checked Baggage, if and to the extent that the damage resulted from the inherent defect, quality or vice of the item, irrespective of JAL's knowledge thereof.
+(9)JAL may refuse to accept any article which shall not constitute Baggage under these Conditions of Carriage; provided that, if the article is delivered to and received by JAL, it shall be subject to the Baggage valuation and limitation of liability set forth in these Conditions of Carriage and shall be subject to the rates and charges published by JAL.
+(10)JAL will issue a Ticket or accepts Checked Baggage for Carriage performed by any other Carrier only as an agent of such Carrier. JAL shall not be liable for any Damage which shall have occurred outside a sector the Carriage for which shall have been performed by JAL. JAL shall neither be liable for any Damage which shall have occurred to Checked Baggage outside a sector the Carriage for which shall have been performed by JAL, except where the Passenger shall be entitled by the Convention to claim such Damage against JAL in case JAL is the first or the last Carrier under the relevant contract of Carriage.
+(11)JAL shall not be liable in any event for any consequential or special damage or punitive damages arising from Carriage complying with these Conditions of Carriage and JAL's Regulations, whether or not JAL had knowledge that such damage might arise.
+(12)Unless otherwise provided in these Conditions of Carriage, JAL reserves any and all right of defense available under the Convention. JAL also reserves a right to make a subrogation claim against a third party which shall have contributed to Damage, with respect to a portion or all of any payment made by JAL in connection with the Damage.
+(13)Any exclusion or limitation of liability of JAL under these Conditions of Carriage and JAL's Regulations shall also apply to any of JAL's representatives, officers, employees or agents performing their respective duties and to any person or entity whose aircraft is used by JAL for Carriage and any of its representatives, officers, employees or agents performing their respective duties. The aggregate amount of the damages payable by JAL or its representatives, officers, employees or agents shall not exceed the amount of JAL's limitation of liability under these Conditions of Carriage.
+19. TIME LIMITATIONS ON CLAIMS AND ACTIONS
+(A) Time Limitation on Claims
+No claim for damage may be made in the case of damage to Baggage, unless the person entitled to delivery complains to an office of JAL forthwith after the discovery thereof and no later than 7 Days from the date of receipt; and, in the case of delay or loss, unless the complaint is made no later than 21 Days from the date on which the Baggage has been (in the case of delay) or should have been (in the case of loss) placed at his/her disposal. Every complaint must be in writing and dispatched within the time aforesaid. In case Carriage is not "International Carriage" as defined in the Convention, failure to give such notice of complaint shall not prevent a claimant's filing a suit if the claimant proves that:
+(1)it was not reasonably possible for him/her to give such notice;
+(2) such notice was not given due to fraud on the part of JAL; or
+(3) JAL had knowledge of the damage to the Passenger's Baggage.
+(B) Time Limitation on Actions
+Any right to damages against JAL shall be extinguished unless an action is brought within 2 years reckoned from the date of arrival at the Destination, from the date on which the aircraft ought to have arrived, or from the date on which the Carriage stopped.
+20. OVERRIDING LAW
+Any provision contained or referred to in a Ticket or in these Conditions of Carriage or JAL's Regulations shall, even if it is in violation of Applicable Laws and is invalid, remain valid to the extent not in conflict with Applicable Laws. The invalidity of any provision shall not affect any other provision.
+
+21. MODIFICATION AND WAIVER
+No representative, officer, employee or agent of JAL shall have authority to alter, modify or waive any provision of the contract of Carriage or of these Conditions of Carriage or JAL's Regulations.

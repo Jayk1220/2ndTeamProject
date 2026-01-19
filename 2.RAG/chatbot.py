@@ -16,7 +16,7 @@ class FlightAgent:
         self.api_keys = [k.strip() for k in api_keys_str.split(',')]
         self.current_key_index = 0
         self.parser = JsonOutputParser()
-        self.db = pd.read_csv(r"data\flight_status_1000.csv")
+        self.db = pd.read_csv(r"2.RAG\data\flight_status_1000.csv")
 
     # ------ [API 키 관리] ------
     def get_api_key(self):

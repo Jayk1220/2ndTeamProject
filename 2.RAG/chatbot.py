@@ -13,7 +13,7 @@ def get_llm():
 class FlightAgent:
     def __init__(self, llm, api_keys_str):
         self.llm = llm
-        self.api_keys = [k.strip() for k in api_keys_str.split(',')]
+        self.api_keys = [k.strip() for k in api_keys_str.split(',')] 
         self.current_key_index = 0
         self.parser = JsonOutputParser()
         self.db = pd.read_csv(r"2.RAG\data\flight_status_1000.csv")

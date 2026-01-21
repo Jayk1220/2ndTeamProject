@@ -1,4 +1,17 @@
 import os
+import sys
+import ctypes
+import requests
+# [중요] WinError 1114 해결을 위한 DLL 로드 선점 패치
+try:
+    import torch
+    # RTX 5080 등 최신 GPU 환경에서 DLL 충돌 방지
+    if os.name == 'nt':
+        torch_lib_path = os.path.join(os.path.dirname(torch.__file__), "lib")
+        if os.path.exists(torch_lib_path):
+            os.add_dll_directory(torch_lib_path)
+except Exception:
+    pass
 import re
 import datetime
 import pandas as pd
@@ -8,7 +21,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # 1. 모델 설정
 def get_llm():
-    return ChatOllama(model='exaone3.5:7.8b', format="json", temperature=0)
+    return ChatOllama(model='qwen2.5:14b', format="json", temperature=0)
 
 class FlightAgent:
     def __init__(self, llm, api_keys_str):
@@ -16,7 +29,7 @@ class FlightAgent:
         self.api_keys = [k.strip() for k in api_keys_str.split(',')]
         self.current_key_index = 0
         self.parser = JsonOutputParser()
-        self.db = pd.read_csv(r".\0.Data\flight_data_use.csv",low_memory=False)
+        self.db = pd.read_csv(r".\0.Data\flight_data.csv",low_memory=False)
 
     # ------ [API 키 관리] ------
     def get_api_key(self):
@@ -32,43 +45,60 @@ class FlightAgent:
             return False
 
     # ------ [정보 추출 및 분석] ------
-    def extract_potential_flight_number(self, user_text):
+    def extract_potential_flight_number(self, user_text, current_data=None):
         """사용자 문장에서 항공 정보(편명, 날짜, 장소 등) 추출"""
         today_str = datetime.datetime.now().strftime("%Y-%m-%d")
+            
         prompt = ChatPromptTemplate.from_template("""
-        오늘 날짜는 {today_str}입니다. 사용자의 입력 문장에서 항공 정보를 추출하세요.
-        
-        [필수 변환 규칙]
-        1. 사용자의 최신 입력 문장에서 언급된 정보만 추출하세요.
-        2. **지명 정규화**: 한자음 도시명은 반드시 표준 외래어 표기로 바꿉니다.
-           - 북경 -> 베이징 / 상해 -> 상하이 / 동경 -> 도쿄 / 대판 -> 오사카
-           - '공항', '도' 등 불필요한 접미사 제거 (인천공항 -> 인천, 제주도 -> 제주)
-        3. **시간**: 24시간제 4자리 숫자로 변환 (오전 9시 -> 0900, 오후 4시 -> 1600)
-        4. **날짜**: 명시적 언급 없으면 반드시 'N/A'.
-        5. **편명 정규화**: 항공사 코드 뒤의 숫자가 "3자리 미만"인 경우 앞의 0을 붙여서 통일하세요. 숫자가 3자리 이상인 경우 수정하지 마세요
-            (예: AC62 -> AC062, KE1 -> KE001, KE9907 -> KE9907) 가능하면 숫자를 추출하여 표준화된 형식을 만드세요.
-        6. **편명(flight_no)**: 사용자가 "KE9077"이라고 말하면 반드시 "KE9077"을 추출하세요. 임의로 다른 편명(예: KE062)으로 바꾸거나 추측하지 마세요
-        7. **항공사명 통일**: 반드시 **한국어 풀네임**으로 변환하세요. (Korean Air -> 대한항공, Air Canada -> 에어캐나다)
-        [추가 지침]
-        8. **편명 조합**: 항공사가 이미 파악되었고(current_data 참고) 사용자가 숫자만 입력한 경우, 해당 항공사의 코드와 숫자를 결합하여 'flight_no'를 생성하세요.
-            단 숫자가 주어지지 않은 경우 숫자 정보가 추가 입력될 때 까지 flight_no에 입력하지 마세요
-        - 예: 항공사가 '아시아나항공'인 상태에서 사용자가 "501" 입력 -> "OZ501" 추출
-        - 예: 항공사가 '대한항공'인 상태에서 사용자가 "73" 입력 -> "KE073" (3자리 정규화 적용)
+        오늘 날짜는 {today_str}입니다. 사용자의 최신 입력 문장에서 항공 정보를 추출하여 JSON으로 변환하세요.
 
-        반드시 다음 JSON 형식을 지키세요:
+        ### [데이터 추출 및 변환 규칙]
+
+        1. **최신 정보 우선**: 사용자의 마지막 입력 문장에서 명시된 정보만 추출하되, 'N/A'로 반환될 항목은 이전 문맥(current_data)을 참고하여 보완할 수 있습니다.
+        2. **정보 덮어쓰기**: 새로운 입력에 포함된 정보는 이전 문맥(current_data)보다 무조건 우선합니다.
+        2. **지명 정규화 (필수)**: 
+        - 한자음 도시명은 표준 외래어로 변환 (북경->베이징, 상해->상하이, 동경->도쿄, 대판->오사카).
+        - 불필요한 접미사 제거 (인천공항->인천, 제주도->제주).
+        3. **시간 형식**: 24시간제 4자리 숫자로 통일 (오전 9시->0900, 오후 4시->1600, 11시쯤->1100).
+        4. **날짜 형식**: 'YYYYMMDD' 형식으로 변환. 명시적 언급이 없으면 'N/A'.
+        5. **항공사명**: 반드시 한국어 풀네임으로 통일 (Korean Air->대한항공, Air Canada->에어캐나다).
+
+        ### [편명(flight_no) 생성 특별 지침]
+
+            1. **숫자 그대로 사용 (우선순위 1)**:
+            - 사용자가 입력한 숫자가 **3자리 이상**인 경우(예: 901, 8901), 앞에 '0'을 절대 붙이지 말고 그대로 사용하세요.
+            - 예: 901 -> 901 / 8901 -> 8901
+
+            2. **항공사 코드 결합 필수**:
+            - `current_data`에 항공사가 있다면 해당 코드를 반드시 숫자 앞에 붙이세요.
+            - 대한항공(Korean Air) -> **KE** / 아시아나항공(Asiana Airlines) -> **OZ**
+            - 예: 대한항공 상태에서 "901" 입력 -> **KE901** (반드시 이 형식이어야 함)
+
+            3. **부족한 자릿수 채우기 (1~2자리일 때만)**:
+            - 오직 숫자가 **1자리 혹은 2자리**일 때만 3자리를 맞추기 위해 0을 붙입니다.
+            - 예: KE + "7" -> KE007 / KE + "73" -> KE073
+
+            4. **추측 금지**:
+            - 사용자가 숫자를 말하지 않았다면 `flight_no`는 반드시 "N/A"여야 합니다. (KE001, KE009 등 임의 생성 금지)
+                                                  
+
+        ### [출력 형식]
+        반드시 아래 JSON 구조를 지키고, 정보가 없으면 "N/A"를 입력하세요.
         {{
-            "flight_no": "항공기 편명 또는 N/A",
-            "airlines": "항공사 또는 N/A",
-            "destination": "도시 이름 (표준 외래어 표기)",
-            "departure": "출발 도시",
-            "date": "YYYYMMDD 또는 N/A",
-            "time": "HHMM 또는 N/A"
+            "flight_no": "항공편명 (예: KE001)",
+            "airlines": "항공사 풀네임",
+            "destination": "도착 도시명",
+            "departure": "출발 도시명",
+            "date": "YYYYMMDD",
+            "time": "HHMM",
+            "type": "International" 또는 "Domestic" (한국 내 노선은 Domestic, 그 외 International)
         }}
-
+        이전 파악 정보: {current_data}
         입력 문장: {user_text}
         """)
+        
         chain = prompt | self.llm | self.parser
-        return chain.invoke({"user_text": user_text, "today_str": today_str})
+        return chain.invoke({"user_text": user_text, "today_str": today_str,"current_data": current_data})
 
     def to_minutes(self, hhmm):
         """HHMM 형식을 분 단위 숫자로 변환"""
@@ -167,7 +197,38 @@ class FlightAgent:
         chain = prompt | self.llm | self.parser
         response = chain.invoke({"sample_list": sample_list, "current_data": current_data})
         return response.get('question', "더 자세한 정보를 말씀해 주시겠어요?")
-
+    
+    # ==========================================
+    # 확정된 편명 조회
+    # ==========================================
+    def fetch_realtime_status(self, flight_no):
+            """확정된 편명을 사용하여 외부 API에서 실시간 정보를 가져옴"""
+            url = "http://api.aviationstack.com/v1/flights"
+            params = {
+                'access_key': self.get_api_key(),
+                'flight_iata': flight_no
+            }
+            
+            try:
+                response = requests.get(url, params=params)
+                res_data = response.json()
+                
+                if 'data' in res_data and len(res_data['data']) > 0:
+                    # 가장 최신 운항 정보 추출
+                    flight_info = res_data['data'][0]
+                    status = flight_info.get('flight_status', 'N/A')
+                    dep_gate = flight_info.get('departure', {}).get('gate', '미정')
+                    arr_time = flight_info.get('arrival', {}).get('estimated', '정보없음')
+                    
+                    return {
+                        "status": status,
+                        "gate": dep_gate,
+                        "estimated_arrival": arr_time
+                    }
+                return None
+            except Exception as e:
+                print(f"API 호출 중 오류 발생: {e}")
+                return None
 
 # ==========================================
 # 메인 실행 루프
@@ -199,28 +260,48 @@ if __name__ == "__main__":
             # CASE 1: 결과가 하나로 확정된 경우
             if unique_count == 1:
                 row = filtered_df.iloc[0]
-                print(f"\n✨ 항공편을 찾았습니다! [{row['편명']}]")
-                print(f"상세정보: {row['항공사']} | {row['계획시간']} 출발 | {row['도착지']} 도착")
-                print("-" * 50)
-               
-                final_check = input("다른 항공편을 추가로 확인하시겠습니까? (네/아니오): ").strip()
-                if final_check in ['네', '예', 'y', 'Y']:
-                    break # 내부 루프 탈출 -> 처음 질문(바깥 while문)으로 이동
+                confirmed_flight = row['편명'] # 확정된 편명 추출
+                
+                print(f"\n✨ 항공편을 찾았습니다! [{confirmed_flight}]")
+                print(f"기본정보: {row['항공사']} | {int(row['계획시간'])} 출발 | {row['도착지']} 도착")
+                
+                # --- [실시간 정보 조회 추가] ---
+                print(f"📡 {confirmed_flight}편의 실시간 상태를 조회 중입니다...")
+                realtime = agent.fetch_realtime_status(confirmed_flight)
+                
+                if realtime:
+                    print(f"📍 실시간 상태: {realtime['status']} (게이트: {realtime['gate']})")
+                    print(f"⏰ 예상 도착 시간: {realtime['estimated_arrival']}")
                 else:
-                    print("이용해 주셔서 감사합니다. 프로그램을 종료합니다.")
-                    exit() # 프로그램 전체 종료
+                    print("ℹ️ 실시간 운항 정보가 아직 업데이트되지 않았습니다.")
+                break
 
             # CASE 2: 결과가 없는 경우
             elif unique_count == 0:
+                f_no = current_info.get('flight_no')
+                
+                # [추가] 편명이 있다면 API로 실시간 조회를 먼저 시도
+                if f_no and f_no != 'N/A':
+                    print(f"\n🔍 DB에는 없지만, 입력하신 편명 {f_no}를 실시간으로 조회해 봅니다...")
+                    realtime = agent.fetch_realtime_status(f_no)
+                    
+                    if realtime:
+                        print(f"✨ 실시간 데이터에서 찾았습니다! [{f_no}]")
+                        print(f"📍 상태: {realtime['status']} | 게이트: {realtime['gate']}")
+                        print(f"⏰ 예상 도착: {realtime['estimated_arrival']}")
+                        print("-" * 30)
+                        break  # 정보를 찾았으므로 루프 탈출
+                
+                # API로도 정보를 찾지 못한 경우 기존 '찾을 수 없음' 프로세스 진행
                 print("\n" + "!"*30)
                 print("❌ 일치하는 항공편을 찾을 수 없습니다.")
                 print("현재 파악된 정보:", {k: v for k, v in current_info.items() if v != 'N/A'})
                 print("!"*30)
-               
-                retry_answer = input("\n💡 수정할 정보를 말씀해 주세요 (다시입력/그만): ").strip()
+                
+                retry_answer = input("\n💡 수정하거나 추가할 정보를 말씀해 주세요 (그만/직접입력): ").strip()
                 if retry_answer == '그만': break
-               
-                new_correction = agent.extract_potential_flight_number(retry_answer)
+                
+                new_correction = agent.extract_potential_flight_number(retry_answer, current_info)
                 for k, v in new_correction.items():
                     if v != 'N/A': current_info[k] = v
                 continue
@@ -241,6 +322,16 @@ if __name__ == "__main__":
                 answer = input("답변 (그만): ")
                 if answer == '그만': break
 
-                new_data = agent.extract_potential_flight_number(answer)
+                new_data = agent.extract_potential_flight_number(answer, current_info)
+                updated = False
                 for k, v in new_data.items():
                     if v != 'N/A': current_info[k] = v
+                    updated = True
+                
+                if updated:
+                    print(f"💡 정보가 업데이트되었습니다: { {k:v for k,v in current_info.items()} }")
+                    
+                    continue  # 이 구문이 실행되면 while True의 시작점으로 가서 csv_filter를 다시 태웁니다.
+                else:
+                    print("🤖 챗봇: 추가적인 정보를 파악하지 못했습니다. 조금 더 구체적으로 말씀해 주시겠어요?")
+

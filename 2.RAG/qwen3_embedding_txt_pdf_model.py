@@ -116,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument("--chunk_size", type=int, default=1500)
     parser.add_argument("--chunk_overlap", type=int, default=200)
     parser.add_argument("--model", type=str, default="Qwen/Qwen3-Embedding-0.6B")
-    parser.add_argument("--device", type=str, default=None)
+    parser.add_argument("--device", type=str, default="cuda") #gpu 활용 가능하도록 수정
     args = parser.parse_args()
 
     ingest(

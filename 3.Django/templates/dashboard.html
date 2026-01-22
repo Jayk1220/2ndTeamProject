@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .frame {
+            width: 1200px;
+            height: 700px;
+            margin: 20px auto;
+            border: 2px solid #000;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        .left { display: flex; flex-direction: column; gap: 20px; }
+        .box { border: 1px solid #aaa; padding: 10px; }
+        .mini-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .mini { border: 1px solid #aaa; height: 120px; padding: 6px; }
+        .right { display: flex; flex-direction: column; }
+        .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* 좌/우로 분리 */
+        gap: 12px;
+        margin-bottom: 10px;
+        }
+
+        #weatherLine {
+        flex: 1;                 /* 남는 공간을 날씨가 차지 */
+        min-width: 0;            /* 길어져도 줄바꿈/잘림 처리 가능 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* 너무 길면 ... */
+        }
+
+        .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;          /* 버튼 영역이 눌리지 않게 */
+        }
+
+        .btn {
+        display: inline-block;
+        padding: 6px 10px;
+        border: 1px solid #444;
+        background: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        color: #111;
+        }
+
+        .user-badge {
+        font-size: 14px;
+        padding: 4px 8px;
+        border: 1px solid #aaa;
+        }
+        .chat { border: 1px solid #4a55a2; flex: 1; display: flex; flex-direction: column; }
+        .chat-header { padding: 10px; font-weight: bold; }
+        .chat-body { flex: 1; padding: 10px; overflow-y: auto; }
+        .chat-input { border-top: 1px solid #ccc; padding: 10px; display: flex; gap: 10px; }
+        input { flex: 1; padding: 8px; }
+
+        .board {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        font-size: 14px;
+        }
+        .board th, .board td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        }
+        .board thead th {
+        background: #f4f4f4;
+        }
+        .board tbody tr:nth-child(even) {
+        background: #fafafa;
+        }
+        .status-on { color: #1a7f37; font-weight: 600; }   /* 정상 */
+        .status-delay { color: #b45309; font-weight: 600; }/* 지연 */
+        .status-cancel { color: #b91c1c; font-weight: 600; }/* 결항 */
+    </style>
+</head>
+<body>
+
+<div class="frame">
+    <!-- 왼쪽 -->
+    <div class="left">
+        <div class="box">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>공항 선택</div>
+                <select id="airportSelect">
+                <option value="ICN">인천(ICN)</option>
+                <option value="GMP">김포(GMP)</option>
+                <option value="CJU">제주(CJU)</option>
+                <option value="PUS">무안(PUS)</option>
+                <option value="USN">울산(USN)</option>
+                <option value="RSU">여수(RSU)</option>
+                <option value="YNY">양양(YNY)</option>
+                </select>
+            </div>
+
+            <div style="margin-top:10px; font-weight:bold;">출발 현황</div>
+
+            <table class="board">
+                <thead>
+                <tr>
+                    <th>항공사</th>
+                    <th>목적지</th>
+                    <th>출발</th>
+                    <th>상태</th>
+                </tr>
+                </thead>
+                <tbody id="boardBody">
+                <tr><td colspan="4">불러오는 중...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right">
+        <div class="topbar">
+            <div id="weatherLine">날씨 불러오는 중...</div>
+
+            <div class="top-actions">
+                {% if user.is_authenticated %}
+                <span class="user-badge">{{ user.username }}</span>
+                <a class="btn" href="{% url 'logout' %}">로그아웃</a>
+                {% else %}
+                <a class="btn" href="{% url 'login' %}">로그인</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="chat">
+        <div class="chat-header">챗봇</div>
+        <div class="chat-body">
+            여기에 대화가 표시됩니다.
+        </div>
+        <div class="chat-input">
+            <input placeholder="메시지를 입력하세요">
+            <button type="button">전송</button>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+const airports = [
+    { stn: 113, name: "인천공항" },
+    { stn: 110, name: "김포공항" },
+    { stn: 182, name: "제주공항" },
+    { stn: 163, name: "무안공항" },
+    { stn: 151, name: "울산공항" },
+    { stn: 167, name: "여수공항" },
+    { stn: 92,  name: "양양공항" },
+];
+
+let idx = 0;
+
+function fmt1(x){
+    if (x === null || x === undefined || Number.isNaN(x)) return "-";
+    return Number(x).toFixed(1);
+}
+function fmtVis(m){
+    if (m === null || m === undefined) return "-";
+    const v = Number(m);
+    if (v >= 10000) return "10km+";
+    if (v >= 1000) return (v/1000).toFixed(1) + "km";
+    return v + "m";
+}
+function pickVis(L, R){
+  // 둘 다 있으면 더 작은 값(보수적), 하나만 있으면 그 값
+    if (L == null && R == null) return null;
+    if (L == null) return R;
+    if (R == null) return L;
+    return Math.min(L, R);
+}
+
+async function tick(){
+    const a = airports[idx % airports.length];
+    idx += 1;
+
+    const line = document.getElementById("weatherLine");
+    line.textContent = `${a.name} | 불러오는 중...`;
+
+    try{
+        const r = await fetch(`/api/airport-weather/?stn=${a.stn}`);
+        const w = await r.json();
+        if(!r.ok) throw new Error(w?.error || "fetch failed");
+
+        const vis = pickVis(w.L_VIS, w.R_VIS);
+
+        line.textContent =
+        `${a.name} | ${fmt1(w.TA)}°C | 바람 ${fmt1(w.WS02)} (돌풍 ${fmt1(w.WS02_MAX)}) m/s | 시정 ${fmtVis(vis)}`;
+
+    }catch(e){
+        line.textContent = `${a.name} | 날씨 불러오기 실패`;
+    }
+
+    // 공항 갱신(5초마다)[날씨 데이터]
+    const nextMs = 5000;
+    setTimeout(tick, nextMs);
+}
+
+document.addEventListener("DOMContentLoaded", tick);
+</script>
+<script>
+function statusClass(s){
+    if (s === "정상") return "status-on";
+    if (s === "지연") return "status-delay";
+    if (s === "결항") return "status-cancel";
+    return "";
+}
+
+async function loadBoard(){
+    const airport = document.getElementById("airportSelect").value;
+    const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}`);
+    const data = await r.json();
+
+    const body = document.getElementById("boardBody");
+    const rows = data.departures;
+
+    if (!rows || rows.length === 0){
+        body.innerHTML = `<tr><td colspan="4">표시할 데이터가 없습니다.</td></tr>`;
+        return;
+    }
+
+    body.innerHTML = rows.map(x => `
+            <tr>
+            <td>${x.airline}</td>
+            <td>${x.dest}</td>
+            <td>${x.time}</td>
+            <td class="${statusClass(x.status)}">${x.status}</td>
+            </tr>
+    `).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const sel = document.getElementById("airportSelect");
+    sel.addEventListener("change", loadBoard);
+
+    loadBoard();
+
+    // (선택) 30초마다 자동 갱신 — 현황판 느낌
+    setInterval(loadBoard, 30000);
+});
+</script>
+</body>
+</html>

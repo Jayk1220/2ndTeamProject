@@ -2,3 +2,7 @@
 9.Project file/
 data/
 0.Data/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

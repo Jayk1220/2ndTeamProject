@@ -87,7 +87,6 @@
     </style>
 </head>
 <body>
-
 <div class="frame">
     <!-- 왼쪽 -->
     <div class="left">
@@ -98,27 +97,50 @@
                 <option value="ICN">인천(ICN)</option>
                 <option value="GMP">김포(GMP)</option>
                 <option value="CJU">제주(CJU)</option>
-                <option value="PUS">무안(PUS)</option>
+                <option value="MWX">무안(MWX)</option>
                 <option value="USN">울산(USN)</option>
                 <option value="RSU">여수(RSU)</option>
                 <option value="YNY">양양(YNY)</option>
+                <option value="PUS">김해|부산(PUS)</option>
                 </select>
             </div>
 
             <div style="margin-top:10px; font-weight:bold;">출발 현황</div>
-
             <table class="board">
-                <thead>
+            <thead>
                 <tr>
+                    {% comment %} 확인용 {% endcomment %}
+                    <th>날짜</th>
+
                     <th>항공사</th>
                     <th>목적지</th>
-                    <th>출발</th>
+                    <th>편명</th>
+                    <th>출발시간</th>
                     <th>상태</th>
                 </tr>
-                </thead>
-                <tbody id="boardBody">
-                <tr><td colspan="4">불러오는 중...</td></tr>
-                </tbody>
+            </thead>
+            <tbody id="depBody">
+                <tr><td colspan="5">불러오는 중...</td></tr>
+            </tbody>
+            </table>
+
+            <div style="margin-top:10px; font-weight:bold;">도착 현황</div>
+            <table class="board">
+            <thead>
+                <tr>
+                    {% comment %} 확인용 {% endcomment %}
+                    <th>날짜</th>
+
+                    <th>항공사</th>
+                    <th>출발지</th>
+                    <th>편명</th>
+                    <th>도착(예정)</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody id="arrBody">
+                <tr><td colspan="5">불러오는 중...</td></tr>
+            </tbody>
             </table>
         </div>
     </div>
@@ -212,43 +234,70 @@ document.addEventListener("DOMContentLoaded", tick);
 </script>
 <script>
 function statusClass(s){
-    if (s === "정상") return "status-on";
-    if (s === "지연") return "status-delay";
-    if (s === "결항") return "status-cancel";
+    if (!s) return "";
+    if (s.includes("정상")) return "status-on";
+    if (s.includes("지연")) return "status-delay";
+    if (s.includes("결항") || s.includes("취소")) return "status-cancel";
     return "";
 }
 
-async function loadBoard(){
-    const airport = document.getElementById("airportSelect").value;
-    const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}`);
-    const data = await r.json();
-
-    const body = document.getElementById("boardBody");
-    const rows = data.departures;
-
+function renderRows(rows, type){
     if (!rows || rows.length === 0){
-        body.innerHTML = `<tr><td colspan="4">표시할 데이터가 없습니다.</td></tr>`;
-        return;
+        return `<tr><td colspan="5">표시할 데이터가 없습니다.</td></tr>`;
     }
 
-    body.innerHTML = rows.map(x => `
-            <tr>
+    if (type === "dep"){
+        return rows.slice(0, 15).map(x => `
+        <tr>
+            {% comment %} 확인용 {% endcomment %}
+            <td>${x.date}</td>
+
             <td>${x.airline}</td>
-            <td>${x.dest}</td>
+            <td>${x.destination}</td>
+            <td>${x.flight}</td>
             <td>${x.time}</td>
             <td class="${statusClass(x.status)}">${x.status}</td>
-            </tr>
+        </tr>
+        `).join("");
+    }
+
+  // arr
+    return rows.slice(0, 15).map(x => `
+        <tr>
+            {% comment %} 확인용 {% endcomment %}
+            <td>${x.date}</td>
+
+            <td>${x.airline}</td>
+            <td>${x.origin}</td>
+            <td>${x.flight}</td>
+            <td>${x.time}</td>
+        <td class="${statusClass(x.status)}">${x.status}</td>
+        </tr>
     `).join("");
 }
 
+async function loadBoards(){
+    const airport = document.getElementById("airportSelect").value;
+
+    // 출발
+    {
+        const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}&limit=5`);
+        const data = await r.json();
+        document.getElementById("depBody").innerHTML = renderRows(data.departures, "dep");
+    }
+
+    // 도착
+    {
+        const r = await fetch(`/api/arrivals/?airport=${encodeURIComponent(airport)}&limit=5`);
+        const data = await r.json();
+        document.getElementById("arrBody").innerHTML = renderRows(data.arrivals, "arr");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const sel = document.getElementById("airportSelect");
-    sel.addEventListener("change", loadBoard);
-
-    loadBoard();
-
-    // (선택) 30초마다 자동 갱신 — 현황판 느낌
-    setInterval(loadBoard, 30000);
+    document.getElementById("airportSelect").addEventListener("change", loadBoards);
+    loadBoards();
+    setInterval(loadBoards, 30000); // 30초 갱신
 });
 </script>
 </body>

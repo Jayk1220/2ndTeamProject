@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from dashboard.views import dashboard_view, api_airport_weather_simple
-from dashboard.views import api_departures
+from dashboard.views import api_departures, api_arrivals
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     path("api/airport-weather/", api_airport_weather_simple),
     path("accounts/", include("django.contrib.auth.urls")), 
     path("api/departures/", api_departures),
+    path("api/arrivals/", api_arrivals),
 ]

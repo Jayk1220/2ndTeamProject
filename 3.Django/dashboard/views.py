@@ -5,12 +5,16 @@ import os
 import requests
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.utils import timezone
+from django.views.decorators.http import require_GET
+from django.db.models import Max
+from dashboard.models import FlightSnapshot
 
 
 AMOS_URL = "https://apihub.kma.go.kr/api/typ01/url/amos.php"
 
 # 공항 stn -> 이름
-AIRPORTS = {
+AIRPORTS = { # 데이터는 7개소 공항만 존재(김해|부산은 X)
     "113": "인천공항",
     "110": "김포공항",
     "182": "제주공항",
@@ -19,6 +23,12 @@ AIRPORTS = {
     "167": "여수공항",
     "92":  "양양공항",
 }
+
+def _last_updated_kst():
+    dt = FlightSnapshot.objects.aggregate(Max("updated_at"))["updated_at__max"]
+    if not dt:
+        return None
+    return timezone.localtime(dt).strftime("%Y-%m-%d %H:%M:%S")
 
 def _parse_latest_amos_row(text: str) -> dict:
     """
@@ -105,29 +115,109 @@ def api_airport_weather_simple(request):
 def dashboard_view(request):
     return render(request,"dashboard.html")
 
+
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
-
-DUMMY_DEPARTURES = {
-    "ICN": [
-        {"airline": "대한항공", "dest": "도쿄(NRT)", "time": "15:10", "status": "정상"},
-        {"airline": "아시아나", "dest": "오사카(KIX)", "time": "15:25", "status": "지연"},
-        {"airline": "제주항공", "dest": "방콕(BKK)", "time": "15:40", "status": "정상"},
-    ],
-    "GMP": [
-        {"airline": "대한항공", "dest": "제주(CJU)", "time": "15:05", "status": "정상"},
-        {"airline": "진에어", "dest": "부산(PUS)", "time": "15:30", "status": "결항"},
-    ],
-    "CJU": [
-        {"airline": "티웨이", "dest": "김포(GMP)", "time": "15:20", "status": "정상"},
-    ],
-    "PUS": [
-        {"airline": "에어부산", "dest": "타이베이(TPE)", "time": "16:00", "status": "정상"},
-    ],
-}
+from .airline import get_board
 
 @require_GET
 def api_departures(request):
     airport = request.GET.get("airport", "ICN")
-    items = DUMMY_DEPARTURES.get(airport, [])
-    return JsonResponse({"airport": airport, "departures": items})
+    limit = int(request.GET.get("limit", "5"))
+    today = timezone.localdate().strftime("%Y%m%d")
+    now_hhmm = timezone.localtime().strftime("%H%M")
+
+    qs = (
+        FlightSnapshot.objects
+        .filter(
+            airport_code=airport,
+            kind="dep",
+            flight_date=today,
+            std__gt=now_hhmm,
+        )
+        .order_by("std")[:limit]
+    )
+
+    return JsonResponse({
+        "airport": airport,
+        "last_updated": _last_updated_kst(),
+        "departures": list(qs.values(
+            "airline", "destination", "flight_no", "std", "status"
+        )),
+    })
+
+@require_GET
+def api_arrivals(request):
+    airport = request.GET.get("airport", "ICN")
+    limit = int(request.GET.get("limit", "5"))
+    today = timezone.localdate().strftime("%Y%m%d")
+    now_hhmm = timezone.localtime().strftime("%H%M")
+
+    qs = (
+        FlightSnapshot.objects
+        .filter(
+            airport_code=airport,
+            kind="arr",
+            flight_date=today,
+            std__gt=now_hhmm,
+        )
+        .order_by("std")[:limit]
+    )
+
+    return JsonResponse({
+        "airport": airport,
+        "last_updated": _last_updated_kst(),
+        "arrivals": list(qs.values(
+            "airline", "origin", "flight_no", "std", "status"
+        )),
+    })
+
+import time
+from django.core.cache import cache
+
+@require_GET
+def api_airport_weather_simple(request):
+    stn = request.GET.get("stn", "113")
+    key = (os.getenv("KEY") or "").strip()
+    if not key:
+        return JsonResponse({"error": "missing KEY in env"}, status=500)
+
+    cache_key = f"amos:{stn}"
+    cached = cache.get(cache_key)
+
+    url = AMOS_URL
+    params = {"stn": stn, "dtm": 10, "authKey": key}
+
+    last_err = None
+    for attempt in range(2):  # 재시도 2번
+        try:
+            # (connect_timeout, read_timeout)
+            r = requests.get(url, params=params, timeout=(3, 7))
+            r.raise_for_status()
+
+            parsed = _parse_latest_amos_row(r.text)
+            parsed["AIRPORT_NAME"] = AIRPORTS.get(str(stn), f"STN {stn}")
+
+            # 성공값 캐시(예: 30초)
+            cache.set(cache_key, parsed, timeout=30)
+            return JsonResponse(parsed)
+
+        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectTimeout) as e:
+            last_err = f"timeout:{type(e).__name__}"
+            time.sleep(0.2)  # 짧게 쉼 후 재시도
+
+        except Exception as e:
+            last_err = f"error:{type(e).__name__}"
+            break
+
+    # 여기 도달 = 실패
+    if cached:
+        cached["stale"] = True  # 마지막 값(오래된 값)이라는 표시
+        return JsonResponse(cached)
+
+    return JsonResponse(
+        {"error": "weather_unavailable", "detail": last_err},
+        status=502
+    )
+
+

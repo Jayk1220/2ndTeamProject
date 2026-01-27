@@ -1,4 +1,7 @@
 .env
 9.Project file/
-0.Data/
 data/
+0.Data/
+__pycache__/
+.venv/
+.ipynb_checkpoints/

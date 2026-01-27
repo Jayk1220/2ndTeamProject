@@ -83,11 +83,10 @@
         }
         .status-on { color: #1a7f37; font-weight: 600; }   /* 정상 */
         .status-delay { color: #b45309; font-weight: 600; }/* 지연 */
-        .status-cancel { color: #b91c1c; font-weight: 600; }/* 결항 */
+        .status-cancel { color: #b91c1c; font-weight: 700; }/* 결항 */
     </style>
 </head>
 <body>
-
 <div class="frame">
     <!-- 왼쪽 -->
     <div class="left">
@@ -98,27 +97,51 @@
                 <option value="ICN">인천(ICN)</option>
                 <option value="GMP">김포(GMP)</option>
                 <option value="CJU">제주(CJU)</option>
-                <option value="PUS">무안(PUS)</option>
+                {% comment %} <option value="MWX">무안(MWX)</option>  현재 운행중단중(4/2일 운항예정)  {% endcomment %}
                 <option value="USN">울산(USN)</option>
                 <option value="RSU">여수(RSU)</option>
                 <option value="YNY">양양(YNY)</option>
+                <option value="PUS">김해|부산(PUS)</option>
                 </select>
             </div>
+            <div id="lastUpdated" class="last-updated">마지막 갱신: -</div>
 
             <div style="margin-top:10px; font-weight:bold;">출발 현황</div>
-
             <table class="board">
-                <thead>
+            <thead>
                 <tr>
+                    {% comment %} 확인용 {% endcomment %}
+                    {% comment %} <th>날짜</th> {% endcomment %}
+
                     <th>항공사</th>
                     <th>목적지</th>
-                    <th>출발</th>
+                    <th>편명</th>
+                    <th>출발시간</th>
                     <th>상태</th>
                 </tr>
-                </thead>
-                <tbody id="boardBody">
-                <tr><td colspan="4">불러오는 중...</td></tr>
-                </tbody>
+            </thead>
+            <tbody id="depBody">
+                <tr><td colspan="5">불러오는 중...</td></tr>
+            </tbody>
+            </table>
+
+            <div style="margin-top:10px; font-weight:bold;">도착 현황</div>
+            <table class="board">
+            <thead>
+                <tr>
+                    {% comment %} 확인용 {% endcomment %}
+                    {% comment %} <th>날짜</th> {% endcomment %}
+
+                    <th>항공사</th>
+                    <th>출발지</th>
+                    <th>편명</th>
+                    <th>도착(예정)</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody id="arrBody">
+                <tr><td colspan="5">불러오는 중...</td></tr>
+            </tbody>
             </table>
         </div>
     </div>
@@ -200,7 +223,7 @@ async function tick(){
         `${a.name} | ${fmt1(w.TA)}°C | 바람 ${fmt1(w.WS02)} (돌풍 ${fmt1(w.WS02_MAX)}) m/s | 시정 ${fmtVis(vis)}`;
 
     }catch(e){
-        line.textContent = `${a.name} | 날씨 불러오기 실패`;
+        line.textContent = `${a.name} | 서버와 연동 중...`;
     }
 
     // 공항 갱신(5초마다)[날씨 데이터]
@@ -212,43 +235,76 @@ document.addEventListener("DOMContentLoaded", tick);
 </script>
 <script>
 function statusClass(s){
-    if (s === "정상") return "status-on";
-    if (s === "지연") return "status-delay";
-    if (s === "결항") return "status-cancel";
+    if (!s) return "";
+    if (s.includes("정상")) return "status-on";
+    if (s.includes("지연")) return "status-delay";
+    if (s.includes("결항") || s.includes("취소")) return "status-cancel";
     return "";
 }
 
-async function loadBoard(){
-    const airport = document.getElementById("airportSelect").value;
-    const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}`);
-    const data = await r.json();
-
-    const body = document.getElementById("boardBody");
-    const rows = data.departures;
-
+function renderRows(rows, type){
     if (!rows || rows.length === 0){
-        body.innerHTML = `<tr><td colspan="4">표시할 데이터가 없습니다.</td></tr>`;
-        return;
+        return `<tr><td colspan="5">표시할 데이터가 없습니다.</td></tr>`;
     }
 
-    body.innerHTML = rows.map(x => `
-            <tr>
+    const slice = rows.slice(0, 15);
+
+    if (type === "dep"){
+        return slice.map(x => `
+        <tr>
+            {% comment %} 확인용 {% endcomment %}
+            {% comment %} <td>${x.date}</td> {% endcomment %}
+
             <td>${x.airline}</td>
-            <td>${x.dest}</td>
-            <td>${x.time}</td>
-            <td class="${statusClass(x.status)}">${x.status}</td>
-            </tr>
+            <td>${x.destination}</td>
+            <td>${x.flight_no}</td>
+            <td>${x.std.slice(0,2)}:${x.std.slice(2)}</td>
+            <td class="${statusClass(x.status)}">${x.status || "정상"}</td>
+        </tr>
+        `).join("");
+    }
+
+  // arr
+    return slice.map(x => `
+        <tr>
+            {% comment %} 확인용 {% endcomment %}
+            {% comment %} <td>${x.date}</td> {% endcomment %}
+
+            <td>${x.airline}</td>
+            <td>${x.origin}</td>
+            <td>${x.flight_no}</td>
+            <td>${x.std.slice(0,2)}:${x.std.slice(2)}</td>
+            <td class="${statusClass(x.status)}">${x.status || "정상"}</td>
+        </tr>
     `).join("");
 }
 
+async function loadBoards(){
+    const airport = document.getElementById("airportSelect").value;
+
+    // 출발
+    {
+        const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}&limit=4`);
+        const data = await r.json();
+        if (data.last_updated){
+            document.getElementById("lastUpdated").textContent =
+                "마지막 갱신: " + data.last_updated;
+        }
+        document.getElementById("depBody").innerHTML = renderRows(data.departures, "dep");
+    }
+
+    // 도착
+    {
+        const r = await fetch(`/api/arrivals/?airport=${encodeURIComponent(airport)}&limit=4`);
+        const data = await r.json();
+        document.getElementById("arrBody").innerHTML = renderRows(data.arrivals, "arr");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const sel = document.getElementById("airportSelect");
-    sel.addEventListener("change", loadBoard);
-
-    loadBoard();
-
-    // (선택) 30초마다 자동 갱신 — 현황판 느낌
-    setInterval(loadBoard, 30000);
+    document.getElementById("airportSelect").addEventListener("change", loadBoards);
+    loadBoards();
+    setInterval(loadBoards, 30000); // 30초 갱신
 });
 </script>
 </body>

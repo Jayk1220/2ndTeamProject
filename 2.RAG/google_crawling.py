@@ -1,95 +1,127 @@
-import asyncio
-import re
-from playwright.async_api import async_playwright
-from bs4 import BeautifulSoup
+import json
+from serpapi.google_search import GoogleSearch
+from langchain_ollama import ChatOllama
+from langchain_core.prompts import ChatPromptTemplate
 
-async def get_flight_details(url):
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-        )
-        page = await context.new_page()
+# 1. 모델 설정 (사용자님의 RTX 5080 환경 최적화)
+def get_llm():
+    return ChatOllama(model='qwen2.5:14b', temperature=0)
 
-        try:
-            # 대기 시간을 늘리고 페이지 로드 완료를 확실히 보장
-            await page.goto(url, wait_until="networkidle", timeout=60000)
-            await page.wait_for_selector('div.flight-ticket', timeout=20000)
-            
-            content = await page.content()
-            soup = BeautifulSoup(content, 'html.parser')
+# 2. 구글 검색 함수
+def get_google_flight_details(flight_no, api_key):
+    params = {
+        "engine": "google",
+        "q": f"{flight_no} flight status terminal gate",
+        "hl": "ko", 
+        "gl": "kr",
+        "api_key": api_key
+    }
+    try:
+        search = GoogleSearch(params)
+        results = search.get_dict()
+        
+        if "answer_box" in results:
+            print("✅ 구글 항공 정보 카드를 찾았습니다!")
+            return results["answer_box"]
+        elif "knowledge_graph" in results:
+            print("✅ 지식 그래프 정보를 찾았습니다!")
+            return results["knowledge_graph"]
+        else:
+            print("❌ 상세 카드가 없어 일반 검색 결과(Snippet)를 사용합니다.")
+            return results.get("organic_results", [{}])[0]
+    except Exception as e:
+        return {"error": str(e)}
 
-            details = {
-                "status": "N/A",
-                "departure": {"airport": "-", "terminal": "-", "gate": "-", "times": []},
-                "arrival": {"airport": "-", "terminal": "-", "gate": "-", "times": []}
-            }
-
-            # 1. 상태 정보
-            status_div = soup.select_one('div[class*="statusBlock"]')
-            if status_div:
-                details["status"] = status_div.get_text(" ", strip=True)
-
-            # 2. 출도착 정보 파싱 (인덴트 및 선택자 수정)
-            tickets = soup.select('div.flight-ticket')
-            
-            # 검색된 티켓이 없으면 여기서 에러를 내지 않고 종료되므로 체크 필요
-            if not tickets:
-                print("⚠️ 티켓 요소를 찾지 못했습니다.")
-                return None
-
-            for i, ticket in enumerate(tickets[:2]):
-                key = "departure" if i == 0 else "arrival"
-                
-                # 공항 코드 (정확한 클래스 조준)
-                airport_code = ticket.select_one('h2[class*="airportCodeTitle"]')
-                if airport_code:
-                    details[key]["airport"] = airport_code.get_text(strip=True)
-
-                # 터미널 & 게이트 (이미지 기반 h4.detail 직접 추출)
-                # 클래스 선택 시 공백 포함 가능성을 고려해 [class*="..."] 사용
-                t_block = ticket.select_one('div[class*="terminalBlock"] h4')
-                g_block = ticket.select_one('div[class*="gateBlock"] h4')
-                
-                if t_block: details[key]["terminal"] = t_block.get_text(strip=True)
-                if g_block: 
-                    g_text = g_block.get_text(strip=True)
-                    # "TIMES" 글자가 들어오는 것을 코드 수준에서 방어
-                    details[key]["gate"] = g_text if "TIMES" not in g_text.upper() else "-"
-
-                # 3. 시간 정보 (상위 2개)
-                time_blocks = ticket.select('div[class*="timeBlock"]')
-                for block in time_blocks[:2]:
-                    lbl = block.select_one('p[class*="title"]')
-                    val = block.select_one('h4')
-                    if lbl and val:
-                        details[key]["times"].append(f"{lbl.get_text(strip=True)}: {val.get_text(strip=True)}")
-
-            return details
-
-        except Exception as e:
-            print(f"❌ 파싱 중 오류 발생: {e}")
-            return None
-        finally:
-            await browser.close()
-
-if __name__ == "__main__":
-    target_url = "https://www.flightstats.com/v2/flight-details/KE/77?year=2026&month=1&date=26"
-    result = asyncio.run(get_flight_details(target_url))
+# 3. LLM 요약 함수
+def parse_flight_details_with_llm(llm, search_result):
+    # 1. SerpApi 결과에서 중요할 수 있는 모든 필드를 JSON 텍스트로 변환
+    # (결과가 너무 길면 LLM이 힘들어하므로 answer_box나 knowledge_graph 위주로 추출)
+    raw_json_text = json.dumps(search_result, indent=2, ensure_ascii=False)
     
-    if result:
+    if not search_result or search_result == {}:
+        return "현재 검색 결과에서 실시간 운항 정보를 찾을 수 없습니다."
+
+    # 2. 프롬프트 강화: LLM에게 '데이터 분석가' 역할을 부여
+    prompt = ChatPromptTemplate.from_template("""
+    당신은 전 세계 항공 운항 데이터를 분석하는 전문가입니다. 
+    아래 제공된 [검색 결과 데이터]는 구글 검색 API(SerpApi)로부터 가져온 로우 데이터(Raw Data)입니다.
+    
+    데이터 구조가 복잡하더라도 당신의 지능을 활용해 다음 정보를 찾아내어 사용자에게 브리핑하세요.
+    
+    [검색 결과 데이터]
+    {json_data}
+
+    [미션]
+    1. 데이터 내에서 항공편 상태(On Time, Delayed, Arrived 등)를 찾으세요.
+    2. 출발/도착 공항의 터미널(Terminal)과 게이트(Gate) 번호를 찾으세요.
+    3. 출발/도착 예정 시간과 실제 시간을 찾으세요.
+    4. 위 정보를 종합하여 "현재 항공편은 ~상태이며, ~터미널 ~게이트에서 ~시에 출발(또는 도착) 예정입니다"라고 친절하게 답변하세요.
+    
+    [주의사항]
+    - 데이터가 영어로 되어 있어도 반드시 한국어로 번역해서 답변하세요.
+    - 만약 데이터에 게이트 번호가 없다면 "게이트 정보는 아직 업데이트되지 않았습니다"라고 하세요.
+    - 절대로 "데이터가 부족하다"거나 "JSON을 달라"는 말을 하지 마세요. 어떻게든 데이터 안의 텍스트를 읽고 답변하세요.
+    """)
+
+    # 3. 실행
+    chain = prompt | llm
+    response = chain.invoke({"json_data": raw_json_text})
+    return response.content
+def get_flight_status_briefing(llm, search_result, flight_no):
+    """
+    운항 전 항공편의 출발 예정 시간 및 지연 여부를 집중 분석합니다.
+    """
+    # 데이터 전체를 텍스트화 (Qwen 14b는 이 정도는 우습게 처리합니다)
+    raw_data = json.dumps(search_result, indent=2, ensure_ascii=False)
+
+    prompt = ChatPromptTemplate.from_template("""
+    당신은 항공 운항 통제 센터의 브리핑 요원입니다. 
+    아래 [운항 데이터]를 분석하여 {flight_no} 항공편에 대해 답변하세요.
+
+    [분석 목표]
+    1. 이 비행기가 이미 출발했는가, 아니면 대기 중인가?
+    2. 출발 전이라면, '계획된 시간'은 언제이고 '실제 출발 예정 시간'은 언제인가?
+    3. 원래 시간보다 지연(Delay)되었는가? 그렇다면 얼마나 지연되었는가?
+
+    [운항 데이터]
+    {json_data}
+
+    [답변 양식]
+    - 현재 상태: (예: 출발 대기 중 / 지연 중 / 정시 운항 예정)
+    - 계획 시간: (예: 10:20 AM)
+    - 예상 출발: (예: 11:00 AM - 약 40분 지연)
+    - 브리핑: (상황을 종합하여 한 문장으로 친절하게 설명)
+
+    [주의]
+    - 터미널, 게이트 정보는 생략하세요.
+    - 시간 정보가 명확하지 않다면 "현재 실시간 스케줄 확인 중입니다"라고 답하세요.
+    """)
+
+    chain = prompt | llm
+    response = chain.invoke({
+        "flight_no": flight_no,
+        "json_data": raw_data
+    })
+    return response.content
+# --- 실제 실행부 ---
+if __name__ == "__main__":
+    MY_SERPAPI_KEY = ""
+    test_flight = "KE023"
+    
+    llm = get_llm() # LLM 로드
+    
+    # 1단계: 검색 (q에서 terminal gate를 빼면 status 카드가 더 잘 뜹니다)
+    search_res = get_google_flight_details(test_flight, MY_SERPAPI_KEY)
+    
+    # 2단계: 결과 요약 (지연/스케줄 특화 함수 호출)
+    if "error" not in search_res:
+        # 사용자님이 원하시는 '지연 여부/예정 시간' 중심 브리핑 호출
+        final_answer = get_flight_status_briefing(llm, search_res, test_flight)
+        
         print("\n" + "="*50)
-        print(f"✈️  운항 상세 정보")
+        print(f"📡 {test_flight} 실시간 운항 스케줄 브리핑")
         print("="*50)
-        print(f"상태: {result['status']}") # Delayed by 16m | Departed 출력 유도
-        print("-" * 50)
-        for section in ["departure", "arrival"]:
-            title = "[출발]" if section == "departure" else "[도착]"
-            data = result[section]
-            print(f"{title} {data['airport']}")
-            print(f"터미널 / 게이트: {data['terminal']} / {data['gate']}")
-            print("시간 정보:")
-            for t in data['times']:
-                print(f"  - {t}") # Scheduled: 10:05 KST 등 리스트 출력
-            print("-" * 50)
+        print(final_answer)
         print("="*50)
+    else:
+        print(f"오류 발생: {search_res['error']}")

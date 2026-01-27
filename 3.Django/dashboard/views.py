@@ -5,6 +5,10 @@ import os
 import requests
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.utils import timezone
+from django.views.decorators.http import require_GET
+from django.db.models import Max
+from dashboard.models import FlightSnapshot
 
 
 AMOS_URL = "https://apihub.kma.go.kr/api/typ01/url/amos.php"
@@ -19,6 +23,12 @@ AIRPORTS = { # 데이터는 7개소 공항만 존재(김해|부산은 X)
     "167": "여수공항",
     "92":  "양양공항",
 }
+
+def _last_updated_kst():
+    dt = FlightSnapshot.objects.aggregate(Max("updated_at"))["updated_at__max"]
+    if not dt:
+        return None
+    return timezone.localtime(dt).strftime("%Y-%m-%d %H:%M:%S")
 
 def _parse_latest_amos_row(text: str) -> dict:
     """
@@ -114,20 +124,53 @@ from .airline import get_board
 def api_departures(request):
     airport = request.GET.get("airport", "ICN")
     limit = int(request.GET.get("limit", "5"))
-    try:
-        return JsonResponse({"airport": airport, "departures": get_board(airport, "dep", limit=limit)})
-    except Exception as e:
-        return JsonResponse({"airport": airport, "departures": [], "error": str(e)}, status=502)
+    today = timezone.localdate().strftime("%Y%m%d")
+    now_hhmm = timezone.localtime().strftime("%H%M")
+
+    qs = (
+        FlightSnapshot.objects
+        .filter(
+            airport_code=airport,
+            kind="dep",
+            flight_date=today,
+            std__gt=now_hhmm,
+        )
+        .order_by("std")[:limit]
+    )
+
+    return JsonResponse({
+        "airport": airport,
+        "last_updated": _last_updated_kst(),
+        "departures": list(qs.values(
+            "airline", "destination", "flight_no", "std", "status"
+        )),
+    })
 
 @require_GET
 def api_arrivals(request):
     airport = request.GET.get("airport", "ICN")
     limit = int(request.GET.get("limit", "5"))
-    try:
-        return JsonResponse({"airport": airport, "arrivals": get_board(airport, "arr", limit=limit)})
-    except Exception as e:
-        return JsonResponse({"airport": airport, "arrivals": [], "error": str(e)}, status=502)
+    today = timezone.localdate().strftime("%Y%m%d")
+    now_hhmm = timezone.localtime().strftime("%H%M")
 
+    qs = (
+        FlightSnapshot.objects
+        .filter(
+            airport_code=airport,
+            kind="arr",
+            flight_date=today,
+            std__gt=now_hhmm,
+        )
+        .order_by("std")[:limit]
+    )
+
+    return JsonResponse({
+        "airport": airport,
+        "last_updated": _last_updated_kst(),
+        "arrivals": list(qs.values(
+            "airline", "origin", "flight_no", "std", "status"
+        )),
+    })
 
 import time
 from django.core.cache import cache
@@ -176,4 +219,5 @@ def api_airport_weather_simple(request):
         {"error": "weather_unavailable", "detail": last_err},
         status=502
     )
+
 

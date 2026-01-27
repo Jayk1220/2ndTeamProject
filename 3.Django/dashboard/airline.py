@@ -2,7 +2,7 @@
 import os
 import math
 import requests
-from datetime import datetime, date
+from datetime import datetime, date, timedelta  
 from dotenv import load_dotenv
 from zoneinfo import ZoneInfo
 from django.utils import timezone
@@ -111,6 +111,99 @@ def find_page_for_date(target: date, per_page: int = 10000) -> int:
     cache.set(cache_key, fallback, timeout=600)
     return fallback
 
+def _today_kst() -> date:
+    # settings.TIME_ZONE=Asia/Seoul, USE_TZ=True 기준: localdate가 KST 날짜를 줌
+    return timezone.localdate()
+
+def _parse_hhmm(s: str | None) -> str | None:
+    s = (s or "").strip()
+    if len(s) == 4 and s.isdigit():
+        return s
+    return None
+
+def iter_flights_for_date(target: date, per_page: int = 10000):
+    """
+    target 날짜의 raw flight dict들을 yield.
+    find_page_for_date로 찾은 페이지 주변을 훑고, FLIGHT_DATE == target만 골라냄.
+    """
+    target_str = target.strftime("%Y%m%d")
+    p = find_page_for_date(target, per_page=per_page)
+
+    # 주변 몇 페이지를 보면 충분 (데이터 분포에 따라 조정 가능)
+    pages = [x for x in [p - 2, p - 1, p, p + 1, p + 2] if x >= 1]
+
+    for page in pages:
+        payload = _fetch(page=page, per_page=per_page)
+        for f in payload.get("data", []):
+            if (f.get("FLIGHT_DATE") or "").strip() == target_str:
+                yield f
+
+def board_for_date(
+    airport_code: str,
+    kind: str,
+    target: date,
+    limit: int = 500,
+    per_page: int = 10000,
+) -> list[dict]:
+    """
+    특정 날짜(target) 기준으로 공항별 출/도착 raw 데이터를 정리해서 반환.
+    sync_flights_week에서 DB upsert에 쓰기 좋은 키로 반환함.
+
+    kind: "dep" | "arr"
+    """
+    kor = AIRPORT_KOR.get(airport_code)
+    if not kor:
+        return []
+
+    out: list[dict] = []
+    target_str = target.strftime("%Y%m%d")
+
+    for f in iter_flights_for_date(target, per_page=per_page):
+        std = _parse_hhmm(f.get("STD"))
+        if not std:
+            continue
+
+        origin = f.get("BOARDING_KOR") or "-"
+        dest = f.get("ARRIVED_KOR") or "-"
+
+        # dep: 선택 공항에서 출발
+        if kind == "dep":
+            if kor not in origin:
+                continue
+            out.append({
+                "airport_code": airport_code,
+                "kind": "dep",
+                "flight_date": target_str,                # ✅ target 날짜로 저장
+                "std": std,                               # "HHMM"
+                "airline": f.get("AIRLINE_KOREAN") or "-",
+                "flight_no": f.get("AIR_FLN") or "-",
+                "origin": origin or "-",
+                "destination": dest or "-",
+                "status": f.get("RMK_KOR") or "정상",
+            })
+
+        # arr: 선택 공항으로 도착
+        elif kind == "arr":
+            if kor not in dest:
+                continue
+            out.append({
+                "airport_code": airport_code,
+                "kind": "arr",
+                "flight_date": target_str,                # ✅ target 날짜로 저장
+                "std": std,                               # "HHMM"
+                "airline": f.get("AIRLINE_KOREAN") or "-",
+                "flight_no": f.get("AIR_FLN") or "-",
+                "origin": origin or "-",
+                "destination": dest or "-",
+                "status": f.get("RMK_KOR") or "정상",
+            })
+
+        if len(out) >= limit:
+            break
+
+    out.sort(key=lambda x: (x["flight_date"], x["std"], x["flight_no"]))
+    return out
+
 def get_board(airport_code: str, kind: str, limit: int = 30, per_page: int = 10000) -> list[dict]:
     """
     kind:
@@ -157,7 +250,7 @@ def get_board(airport_code: str, kind: str, limit: int = 30, per_page: int = 100
                     continue
                 out.append({
                     # 확인용
-                    "date": f.get("FLIGHT_DATE"),
+                    #"date": f.get("FLIGHT_DATE"),
 
                     "airline": f.get("AIRLINE_KOREAN") or "-",
                     "destination": destination or "-",   # 목적지
@@ -172,7 +265,7 @@ def get_board(airport_code: str, kind: str, limit: int = 30, per_page: int = 100
                     continue
                 out.append({
                     # 확인용
-                    "date": f.get("FLIGHT_DATE"),
+                    #"date": f.get("FLIGHT_DATE"),
 
                     "airline": f.get("AIRLINE_KOREAN") or "-",
                     "origin": origin or "-",             # 도착현황에서는 '출발지'를 보여주는 게 보통이라 origin을 넣음

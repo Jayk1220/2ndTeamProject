@@ -32,7 +32,8 @@ class FlightAgent:
             "departure": [], 
             "destination": [], 
             "date": "N/A", 
-            "airline": "N/A"
+            "airline_name": "N/A",
+            "airline_code": "N/A" 
         }
 
     # ==========================================================
@@ -49,14 +50,17 @@ class FlightAgent:
         사용자의 입력에서 정보를 추출하여 JSON으로 반환하세요.
 
         [추출 규칙]
-        1. flight_no: 편명(예: KE77). 없으면 "N/A".
-        2. departure: 출발 공항 리스트. 언급 없으면 [].
-        3. destination: 도착지 공항 리스트. 도시 이름이 나오면 해당 도시의 모든 주요 IATA 코드를 포함하세요. 
-            (예: 북경 -> ["PEK", "PKX"], 토론토 -> ["YYZ", "YTZ", "YTO"], 서울 -> ["ICN", "GMP"])
-        4. date: YYYYMMDD 형식. '내일'은 {tomorrow}입니다.
+        1. flight_no: 편명(예: KE77). 항공사 이름만 있고 숫자가 없으면 "N/A".
+        2. airline_name: 언급된 항공사의 한글 이름 (예: "진에어").
+        3. airline_code: 항공사 IATA 코드. 언급된 항공사나 편명을 보고 추론하세요.
+           (예: "대한항공" -> "KE", "진에어" -> "LJ", "티웨이" -> "TW", "에어캐나다" -> "AC")
+        4. departure: 출발지 IATA 코드 리스트. 언급 없으면 ["ICN", "GMP"].
+        5. destination: 도착지 IATA 코드 리스트. 
+           (예: 오키나와 -> ["OKA"], 북경 -> ["PEK", "PKX"], 토론토 -> ["YYZ", "YTZ"])
+        6. date: YYYYMMDD 형식. '내일'은 {tomorrow}입니다.
 
         입력: {user_text} | 이전 데이터: {current_info}
-        JSON: {{ "flight_no": "N/A", "departure": [], "destination": [], "date": "YYYYMMDD" }}
+        JSON: {{ "flight_no": "N/A", "airline_name": "N/A", "airline_code": "N/A", "departure": [], "destination": [], "date": "YYYYMMDD" }}
         """)
         
         chain = prompt | self.llm | self.parser
@@ -75,6 +79,11 @@ class FlightAgent:
                 self.current_info["date"] = str(res["date"])
             if res.get("destination"):
                 self.current_info["destination"] = res["destination"]
+            if res.get("airline_code"): 
+                self.current_info["airline_code"] = res["airline_code"].upper()
+            if res.get("airline_name"): 
+                self.current_info["airline_name"] = res["airline_name"]
+
         except Exception as e:
             print(f"⚠️ 분석 오류: {e}")
 
@@ -82,8 +91,12 @@ class FlightAgent:
     # [구간 4] 노선 기반 항공편 검색 (Scraping)
     # 특정 구간(출발-도착)의 모든 운항 정보를 조회하여 선택 리스트 생성
     # ==========================================================
+
     async def search_by_route(self):
         info = self.current_info
+        air_code = info.get("airline_code", "")
+        if air_code == "N/A": air_code = ""
+        
         try:
             dt = info['date']
             y, m, d = dt[:4], str(int(dt[4:6])), str(int(dt[6:]))
@@ -93,25 +106,41 @@ class FlightAgent:
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
+            
             for dep in info['departure']:
                 for arr in info['destination']:
-                    route = f"{dep}/{arr}"
-                    url = f"https://www.flightstats.com/v2/flight-tracker/route/{route}?year={y}&month={m}&date={d}"
+                    # URL 경로 생성: ICN/TPE/LJ 형태
+                    path_segments = [dep]
+                    if arr: path_segments.append(arr)
+                    if air_code: path_segments.append(air_code)
+
+                    route_path = "/".join(path_segments)
+                    url = f"https://www.flightstats.com/v2/flight-tracker/route/{route_path}?year={y}&month={m}&date={d}"
+                    
                     try:
                         await page.goto(url, wait_until="domcontentloaded", timeout=15000)
                         soup = BeautifulSoup(await page.content(), 'html.parser')
                         links = soup.select('a[href*="/v2/flight-tracker/"]')
+                        
                         for link in links:
                             h2s = [h.get_text(strip=True) for h in link.find_all('h2')]
                             if len(h2s) >= 3:
                                 f_no = h2s[0].replace(" ", "")
-                                match = re.match(r'([A-Z]+)(\d+)', f_no)
-                                air, num = match.groups() if match else ("N/A", f_no)
-                                all_flights[f_no] = {
-                                    "no": f_no, "dep": dep, "arr": arr,
-                                    "url": f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
-                                }
-                    except: continue
+                                
+                                # [추가 검증] URL 필터링 후에도 혹시 모를 타사 코드 제외
+                                if air_code and not f_no.startswith(air_code):
+                                    continue
+
+                                match = re.match(r'([A-Z0-9]+)(\d+)', f_no)
+                                if match:
+                                    air, num = match.groups()
+                                    all_flights[f_no] = {
+                                        "no": f_no, "dep": dep, "arr": arr,
+                                        "url": f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
+                                    }
+                    except Exception as e:
+                        print(f"⚠️ {route_path} 검색 중 오류: {e}")
+                        continue
             await browser.close()
         return list(all_flights.values())
 
@@ -132,6 +161,16 @@ class FlightAgent:
         air, num = match.groups()
         url = f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
 
+        print(f"'{flight_no}'로 조회를 시작합니다...") 
+        info = self.current_info
+
+        match = re.match(r'^([A-Z0-9]{2,3}?)(\d+)$', clean_no)
+        if match:
+            air, num = match.groups()
+            # print(f"DEBUG: 항공사 코드 -> {air}, 편명 숫자 -> {num}") 
+            # url = f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
+            # print(f"DEBUG: 최종 생성 URL -> {url}")
+
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
@@ -144,6 +183,15 @@ class FlightAgent:
                 await page.goto(url, wait_until="domcontentloaded", timeout=20000)
                 await page.wait_for_selector('div.flight-ticket', timeout=15000)
                 
+                try:
+                    await page.wait_for_function(
+                        """() => {
+                            const gates = document.querySelectorAll('div[class*="gateBlock"] h4');
+                            return Array.from(gates).some(g => g.innerText.trim() !== '-' && g.innerText.trim() !== '');
+                        }""", timeout=3000
+                    )
+                except:
+                    pass
                 soup = BeautifulSoup(await page.content(), 'html.parser')
                 res = {"status": "N/A", "dep": {"t": "-", "g": "-", "time": []}, "arr": {"t": "-", "g": "-", "time": []}}
                 
@@ -186,7 +234,7 @@ class FlightAgent:
 async def main():
     llm = ChatOllama(model='qwen2.5:14b', format="json", temperature=0)
     agent = FlightAgent(llm)
-    print("🤖 항공 비서 가동 중... ('나 내일 북경가' 또는 'KE77' 입력)")
+    print("🤖 항공 비서 가동 중...")
 
     while True:
         u_in = input("\n👤 사용자: ").strip()
@@ -211,23 +259,48 @@ async def main():
         print(f"📡 노선 검색 중: {agent.current_info['departure']} -> {agent.current_info['destination']}")
         flights = await agent.search_by_route()
         
+        target_code = agent.current_info.get("airline_code", "N/A")
+        if target_code != "N/A":
+            # 편명(no)이 해당 항공사 코드(예: LJ)로 시작하는 것만 남김
+            filtered_flights = [f for f in flights if f['no'].startswith(target_code)]
+            
+            # 만약 진에어(LJ)를 검색했는데 결과가 있다면 필터링 적용
+            if filtered_flights:
+                flights = filtered_flights
+                print(f"✨ 요청하신 '{agent.current_info.get('airline_name', target_code)}' 항공편만 모아봤습니다.")
+        
         if not flights:
             print("❌ 검색 결과가 없습니다.")
         elif len(flights) == 1:
+            # 진에어 등으로 필터링되어 1개만 남으면 바로 상세 정보 출력
             f = flights[0]
-            print(f"✅ 1개의 항공편 [{f['no']} | {f['dep']} -> {f['arr']}] 발견. 상세 조회 시작...")
+            print(f"✅ [{f['no']}] 항공편 발견. 상세 조회 시작...")
             d = await agent.get_details(f['no'])
             if d: print_result(f['no'], d)
         else:
+            # 결과가 여러 개일 때: 항공사 이름을 포함하여 출력
             print(f"\n✅ {len(flights)}개의 항공편을 찾았습니다.")
+            llm_airlines = agent.current_info.get("airline_info", {})
+
             for i, f in enumerate(flights):
-                print(f"[{i+1}] {f['no'].ljust(8)} | {f['dep']} -> {f['arr']}")
+                # 항공편 번호에서 코드 추출 (예: LJ341 -> LJ)
+                f_code_match = re.match(r'^([A-Z0-9]{2,3})', f['no'])
+                f_code = f_code_match.group(1) if f_code_match else ""
+                
+                # LLM 분석 데이터에서 항공사 이름 매칭
+                air_name = llm_airlines.get(f_code, llm_airlines.get(f_code[:2], ""))
+                display_name = f" | {air_name}" if air_name else ""
+                
+                print(f"[{i+1}] {f['no'].ljust(8)} | {f['dep']} -> {f['arr']}{display_name}")
             
-            sel = input("\n💡 번호 입력 (n: 취소): ").strip()
+            # 사용자의 선택 받기
+            sel = input("\n💡 상세 정보를 확인할 번호를 입력하세요 (n: 취소): ").strip()
             if sel.isdigit() and 1 <= int(sel) <= len(flights):
                 target = flights[int(sel)-1]
                 d = await agent.get_details(target['no'])
-                if d: print_result(target['no'], d)
+                if d: 
+                    print_result(target['no'], d)
+
 
 # ==========================================================
 # [구간 7] 결과 출력 포맷팅
@@ -246,4 +319,13 @@ def print_result(no, d):
     print("="*50)
 
 if __name__ == "__main__":
+    asyncio.run(main())
+
+# ==========================================================
+# [구간 8] 결과 출력 포맷팅 
+# # ==========================================================
+# def to_RAG():
+
+
+# def to_model():_main__":
     asyncio.run(main())

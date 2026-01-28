@@ -365,6 +365,68 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") handleSend();
     });
 });
+
+async function sendChat(message){
+    const airport = document.getElementById("airportSelect").value;
+
+    const r = await fetch("/api/chat/", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ message, airport })
+    });
+
+    const data = await r.json();
+    return data.reply || "(응답 없음)";
+}
+
+async function sendChatMessage(){
+    const input = document.getElementById("chatInput");
+    const body = document.getElementById("chatBody");
+    const airport = document.getElementById("airportSelect").value;
+
+    const message = input.value.trim();
+    if (!message) return;
+
+  // 사용자 메시지 표시
+    body.innerHTML += `<div class="msg user">${message}</div>`;
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+
+    try{
+    const r = await fetch("/api/chat/", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ message, airport })
+    });
+
+    const data = await r.json().catch(() => ({}));
+
+    console.log("chat response:", data);
+
+    const reply =
+        (data && data.reply) ? data.reply :
+        (data && data.error) ? `오류: ${data.error}${data.detail ? " / " + data.detail : ""}` :
+        `응답 형식 이상: ${JSON.stringify(data)}`;
+    
+    // 챗봇 메시지 표시
+    body.innerHTML += `<div class="msg bot">${reply}</div>`;
+    body.scrollTop = body.scrollHeight;
+
+    }catch(e){
+        body.innerHTML += `<div class="msg bot error">서버 오류</div>`;
+    }
+}
+
+// 버튼 클릭
+document.getElementById("chatSendBtn")
+    .addEventListener("click", sendChatMessage);
+
+// Enter 키
+document.getElementById("chatInput")
+    .addEventListener("keydown", (e) => {
+        if (e.key === "Enter") sendChatMessage();
+    });
+
 </script>
 </body>
 </html>

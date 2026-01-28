@@ -1,3 +1,5 @@
+※ api, Django 키는 노션에 올려놨으니 .env 파일로 만들어 3.Django 파일에 넣어야 django 실행이 가능합니다.
+
 1/22
 1. 프레임 구현-디자인X
 	dashboard 폴더에 views.py와 templates폴더를 중점으로 보면 됨

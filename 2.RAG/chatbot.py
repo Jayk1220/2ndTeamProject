@@ -337,7 +337,7 @@ async def main():
             f = flights[0]
             print(f"✅ [{f['no']}] 항공편 발견. 상세 조회 시작...")
             d = await agent.get_details(f['no'])
-            if d: print_result(f['no'], d)
+            if d: print_result(f['no'], d, agent.current_info['date'])
         else:
             # 결과가 여러 개일 때: 항공사 이름을 포함하여 출력
             print(f"\n✅ {len(flights)}개의 항공편을 찾았습니다.")
@@ -360,7 +360,7 @@ async def main():
                 target = flights[int(sel)-1]
                 d = await agent.get_details(target['no'])
                 if d: 
-                    print_result(target['no'], d)
+                    print_result(target['no'], d,agent.current_info['date'])
 
 
 # ==========================================================

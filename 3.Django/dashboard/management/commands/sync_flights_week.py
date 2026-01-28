@@ -5,6 +5,16 @@ from datetime import timedelta
 from dashboard.models import FlightSnapshot
 from dashboard.airline import board_for_date, AIRPORT_KOR
 
+def prune_snapshots(keep_days: int = 7): # 오늘부터 일주일치 데이터까지 유지, 그 이전·이후의 데이터는 제거
+    today = timezone.localdate()
+    min_date = today.strftime("%Y%m%d")
+    max_date = (today + timedelta(days=keep_days)).strftime("%Y%m%d")
+
+    # 과거 삭제
+    FlightSnapshot.objects.filter(flight_date__lt=min_date).delete()
+    # 너무 먼 미래 삭제(혹시 쌓였을 때)
+    FlightSnapshot.objects.filter(flight_date__gt=max_date).delete()
+
 
 class Command(BaseCommand):
     help = "Sync flight schedule for today ~ +7 days (daily)"

@@ -26,4 +26,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")), 
     path("api/departures/", api_departures),
     path("api/arrivals/", api_arrivals),
+    path("", include("chatbot.urls")),
 ]

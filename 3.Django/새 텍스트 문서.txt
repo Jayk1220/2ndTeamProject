@@ -1,0 +1,29 @@
+# Django
+Django
+requests
+python-dotenv
+
+# LLM (Ollama)
+langchain-ollama
+langchain-core
+langchain-community
+
+# RAG
+chromadb
+langchain-chroma
+sentence-transformers
+
+# Scraping (기존 코드 유지 시)
+playwright
+beautifulsoup4
+
+
+
+기존 Django 패키지(백업용)
+asgiref==3.11.0
+Django==5.2.10
+python-dotenv==1.2.1
+sqlparse==0.5.5
+typing_extensions==4.15.0
+tzdata==2025.3
+requests

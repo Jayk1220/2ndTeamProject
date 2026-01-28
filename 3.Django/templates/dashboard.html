@@ -84,6 +84,7 @@
         .status-on { color: #1a7f37; font-weight: 600; }   /* 정상 */
         .status-delay { color: #b45309; font-weight: 600; }/* 지연 */
         .status-cancel { color: #b91c1c; font-weight: 700; }/* 결항 */
+
     </style>
 </head>
 <body>
@@ -163,12 +164,12 @@
 
         <div class="chat">
         <div class="chat-header">챗봇</div>
-        <div class="chat-body">
-            여기에 대화가 표시됩니다.
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot">안녕하세요. 항공편 보상 안내 챗봇입니다.</div>
         </div>
         <div class="chat-input">
-            <input placeholder="메시지를 입력하세요">
-            <button type="button">전송</button>
+            <input id="chatInput" placeholder="메시지를 입력하세요">
+            <button id="chatSendBtn" type="button">전송</button>
         </div>
         </div>
     </div>
@@ -305,6 +306,64 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("airportSelect").addEventListener("change", loadBoards);
     loadBoards();
     setInterval(loadBoards, 30000); // 30초 갱신
+});
+
+function appendMessage(text, sender){
+    const body = document.getElementById("chatBody");
+
+    const div = document.createElement("div");
+    div.className = "chat-msg " + sender;
+    div.textContent = text;
+
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+}
+
+async function sendChatToServer(message){
+    const r = await fetch("/api/chat/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ message })
+    });
+
+    if (!r.ok){
+        throw new Error("서버 오류");
+    }
+
+    const data = await r.json();
+    return data.reply;
+}
+
+async function handleSend(){
+    const input = document.getElementById("chatInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = "";
+
+    appendMessage(msg, "user");
+    appendMessage("답변을 생성 중입니다...", "bot");
+
+    try {
+        const reply = await sendChatToServer(msg);
+
+        // 마지막 "생성 중" 메시지 제거
+        const body = document.getElementById("chatBody");
+        body.removeChild(body.lastChild);
+
+        appendMessage(reply, "bot");
+    } catch (e) {
+        appendMessage("오류가 발생했습니다.", "bot");
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("chatSendBtn")
+        .addEventListener("click", handleSend);
+
+    document.getElementById("chatInput")
+    .addEventListener("keydown", e => {
+        if (e.key === "Enter") handleSend();
+    });
 });
 </script>
 </body>

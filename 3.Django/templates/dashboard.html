@@ -2,431 +2,631 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>항공편 실시간 모니터링</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        .frame {
-            width: 1200px;
-            height: 700px;
-            margin: 20px auto;
-            border: 2px solid #000;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 20px;
+        :root {
+            --primary-color: #0d6efd;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+        
+        .weather-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .weather-item {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .weather-temp {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .weather-label {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .table {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .table tbody tr {
+            transition: background-color 0.15s;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .status-on {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-delay {
+            background-color: #fff3cd;
+            color: #664d03;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-cancel {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 180px);
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px 12px 0 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
             padding: 20px;
+            background: #f8f9fa;
         }
-        .left { display: flex; flex-direction: column; gap: 20px; }
-        .box { border: 1px solid #aaa; padding: 10px; }
-        .mini-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .mini { border: 1px solid #aaa; height: 120px; padding: 6px; }
-        .right { display: flex; flex-direction: column; }
-        .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* 좌/우로 분리 */
-        gap: 12px;
-        margin-bottom: 10px;
+        
+        .chat-msg {
+            margin-bottom: 15px;
+            display: flex;
+            animation: fadeIn 0.3s ease-in;
         }
-
-        #weatherLine {
-        flex: 1;                 /* 남는 공간을 날씨가 차지 */
-        min-width: 0;            /* 길어져도 줄바꿈/잘림 처리 가능 */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* 너무 길면 ... */
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .top-actions {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-shrink: 0;          /* 버튼 영역이 눌리지 않게 */
+        
+        .chat-msg.user {
+            justify-content: flex-end;
         }
-
-        .btn {
-        display: inline-block;
-        padding: 6px 10px;
-        border: 1px solid #444;
-        background: #fff;
-        cursor: pointer;
-        text-decoration: none;
-        color: #111;
+        
+        .chat-msg.bot {
+            justify-content: flex-start;
         }
-
-        .user-badge {
-        font-size: 14px;
-        padding: 4px 8px;
-        border: 1px solid #aaa;
+        
+        .chat-msg.user > div {
+            background: #0d6efd;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+            max-width: 70%;
+            word-wrap: break-word;
         }
-        .chat { border: 1px solid #4a55a2; flex: 1; display: flex; flex-direction: column; }
-        .chat-header { padding: 10px; font-weight: bold; }
-        .chat-body { flex: 1; padding: 10px; overflow-y: auto; }
-        .chat-input { border-top: 1px solid #ccc; padding: 10px; display: flex; gap: 10px; }
-        input { flex: 1; padding: 8px; }
-
-        .board {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 8px;
-        font-size: 14px;
+        
+        .chat-msg.bot > div {
+            background: #e9ecef;
+            color: #212529;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+            max-width: 70%;
+            word-wrap: break-word;
         }
-        .board th, .board td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
+        
+        .chat-footer {
+            padding: 15px;
+            border-top: 1px solid #dee2e6;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            gap: 10px;
         }
-        .board thead th {
-        background: #f4f4f4;
+        
+        .chat-footer input {
+            flex: 1;
+            border-radius: 25px;
+            padding: 10px 15px;
+            border: 1px solid #dee2e6;
+            transition: border-color 0.2s;
         }
-        .board tbody tr:nth-child(even) {
-        background: #fafafa;
+        
+        .chat-footer input:focus {
+            border-color: #0d6efd;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
         }
-        .status-on { color: #1a7f37; font-weight: 600; }   /* 정상 */
-        .status-delay { color: #b45309; font-weight: 600; }/* 지연 */
-        .status-cancel { color: #b91c1c; font-weight: 700; }/* 결항 */
-
+        
+        .chat-footer button {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .chat-footer button:hover {
+            background: #0b5ed7;
+        }
+        
+        .airport-select {
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            padding: 10px 15px;
+            font-weight: 500;
+        }
+        
+        .airport-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: #212529;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d6efd;
+        }
+        
+        .badge-custom {
+            background: #e7f1ff;
+            color: #0d6efd;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        
+        .last-updated {
+            font-size: 0.85rem;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #dee2e6;
+        }
     </style>
 </head>
 <body>
-<div class="frame">
-    <!-- 왼쪽 -->
-    <div class="left">
-        <div class="box">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <div>공항 선택</div>
-                <select id="airportSelect">
-                <option value="ICN">인천(ICN)</option>
-                <option value="GMP">김포(GMP)</option>
-                <option value="CJU">제주(CJU)</option>
-                {% comment %} <option value="MWX">무안(MWX)</option>  현재 운행중단중(4/2일 운항예정)  {% endcomment %}
-                <option value="USN">울산(USN)</option>
-                <option value="RSU">여수(RSU)</option>
-                <option value="YNY">양양(YNY)</option>
-                <option value="PUS">김해|부산(PUS)</option>
-                </select>
-            </div>
-            <div id="lastUpdated" class="last-updated">마지막 갱신: -</div>
-
-            <div style="margin-top:10px; font-weight:bold;">출발 현황</div>
-            <table class="board">
-            <thead>
-                <tr>
-                    {% comment %} 확인용 {% endcomment %}
-                    {% comment %} <th>날짜</th> {% endcomment %}
-
-                    <th>항공사</th>
-                    <th>목적지</th>
-                    <th>편명</th>
-                    <th>출발시간</th>
-                    <th>상태</th>
-                </tr>
-            </thead>
-            <tbody id="depBody">
-                <tr><td colspan="5">불러오는 중...</td></tr>
-            </tbody>
-            </table>
-
-            <div style="margin-top:10px; font-weight:bold;">도착 현황</div>
-            <table class="board">
-            <thead>
-                <tr>
-                    {% comment %} 확인용 {% endcomment %}
-                    {% comment %} <th>날짜</th> {% endcomment %}
-
-                    <th>항공사</th>
-                    <th>출발지</th>
-                    <th>편명</th>
-                    <th>도착(예정)</th>
-                    <th>상태</th>
-                </tr>
-            </thead>
-            <tbody id="arrBody">
-                <tr><td colspan="5">불러오는 중...</td></tr>
-            </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- 오른쪽 -->
-    <div class="right">
-        <div class="topbar">
-            <div id="weatherLine">날씨 불러오는 중...</div>
-
-            <div class="top-actions">
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                <i class="bi bi-airplane"></i> 항공편 실시간 모니터링
+            </span>
+            <div class="d-flex align-items-center gap-3">
                 {% if user.is_authenticated %}
-                <span class="user-badge">{{ user.username }}</span>
-                <a class="btn" href="{% url 'logout' %}">로그아웃</a>
+                <span class="badge-custom">
+                    <i class="bi bi-person-circle"></i> {{ user.username }}
+                </span>
+                <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">로그아웃</a>
                 {% else %}
-                <a class="btn" href="{% url 'login' %}">로그인</a>
+                <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">로그인</a>
                 {% endif %}
             </div>
         </div>
+    </nav>
 
-        <div class="chat">
-        <div class="chat-header">챗봇</div>
-        <div class="chat-body" id="chatBody">
-            <div class="chat-msg bot">안녕하세요. 항공편 보상 안내 챗봇입니다.</div>
-        </div>
-        <div class="chat-input">
-            <input id="chatInput" placeholder="메시지를 입력하세요">
-            <button id="chatSendBtn" type="button">전송</button>
-        </div>
+    <!-- 메인 컨텐츠 -->
+    <div class="container-fluid py-4">
+        <div class="row g-4">
+            <!-- 왼쪽 영역 -->
+            <div class="col-lg-4" style="display: flex; flex-direction: column; height: calc(100vh - 180px); overflow-y: auto; padding-right: 10px;">
+                <!-- 날씨 카드 -->
+                <div class="weather-card">
+                    <div class="row text-center g-3">
+                        <div class="col-4">
+                            <div class="weather-temp" id="weatherTemp">--</div>
+                            <div class="weather-label">온도</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="weather-temp" id="weatherWind">--</div>
+                            <div class="weather-label">바람</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="weather-temp" id="weatherVis">--</div>
+                            <div class="weather-label">시정</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.95rem; opacity: 0.95;">
+                        <i class="bi bi-geo-alt"></i> <span id="weatherLine">공항 정보 불러오는 중...</span>
+                    </div>
+                </div>
+
+                <!-- 공항 선택 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title mb-3">
+                            <i class="bi bi-building"></i> 공항 선택
+                        </h6>
+                        <select id="airportSelect" class="airport-select w-100">
+                            <option value="ICN">인천(ICN)</option>
+                            <option value="GMP">김포(GMP)</option>
+                            <option value="CJU">제주(CJU)</option>
+                            <option value="USN">울산(USN)</option>
+                            <option value="RSU">여수(RSU)</option>
+                            <option value="YNY">양양(YNY)</option>
+                            <option value="PUS">김해|부산(PUS)</option>
+                        </select>
+                        <div class="last-updated" id="lastUpdated">마지막 갱신: -</div>
+                    </div>
+                </div>
+
+                <!-- 출발 현황 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="section-title">
+                            <i class="bi bi-arrow-up-right"></i> 출발 현황
+                        </h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>항공사</th>
+                                        <th>출발지</th>
+                                        <th>목적지</th>
+                                        <th>편명</th>
+                                        <th>시간</th>
+                                        <th>상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="depBody">
+                                    <tr><td colspan="6" class="text-center py-3"><span class="spinner-border spinner-border-sm" role="status"></span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 오른쪽 영역 -->
+            <div class="col-lg-8">
+                <!-- 챗봇 -->
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <i class="bi bi-chat-dots"></i> 항공편 보상 안내 챗봇
+                    </div>
+                    <div class="chat-body" id="chatBody">
+                        <div class="chat-msg bot">
+                            <div>안녕하세요 👋 항공편 보상 안내 챗봇입니다. 항공편 지연/결항 관련 보상에 대해 궁금한 점을 물어보세요!</div>
+                        </div>
+                    </div>
+                    <div class="chat-footer">
+                        <input id="chatInput" type="text" placeholder="메시지를 입력하세요...">
+                        <button id="chatSendBtn" type="button">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<script>
-const airports = [
-    { stn: 113, name: "인천공항" },
-    { stn: 110, name: "김포공항" },
-    { stn: 182, name: "제주공항" },
-    { stn: 163, name: "무안공항" },
-    { stn: 151, name: "울산공항" },
-    { stn: 167, name: "여수공항" },
-    { stn: 92,  name: "양양공항" },
-];
 
-let idx = 0;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const airports = [
+            { stn: 113, name: "인천공항" },
+            { stn: 110, name: "김포공항" },
+            { stn: 182, name: "제주공항" },
+            { stn: 163, name: "무안공항" },
+            { stn: 151, name: "울산공항" },
+            { stn: 167, name: "여수공항" },
+            { stn: 92,  name: "양양공항" },
+        ];
 
-function fmt1(x){
-    if (x === null || x === undefined || Number.isNaN(x)) return "-";
-    return Number(x).toFixed(1);
-}
-function fmtVis(m){
-    if (m === null || m === undefined) return "-";
-    const v = Number(m);
-    if (v >= 10000) return "10km+";
-    if (v >= 1000) return (v/1000).toFixed(1) + "km";
-    return v + "m";
-}
-function pickVis(L, R){
-  // 둘 다 있으면 더 작은 값(보수적), 하나만 있으면 그 값
-    if (L == null && R == null) return null;
-    if (L == null) return R;
-    if (R == null) return L;
-    return Math.min(L, R);
-}
+        let idx = 0;
 
-async function tick(){
-    const a = airports[idx % airports.length];
-    idx += 1;
-
-    const line = document.getElementById("weatherLine");
-    line.textContent = `${a.name} | 불러오는 중...`;
-
-    try{
-        const r = await fetch(`/api/airport-weather/?stn=${a.stn}`);
-        const w = await r.json();
-        if(!r.ok) throw new Error(w?.error || "fetch failed");
-
-        const vis = pickVis(w.L_VIS, w.R_VIS);
-
-        line.textContent =
-        `${a.name} | ${fmt1(w.TA)}°C | 바람 ${fmt1(w.WS02)} (돌풍 ${fmt1(w.WS02_MAX)}) m/s | 시정 ${fmtVis(vis)}`;
-
-    }catch(e){
-        line.textContent = `${a.name} | 서버와 연동 중...`;
-    }
-
-    // 공항 갱신(5초마다)[날씨 데이터]
-    const nextMs = 5000;
-    setTimeout(tick, nextMs);
-}
-
-document.addEventListener("DOMContentLoaded", tick);
-</script>
-<script>
-function statusClass(s){
-    if (!s) return "";
-    if (s.includes("정상")) return "status-on";
-    if (s.includes("지연")) return "status-delay";
-    if (s.includes("결항") || s.includes("취소")) return "status-cancel";
-    return "";
-}
-
-function renderRows(rows, type){
-    if (!rows || rows.length === 0){
-        return `<tr><td colspan="5">표시할 데이터가 없습니다.</td></tr>`;
-    }
-
-    const slice = rows.slice(0, 15);
-
-    if (type === "dep"){
-        return slice.map(x => `
-        <tr>
-            {% comment %} 확인용 {% endcomment %}
-            {% comment %} <td>${x.date}</td> {% endcomment %}
-
-            <td>${x.airline}</td>
-            <td>${x.destination}</td>
-            <td>${x.flight_no}</td>
-            <td>${x.std.slice(0,2)}:${x.std.slice(2)}</td>
-            <td class="${statusClass(x.status)}">${x.status || "정상"}</td>
-        </tr>
-        `).join("");
-    }
-
-  // arr
-    return slice.map(x => `
-        <tr>
-            {% comment %} 확인용 {% endcomment %}
-            {% comment %} <td>${x.date}</td> {% endcomment %}
-
-            <td>${x.airline}</td>
-            <td>${x.origin}</td>
-            <td>${x.flight_no}</td>
-            <td>${x.std.slice(0,2)}:${x.std.slice(2)}</td>
-            <td class="${statusClass(x.status)}">${x.status || "정상"}</td>
-        </tr>
-    `).join("");
-}
-
-async function loadBoards(){
-    const airport = document.getElementById("airportSelect").value;
-
-    // 출발
-    {
-        const r = await fetch(`/api/departures/?airport=${encodeURIComponent(airport)}&limit=4`);
-        const data = await r.json();
-        if (data.last_updated){
-            document.getElementById("lastUpdated").textContent =
-                "마지막 갱신: " + data.last_updated;
+        function fmt1(x){
+            if (x === null || x === undefined || Number.isNaN(x)) return "-";
+            return Number(x).toFixed(1);
         }
-        document.getElementById("depBody").innerHTML = renderRows(data.departures, "dep");
-    }
+        
+        function fmtVis(m){
+            if (m === null || m === undefined) return "-";
+            const v = Number(m);
+            if (v >= 10000) return "10km+";
+            if (v >= 1000) return (v/1000).toFixed(1) + "km";
+            return v + "m";
+        }
+        
+        function pickVis(L, R){
+            if (L == null && R == null) return null;
+            if (L == null) return R;
+            if (R == null) return L;
+            return Math.min(L, R);
+        }
 
-    // 도착
-    {
-        const r = await fetch(`/api/arrivals/?airport=${encodeURIComponent(airport)}&limit=4`);
-        const data = await r.json();
-        document.getElementById("arrBody").innerHTML = renderRows(data.arrivals, "arr");
-    }
-}
+        {% comment %} const airportCodeToStn = {
+            "ICN": 113,
+            "GMP": 110,
+            "CJU": 182,
+            "USN": 151,
+            "RSU": 167,
+            "YNY": 92,
+            "PUS": 159
+        }; {% endcomment %}
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("airportSelect").addEventListener("change", loadBoards);
-    loadBoards();
-    setInterval(loadBoards, 30000); // 30초 갱신
-});
+        const airportNames = {
+            "ICN": "인천",
+            "GMP": "김포",
+            "CJU": "제주",
+            "USN": "울산",
+            "RSU": "여수",
+            "YNY": "양양",
+            "PUS": "부산"
+        };
 
-function appendMessage(text, sender){
-    const body = document.getElementById("chatBody");
+        async function updateWeather(airportCode){
+            const name = airportNames[airportCode] || airportCode;
+            document.getElementById("weatherLine").textContent = `${name} 날씨`;
 
-    const div = document.createElement("div");
-    div.className = "chat-msg " + sender;
-    div.textContent = text;
+            try{
+            const r = await fetch(`/api/weather/?airport=${encodeURIComponent(airportCode)}`);
+            if(!r.ok){
+                // DB에 아직 값이 없으면 404(no_weather)
+                document.getElementById("weatherTemp").textContent = "--";
+                document.getElementById("weatherWind").textContent = "--";
+                document.getElementById("weatherVis").textContent  = "--";
+                return;
+            }
+            const w = await r.json();
+            const vis = pickVis(w.L_VIS, w.R_VIS);
 
-    body.appendChild(div);
-    body.scrollTop = body.scrollHeight;
-}
+            document.getElementById("weatherTemp").textContent = fmt1(w.TA) + "°C";
+            document.getElementById("weatherWind").textContent = fmt1(w.WS02) + " m/s";
+            document.getElementById("weatherVis").textContent  = fmtVis(vis);
 
-async function sendChatToServer(message){
-    const r = await fetch("/api/chat/", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ message })
-    });
+            // lastUpdated 라벨은 “항공편/날씨” 둘 다 의미로 써도 OK
+            if (w.last_updated){
+                document.getElementById("lastUpdated").textContent = "마지막 갱신: " + w.last_updated;
+            }
+            }catch(e){
+            console.warn("날씨 로드 실패:", e);
+            }
+        }
 
-    if (!r.ok){
-        throw new Error("서버 오류");
-    }
+        function statusClass(s){
+            if (!s) return "status-on";
+            if (s.includes("정상")) return "status-on";
+            if (s.includes("지연")) return "status-delay";
+            if (s.includes("결항") || s.includes("취소")) return "status-cancel";
+            return "status-on";
+        }
 
-    const data = await r.json();
-    return data.reply;
-}
+        function renderRows(rows, type, airport){
+            if (!rows || rows.length === 0){
+                return `<tr><td colspan="6" class="text-center py-3">데이터 없음</td></tr>`;
+            }
 
-async function handleSend(){
-    const input = document.getElementById("chatInput");
-    const msg = input.value.trim();
-    if (!msg) return;
+            const slice = rows.slice(0, 8);
 
-    input.value = "";
+            if (type === "dep"){
+                return slice.map(x => `
+                <tr>
+                    <td><small>${x.airline}</small></td>
+                    <td><small>${airport}</small></td>
+                    <td><small>${x.destination}</small></td>
+                    <td><small><strong>${x.flight_no}</strong></small></td>
+                    <td><small>${x.std.slice(0,2)}:${x.std.slice(2)}</small></td>
+                    <td><span class="${statusClass(x.status)}">${x.status || "정상"}</span></td>
+                </tr>
+                `).join("");
+            }
 
-    appendMessage(msg, "user");
-    appendMessage("답변을 생성 중입니다...", "bot");
+            return slice.map(x => `
+                <tr>
+                    <td><small>${x.airline}</small></td>
+                    <td><small>${x.origin}</small></td>
+                    <td><small><strong>${x.flight_no}</strong></small></td>
+                    <td><small>${x.std.slice(0,2)}:${x.std.slice(2)}</small></td>
+                    <td><span class="${statusClass(x.status)}">${x.status || "정상"}</span></td>
+                </tr>
+            `).join("");
+        }
+        async function refreshAirport(){
+            const airportCode = document.getElementById("airportSelect").value;
+            await updateWeather(airportCode);
+            await loadBoards();
+        }
 
-    try {
-        const reply = await sendChatToServer(msg);
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("airportSelect").addEventListener("change", refreshAirport);
 
-        // 마지막 "생성 중" 메시지 제거
-        const body = document.getElementById("chatBody");
-        body.removeChild(body.lastChild);
+            refreshAirport();                 // 최초 1회
+            setInterval(refreshAirport, 30000); // 30초마다 (원하면 60초도 가능)
+        });
 
-        appendMessage(reply, "bot");
-    } catch (e) {
-        appendMessage("오류가 발생했습니다.", "bot");
-    }
-}
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("chatSendBtn")
-        .addEventListener("click", handleSend);
+        async function loadBoards(){
+            const airportCode = document.getElementById("airportSelect").value;
+            const airportName = airportNames[airportCode] || airportCode;
 
-    document.getElementById("chatInput")
-    .addEventListener("keydown", e => {
-        if (e.key === "Enter") handleSend();
-    });
-});
+            try {
+                const url = `/api/departures/?airport=${encodeURIComponent(airportCode)}&limit=10`;
+                console.log("요청 URL:", url);
+                
+                const r = await fetch(url);
+                console.log("API 응답 상태:", r.status);
+                
+                const text = await r.text();
+                console.log("응답 본문:", text);
+                
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    console.error("JSON 파싱 실패:", e);
+                    throw new Error("응답이 JSON이 아닙니다");
+                }
+                
+                if (!r.ok) throw new Error(`API 오류: ${r.status}`);
+                
+                if (data.last_updated){
+                    document.getElementById("lastUpdated").textContent =
+                        "마지막 갱신: " + data.last_updated;
+                }
+                
+                if (data.departures && data.departures.length > 0) {
+                    document.getElementById("depBody").innerHTML = renderRows(data.departures, "dep", airportName);
+                } else {
+                    document.getElementById("depBody").innerHTML = `<tr><td colspan="6" class="text-center py-3">해당 공항의 출발 정보가 없습니다</td></tr>`;
+                }
+            } catch (e) {
+                console.error("출발 현황 로드 실패:", e);
+                document.getElementById("depBody").innerHTML = `<tr><td colspan="6" class="text-center py-3">데이터를 불러올 수 없습니다</td></tr>`;
+            }
+        }
+        let refreshTimer = null;
 
-async function sendChat(message){
-    const airport = document.getElementById("airportSelect").value;
+        document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("airportSelect").addEventListener("change", async () => {
+            await refreshAirport();               // ✅ 공항 바꾸면 즉시 갱신
+        });
 
-    const r = await fetch("/api/chat/", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({ message, airport })
-    });
+        refreshAirport();                       // ✅ 최초 로드
 
-    const data = await r.json();
-    return data.reply || "(응답 없음)";
-}
+        refreshTimer = setInterval(() => {
+            refreshAirport();                     // ✅ 선택된 공항만 주기 갱신
+        }, 30000);
+        });
 
-async function sendChatMessage(){
-    const input = document.getElementById("chatInput");
-    const body = document.getElementById("chatBody");
-    const airport = document.getElementById("airportSelect").value;
+        function appendMessage(text, sender){
+            const body = document.getElementById("chatBody");
 
-    const message = input.value.trim();
-    if (!message) return;
+            const div = document.createElement("div");
+            div.className = "chat-msg " + sender;
+            
+            const labelDiv = document.createElement("div");
+            labelDiv.style.fontSize = "0.75rem";
+            labelDiv.style.marginBottom = "4px";
+            labelDiv.style.fontWeight = "600";
+            labelDiv.style.opacity = "0.7";
+            labelDiv.textContent = sender === "bot" ? "🤖 챗봇" : "👤 나";
+            div.appendChild(labelDiv);
+            
+            const msgDiv = document.createElement("div");
+            msgDiv.textContent = text;
+            div.appendChild(msgDiv);
 
-  // 사용자 메시지 표시
-    body.innerHTML += `<div class="msg user">${message}</div>`;
-    input.value = "";
-    body.scrollTop = body.scrollHeight;
+            body.appendChild(div);
+            body.scrollTop = body.scrollHeight;
+        }
 
-    try{
-    const r = await fetch("/api/chat/", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({ message, airport })
-    });
+        async function sendChatToServer(message, airport){
+            const r = await fetch("/api/chat/", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ message, airport })
+            });
 
-    const data = await r.json().catch(() => ({}));
+            if (!r.ok){
+                throw new Error("서버 오류");
+            }
 
-    console.log("chat response:", data);
+            const data = await r.json();
+            return data.reply;
+        }
 
-    const reply =
-        (data && data.reply) ? data.reply :
-        (data && data.error) ? `오류: ${data.error}${data.detail ? " / " + data.detail : ""}` :
-        `응답 형식 이상: ${JSON.stringify(data)}`;
-    
-    // 챗봇 메시지 표시
-    body.innerHTML += `<div class="msg bot">${reply}</div>`;
-    body.scrollTop = body.scrollHeight;
+        async function handleSend(){
+            const input = document.getElementById("chatInput");
+            const airport = document.getElementById("airportSelect").value;
+            const msg = input.value.trim();
+            if (!msg) return;
 
-    }catch(e){
-        body.innerHTML += `<div class="msg bot error">서버 오류</div>`;
-    }
-}
+            input.value = "";
 
-// 버튼 클릭
-document.getElementById("chatSendBtn")
-    .addEventListener("click", sendChatMessage);
+            appendMessage(msg, "user");
+            appendMessage("답변을 생성 중입니다...", "bot");
 
-// Enter 키
-document.getElementById("chatInput")
-    .addEventListener("keydown", (e) => {
-        if (e.key === "Enter") sendChatMessage();
-    });
+            try {
+                const reply = await sendChatToServer(msg, airport);
 
-</script>
+                const body = document.getElementById("chatBody");
+                body.removeChild(body.lastChild);
+
+                appendMessage(reply, "bot");
+            } catch (e) {
+                const body = document.getElementById("chatBody");
+                body.removeChild(body.lastChild);
+                appendMessage("오류가 발생했습니다: " + e.message, "bot");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("chatSendBtn")
+                .addEventListener("click", handleSend);
+
+            document.getElementById("chatInput")
+            .addEventListener("keydown", e => {
+                if (e.key === "Enter") handleSend();
+            });
+        });
+    </script>
 </body>
 </html>

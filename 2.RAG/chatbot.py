@@ -10,7 +10,6 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # ==========================================================
 # [구간 1] 환경 최적화 및 시스템 설정
-# RTX 5080 등 고성능 GPU 환경에서 DLL 충돌 방지 및 최적화 경로 설정
 # ==========================================================
 try:
     import torch
@@ -87,39 +86,6 @@ class FlightAgent:
         except Exception as e:
             print(f"⚠️ 분석 오류: {e}")
 
-# ==========================================================
-# [구간 3-1] 노선 타입 판별 (국내/국제)
-# 내부 데이터 또는 스크랩된 데이터를 기반으로 판별
-# ==========================================================
-    def determine_route_type(self, scraped_dep=None, scraped_arr=None):
-        dep = scraped_dep if scraped_dep else self.current_info.get("departure", [])
-        dest = scraped_arr if scraped_arr else self.current_info.get("destination", [])
-        f_no = self.current_info.get("flight_no", "N/A")
-        
-        prompt = ChatPromptTemplate.from_template("""
-        System: 당신은 '국내' 혹은 '국제' 단 두 단어만 사용할 수 있는 항공 노선 판별기입니다.
-        
-        [출력 규칙 - 절대 준수]
-        1. 반드시 한글로만 답변하세요. (No English, No Chinese characters like 国际)
-        2. 다른 설명이나 수식어 없이 오직 {{"type": "국내"}} 또는 {{"type": "국제"}} 형식의 JSON만 출력하세요.
-        3. '국제'를 '국외'나 'International'로 바꿔 부르지 마세요.
-
-        [데이터 정보]
-        - 출발지: {dep}
-        - 목적지: {dest}
-        - 편명: {f_no}
-        
-        [판단 가이드]
-        - 한 국가 내 공항 간 이동(예: GMP-CJU)인 경우만 '국내'입니다.
-        - 그 이외에는 '국제'입니다
-        """)
-        
-        chain = prompt | self.llm | self.parser
-        try:
-            res = chain.invoke({"dep": dep, "dest": dest, "f_no": f_no})
-            return res.get("type", "정보 없음")
-        except:
-            return "정보 없음"
     # ==========================================================
     # [구간 4] 노선 기반 항공편 검색 (Scraping)
     # 특정 구간(출발-도착)의 모든 운항 정보를 조회하여 선택 리스트 생성
@@ -231,11 +197,15 @@ class FlightAgent:
                 s_arr = codes[1] if len(codes) >= 2 else None
                 route_type = self.determine_route_type(s_dep, s_arr)
 
-                res = {"status": "N/A", 
-                       "route_type": route_type,
-                       "dep": {"t": "-", "g": "-", "time": []}, 
-                       "arr": {"t": "-", "g": "-", "time": []}}
-                
+                res = {
+                    "status": "N/A", 
+                    "route_type": route_type,
+                    "s_dep": s_dep,  
+                    "s_arr": s_arr, 
+                    "dep": {"t": "-", "g": "-", "time": []}, 
+                    "arr": {"t": "-", "g": "-", "time": []}
+                }
+
                 # 실시간 상태 정보 추출 (최신 레이아웃 및 백업 대응)
                 status_el = soup.select_one('p[class*="status-text-style"]')
                 if status_el:
@@ -269,6 +239,40 @@ class FlightAgent:
             finally: await browser.close()
 
 # ==========================================================
+# [구간 5-1] 노선 타입 판별 (국내/국제)
+# 내부 데이터 또는 스크랩된 데이터를 기반으로 판별
+# ==========================================================
+    def determine_route_type(self, scraped_dep=None, scraped_arr=None):
+        dep = scraped_dep if scraped_dep else self.current_info.get("departure", [])
+        dest = scraped_arr if scraped_arr else self.current_info.get("destination", [])
+        f_no = self.current_info.get("flight_no", "N/A")
+        
+        prompt = ChatPromptTemplate.from_template("""
+        System: 당신은 '국내' 혹은 '국제' 단 두 단어만 사용할 수 있는 항공 노선 판별기입니다.
+        
+        [출력 규칙 - 절대 준수]
+        1. 반드시 한글로만 답변하세요. (No English, No Chinese characters like 国际)
+        2. 다른 설명이나 수식어 없이 오직 {{"type": "국내"}} 또는 {{"type": "국제"}} 형식의 JSON만 출력하세요.
+        3. '국제'를 '국외'나 'International'로 바꿔 부르지 마세요.
+
+        [데이터 정보]
+        - 출발지: {dep}
+        - 목적지: {dest}
+        - 편명: {f_no}
+        
+        [판단 가이드]
+        - 한 국가 내 공항 간 이동(예: GMP-CJU)인 경우만 '국내'입니다.
+        - 그 이외에는 '국제'입니다
+        """)
+        
+        chain = prompt | self.llm | self.parser
+        try:
+            res = chain.invoke({"dep": dep, "dest": dest, "f_no": f_no})
+            return res.get("type", "정보 없음")
+        except:
+            return "정보 없음"
+        
+# ==========================================================
 # [구간 6] 메인 루프 및 인터페이스
 # 사용자 입력을 루프하며 텍스트 분석 -> 검색 -> 상세 조회 프로세스 실행
 # ==========================================================
@@ -285,31 +289,13 @@ async def main():
         if agent.current_info["date"] == "N/A":
             agent.current_info["date"] = datetime.datetime.now().strftime("%Y%m%d")
 
-        # 편명이 즉시 추출된 경우 바로 상세 정보 조회
+        # [경우 1] 편명이 즉시 추출된 경우
         if agent.current_info["flight_no"] != "N/A":
             f_no = agent.current_info["flight_no"]
             d = await agent.get_details(f_no)
             if d:
-                # 1. 시각적 출력
                 print_result(f_no, d, agent.current_info['date'])
-
-                # 2. 데이터 요약 생성 (agent와 d가 모두 존재하는 시점)
-                s_time = "N/A"
-                if d['dep']['time']:
-                    # "Scheduled: 13:10"에서 "13:10"만 추출
-                    s_time = d['dep']['time'][0].split(": ")[-1]
-
-                flight_summary = {
-                    "is_international": d.get('route_type', '정보 없음'),
-                    "airline": agent.current_info.get("airline_name", "N/A"),
-                    "dep_airport": agent.current_info.get("departure")[0] if agent.current_info.get("departure") else "N/A",
-                    "arr_airport": agent.current_info.get("destination")[0] if agent.current_info.get("destination") else "N/A",
-                    "dep_time": s_time,
-                    "date": agent.current_info['date']
-                }
-
-                # 확인용 출력
-                print(f"💡 요약 결과: {flight_summary['airline']} | {flight_summary['is_international']} | {flight_summary['dep_airport']} 출발 | {flight_summary['arr_airport']} 도착 | {flight_summary['date']}  | {flight_summary['dep_time']}시 예정 | ")
+                display_summary(agent, d, f_no) # 요약 함수 호출
             continue
 
         if not agent.current_info["destination"]:
@@ -322,10 +308,7 @@ async def main():
         
         target_code = agent.current_info.get("airline_code", "N/A")
         if target_code != "N/A":
-            # 편명(no)이 해당 항공사 코드(예: LJ)로 시작하는 것만 남김
             filtered_flights = [f for f in flights if f['no'].startswith(target_code)]
-            
-            # 만약 진에어(LJ)를 검색했는데 결과가 있다면 필터링 적용
             if filtered_flights:
                 flights = filtered_flights
                 print(f"✨ 요청하신 '{agent.current_info.get('airline_name', target_code)}' 항공편만 모아봤습니다.")
@@ -333,34 +316,27 @@ async def main():
         if not flights:
             print("❌ 검색 결과가 없습니다.")
         elif len(flights) == 1:
-            # 진에어 등으로 필터링되어 1개만 남으면 바로 상세 정보 출력
             f = flights[0]
             print(f"✅ [{f['no']}] 항공편 발견. 상세 조회 시작...")
             d = await agent.get_details(f['no'])
-            if d: print_result(f['no'], d, agent.current_info['date'])
+            if d: 
+                print_result(f['no'], d, agent.current_info['date'])
+                display_summary(agent, d, f['no']) # 요약 함수 호출
         else:
-            # 결과가 여러 개일 때: 항공사 이름을 포함하여 출력
             print(f"\n✅ {len(flights)}개의 항공편을 찾았습니다.")
             llm_airlines = agent.current_info.get("airline_info", {})
 
             for i, f in enumerate(flights):
-                # 항공편 번호에서 코드 추출 (예: LJ341 -> LJ)
-                f_code_match = re.match(r'^([A-Z0-9]{2,3})', f['no'])
-                f_code = f_code_match.group(1) if f_code_match else ""
-                
-                # LLM 분석 데이터에서 항공사 이름 매칭
-                air_name = llm_airlines.get(f_code, llm_airlines.get(f_code[:2], ""))
-                display_name = f" | {air_name}" if air_name else ""
-                
-                print(f"[{i+1}] {f['no'].ljust(8)} | {f['dep']} -> {f['arr']}{display_name}")
+                print(f"[{i+1}] {f['no'].ljust(8)} | {f['dep']} -> {f['arr']}")
             
-            # 사용자의 선택 받기
             sel = input("\n💡 상세 정보를 확인할 번호를 입력하세요 (n: 취소): ").strip()
             if sel.isdigit() and 1 <= int(sel) <= len(flights):
                 target = flights[int(sel)-1]
-                d = await agent.get_details(target['no'])
+                target_no = target['no']
+                d = await agent.get_details(target_no)
                 if d: 
-                    print_result(target['no'], d,agent.current_info['date'])
+                    print_result(target_no, d, agent.current_info['date'])
+                    display_summary(agent, d, target_no) # 요약 함수 호출
 
 
 # ==========================================================
@@ -391,8 +367,27 @@ def print_result(no, d, date_str):
     print("="*50)
 
 # RAG, model 연동
+def display_summary(agent, details, flight_no):
+    s_time = "N/A"
+    if details.get('dep') and details['dep'].get('time'):
+        s_time = details['dep']['time'][0].split(": ")[-1]
 
+    # [수정] 크롤링된 실제 코드(s_dep, s_arr)가 있으면 그것을 사용, 없으면 입력값 사용
+    dep_airport = details.get('s_dep') or (agent.current_info.get("departure")[0] if agent.current_info.get("departure") else "N/A")
+    arr_airport = details.get('s_arr') or (agent.current_info.get("destination")[0] if agent.current_info.get("destination") else "N/A")
+
+    summary = {
+        "is_international": details.get('route_type', '정보 없음'),
+        "airline": agent.current_info.get("airline_name", "N/A"),
+        "dep_airport": dep_airport,
+        "arr_airport": arr_airport,
+        "dep_time": s_time,
+        "date": agent.current_info['date']
+    }
+
+    print(f"💡 요약 결과: {summary['airline']} | {summary['is_international']} | "
+          f"{summary['dep_airport']} 출발 | {summary['arr_airport']} 도착 | "
+          f"{summary['date']} | {summary['dep_time']}시 예정")
+    
 if __name__ == "__main__":
     asyncio.run(main())
-
-print(f"💡 요약 결과: {flight_summary['airline']} 이용, {flight_summary['dep_time']} 출발")

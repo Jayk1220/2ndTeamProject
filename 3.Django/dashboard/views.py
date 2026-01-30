@@ -6,9 +6,10 @@ import requests
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 from django.utils import timezone
-from django.views.decorators.http import require_GET
 from django.db.models import Max
 from dashboard.models import FlightSnapshot
+from .models import WeatherSnapshot
+from dashboard.models import WeatherCurrent
 
 
 AMOS_URL = "https://apihub.kma.go.kr/api/typ01/url/amos.php"
@@ -86,32 +87,6 @@ def _parse_latest_amos_row(text: str) -> dict:
         "R_VIS": R_VIS,
     }
 
-@require_GET
-def api_airport_weather_simple(request):
-    stn = request.GET.get("stn", "113")
-    key = (os.getenv("KEY") or "").strip()
-    if not key:
-        return JsonResponse({"error": "missing KEY in env"}, status=500)
-
-    params = {
-        "stn": stn,
-        "dtm": 10,        # 최근 10분(원하면 3~60 조절)
-        "authKey": key,
-    }
-
-    r = requests.get(AMOS_URL, params=params, timeout=15)
-    # 401/403/429 같은 것도 그대로 알기 쉽게 전달
-    if r.status_code != 200:
-        return JsonResponse(
-            {"error": "upstream_error", "status": r.status_code, "text": r.text[:200]},
-            status=502
-        )
-
-    parsed = _parse_latest_amos_row(r.text)
-    parsed["AIRPORT_NAME"] = AIRPORTS.get(str(stn), f"STN {stn}")
-    return JsonResponse(parsed)
-
-
 def dashboard_view(request):
     return render(request,"dashboard.html")
 
@@ -177,47 +152,43 @@ from django.core.cache import cache
 
 @require_GET
 def api_airport_weather_simple(request):
-    stn = request.GET.get("stn", "113")
-    key = (os.getenv("KEY") or "").strip()
-    if not key:
-        return JsonResponse({"error": "missing KEY in env"}, status=500)
+    airport = request.GET.get("airport", "ICN")
 
-    cache_key = f"amos:{stn}"
-    cached = cache.get(cache_key)
+    obj = WeatherCurrent.objects.filter(airport_code=airport).first()
+    if not obj:
+        return JsonResponse({"error": "no_weather_data"}, status=404)
 
-    url = AMOS_URL
-    params = {"stn": stn, "dtm": 10, "authKey": key}
+    return JsonResponse({
+        "airport": airport,
+        "observed_at": obj.observed_at.isoformat(),
+        "ta": obj.ta,
+        "ws02": obj.ws02,
+        "ws02_max": obj.ws02_max,
+        "l_vis": obj.l_vis,
+        "r_vis": obj.r_vis,
+        "updated_at": obj.updated_at.isoformat(),
+    })
 
-    last_err = None
-    for attempt in range(2):  # 재시도 2번
-        try:
-            # (connect_timeout, read_timeout)
-            r = requests.get(url, params=params, timeout=(3, 7))
-            r.raise_for_status()
+@require_GET
+def api_weather(request):
+    airport = request.GET.get("airport", "ICN").upper()
 
-            parsed = _parse_latest_amos_row(r.text)
-            parsed["AIRPORT_NAME"] = AIRPORTS.get(str(stn), f"STN {stn}")
-
-            # 성공값 캐시(예: 30초)
-            cache.set(cache_key, parsed, timeout=30)
-            return JsonResponse(parsed)
-
-        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectTimeout) as e:
-            last_err = f"timeout:{type(e).__name__}"
-            time.sleep(0.2)  # 짧게 쉼 후 재시도
-
-        except Exception as e:
-            last_err = f"error:{type(e).__name__}"
-            break
-
-    # 여기 도달 = 실패
-    if cached:
-        cached["stale"] = True  # 마지막 값(오래된 값)이라는 표시
-        return JsonResponse(cached)
-
-    return JsonResponse(
-        {"error": "weather_unavailable", "detail": last_err},
-        status=502
+    obj = (
+        WeatherCurrent.objects
+        .filter(airport_code=airport)
+        .order_by("-observed_at")
+        .first()
     )
+    if not obj:
+        return JsonResponse({"error": "no_weather", "airport": airport}, status=404)
 
-
+    return JsonResponse({
+        "airport": airport,
+        "observed_at": obj.observed_at.isoformat(),
+        "TA": obj.ta,
+        "WS02": obj.ws02,
+        "WS02_MAX": obj.ws02_max,
+        "L_VIS": obj.l_vis,
+        "R_VIS": obj.r_vis,
+        "last_updated": obj.updated_at.isoformat(),
+    })

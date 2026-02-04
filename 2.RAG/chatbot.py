@@ -102,44 +102,54 @@ class FlightAgent:
         except: return []
 
         all_flights = {}
+        hours = ["0", "6", "12", "18"]
+
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
             
             for dep in info['departure']:
                 for arr in info['destination']:
+                    for hr in hours:
                     # URL 경로 생성: ICN/TPE/LJ 형태
-                    path_segments = [dep]
-                    if arr: path_segments.append(arr)
-                    if air_code: path_segments.append(air_code)
+                        path_segments = [dep]
+                        if arr: path_segments.append(arr)
+                        if air_code: path_segments.append(air_code)
 
-                    route_path = "/".join(path_segments)
-                    url = f"https://www.flightstats.com/v2/flight-tracker/route/{route_path}?year={y}&month={m}&date={d}"
-                    
-                    try:
-                        await page.goto(url, wait_until="domcontentloaded", timeout=15000)
-                        soup = BeautifulSoup(await page.content(), 'html.parser')
-                        links = soup.select('a[href*="/v2/flight-tracker/"]')
+                        route_path = "/".join(path_segments)
+                        url = f"https://www.flightstats.com/v2/flight-tracker/route/{route_path}?year={y}&month={m}&date={d}&hour={hr}"
                         
-                        for link in links:
-                            h2s = [h.get_text(strip=True) for h in link.find_all('h2')]
-                            if len(h2s) >= 3:
-                                f_no = h2s[0].replace(" ", "")
-                                
-                                # [추가 검증] URL 필터링 후에도 혹시 모를 타사 코드 제외
-                                if air_code and not f_no.startswith(air_code):
-                                    continue
+                        try:
+                            await page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                            await page.wait_for_selector('a[href*="/v2/flight-tracker/"]', timeout=5000)
+                            soup = BeautifulSoup(await page.content(), 'html.parser')
+                            links = soup.select('a[href*="/v2/flight-tracker/"]')
+                            
+                            for link in links:
+                                h2s = [h.get_text(strip=True) for h in link.find_all('h2')]
+                                if len(h2s) >= 3:
+                                    print(f"--- [항공편: {h2s[0]}] ---")
+                                    print(f"h2s 리스트: {h2s}")
+                                    # 각 인덱스별로 뭐가 들어있는지 상세히 보고 싶다면:
+                                    for i, text in enumerate(h2s):
+                                        print(f"  index {i}: {text}")
+                                    f_no = h2s[0].replace(" ", "")
+                                    f_time = h2s[2]
+                                    
+                                    # [추가 검증] URL 필터링 후에도 혹시 모를 타사 코드 제외
+                                    if air_code and not f_no.startswith(air_code):
+                                        continue
 
-                                match = re.match(r'([A-Z0-9]+)(\d+)', f_no)
-                                if match:
-                                    air, num = match.groups()
-                                    all_flights[f_no] = {
-                                        "no": f_no, "dep": dep, "arr": arr,
-                                        "url": f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
-                                    }
-                    except Exception as e:
-                        print(f"⚠️ {route_path} 검색 중 오류: {e}")
-                        continue
+                                    match = re.match(r'([A-Z0-9]+)(\d+)', f_no)
+                                    if match:
+                                        air, num = match.groups()
+                                        all_flights[f_no] = {
+                                            "no": f_no, "dep": dep, "arr": arr, "time":f_time
+                                            "url": f"https://www.flightstats.com/v2/flight-details/{air}/{num}?year={y}&month={m}&date={d}"
+                                        }
+                        except Exception as e:
+                            print(f"⚠️ {route_path} 검색 중 오류: {e}")
+                            continue
             await browser.close()
         return list(all_flights.values())
 

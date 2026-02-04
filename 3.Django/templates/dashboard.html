@@ -173,6 +173,11 @@
             word-wrap: break-word;
         }
         
+        .chat-msg.bot > div, .chat-msg.user > div {
+            white-space: pre-line; /* 줄바꿈 문자(\n)를 HTML 브라우저가 인식하게 함 */
+            line-height: 1.5;      /* 줄 간격 조절 */
+}
+
         .chat-footer {
             padding: 15px;
             border-top: 1px solid #dee2e6;
@@ -556,26 +561,21 @@
         }, 30000);
         });
 
-        function appendMessage(text, sender){
+        function appendMessage(text, sender) {
             const body = document.getElementById("chatBody");
-
             const div = document.createElement("div");
             div.className = "chat-msg " + sender;
+            const msgBox = document.createElement("div");
+            const nameLabel = sender === "bot" ? "🤖 챗봇" : "👤 나";
             
-            const labelDiv = document.createElement("div");
-            labelDiv.style.fontSize = "0.75rem";
-            labelDiv.style.marginBottom = "4px";
-            labelDiv.style.fontWeight = "600";
-            labelDiv.style.opacity = "0.7";
-            labelDiv.textContent = sender === "bot" ? "🤖 챗봇" : "👤 나";
-            div.appendChild(labelDiv);
+            // 내용이 실시간으로 추가될 'span.content' 태그를 포함합니다.
+            msgBox.innerHTML = `<strong>${nameLabel}</strong><br><span class="content">${text.replace(/\n/g, "<br>")}</span>`;
             
-            const msgDiv = document.createElement("div");
-            msgDiv.textContent = text;
-            div.appendChild(msgDiv);
-
+            div.appendChild(msgBox);
             body.appendChild(div);
-            body.scrollTop = body.scrollHeight;
+            body.scrollTop = body.scrollHeight; // 새 메시지 추가 시 자동 스크롤
+            
+            return msgBox.querySelector(".content"); 
         }
 
         async function sendChatToServer(message, airport){
@@ -593,28 +593,49 @@
             return data.reply;
         }
 
-        async function handleSend(){
+        async function handleSend() {
             const input = document.getElementById("chatInput");
             const airport = document.getElementById("airportSelect").value;
             const msg = input.value.trim();
+            
             if (!msg) return;
+            input.value = ""; // 입력창 즉시 비우기
 
-            input.value = "";
-
+            // 사용자 메시지 화면에 표시
             appendMessage(msg, "user");
-            appendMessage("답변을 생성 중입니다...", "bot");
+
+            // 챗봇의 답변 공간을 미리 생성 (비어있는 상태)
+            const botContentSpan = appendMessage("", "bot");
+            let fullReply = "";
 
             try {
-                const reply = await sendChatToServer(msg, airport);
+                // [수정] URL을 /chat/stream/ 경로로 설정하고 메시지를 파라미터로 전달
+                const response = await fetch(`/chat/stream/?msg=${encodeURIComponent(msg)}&airport=${encodeURIComponent(airport)}`);
+                
+                if (!response.ok) throw new Error("서버 연결 실패");
 
-                const body = document.getElementById("chatBody");
-                body.removeChild(body.lastChild);
+                // 스트림 데이터를 읽기 위한 리더 설정
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
 
-                appendMessage(reply, "bot");
+                // 
+                // 데이터를 한 조각(chunk)씩 계속 읽어들임
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break; // 데이터 전송이 완료되면 종료
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    fullReply += chunk;
+                    
+                    // 실시간으로 화면의 말풍선 내용을 업데이트 (\n을 <br>로 변환)
+                    botContentSpan.innerHTML = fullReply.replace(/\n/g, "<br>");
+                    
+                    // 글자가 추가될 때마다 스크롤을 맨 아래로 이동하여 가독성 유지
+                    const body = document.getElementById("chatBody");
+                    body.scrollTop = body.scrollHeight;
+                }
             } catch (e) {
-                const body = document.getElementById("chatBody");
-                body.removeChild(body.lastChild);
-                appendMessage("오류가 발생했습니다: " + e.message, "bot");
+                botContentSpan.innerHTML = `<span style="color:red;">통신 오류: ${e.message}</span>`;
             }
         }
 
